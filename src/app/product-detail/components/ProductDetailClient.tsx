@@ -789,54 +789,547 @@ function ProductTemplate({ product }: { product: Product }) {
 
   // ── Template C: Autodesk ─────────────────────────────────────────────────
   if (isAutodesk) {
-    const isAEC = name.includes('aec') || name.includes('architecture') || name.includes('civil');
-    const isPDM = name.includes('pd&m') || name.includes('product design') || name.includes('inventor') || name.includes('fusion');
-    const isME = name.includes('m&e') || name.includes('media') || name.includes('maya') || name.includes('3ds max');
+    const CDN = 'https://cdn.shopify.com/s/files/1/1049/6268/7317/files';
 
-    const softwareList: string[] = isAEC
-      ? ['AutoCAD', 'Revit', 'Civil 3D', 'Navisworks', 'BIM Collaborate Pro', 'ReCap Pro', 'Insight', 'FormIt']
-      : isPDM
-      ? ['Fusion 360', 'Inventor', 'AutoCAD', 'AutoCAD Electrical', 'Vault', 'Nastran', 'HSMWorks']
-      : isME
-      ? ['Maya', '3ds Max', 'Arnold', 'MotionBuilder', 'Mudbox', 'Flame']
-      : name.includes('autocad')
-      ? ['AutoCAD', 'AutoCAD LT', 'AutoCAD Architecture', 'AutoCAD Electrical', 'AutoCAD Mechanical', 'AutoCAD Plant 3D']
-      : name.includes('revit')
-      ? ['Revit', 'Revit LT', 'BIM 360', 'ReCap Pro']
-      : [product.nameIt ?? 'Software Autodesk'];
+    // ── Rilevamento tipo prodotto ─────────────────────────────────────────
+    const isAECCollection = name.includes('aec collection') || name.includes('aec-collection');
+    const isPDMCollection = name.includes('pd&m') || name.includes('pdm collection') || name.includes('product design') || name.includes('pdm-collection');
+    const isMECollection  = name.includes('m&e') || name.includes('me collection') || name.includes('media & entertainment') || name.includes('me-collection');
+    const isAllApps       = name.includes('all apps');
+    const isAutoCAD       = name.includes('autocad') && !isAECCollection && !isPDMCollection;
+    const isAutoCADLT     = name.includes('autocad lt') || name.includes('autocad-lt');
+    const isRevit         = name.includes('revit') && !isAECCollection && !name.includes('bundle');
+    const isFusion        = name.includes('fusion 360') || name.includes('fusion-360');
+    const isInventor      = name.includes('inventor');
+    const isMaya          = name.includes('maya') && !isMECollection;
+    const is3dsMax        = name.includes('3ds max');
+    const isCivil3D       = name.includes('civil 3d') || name.includes('civil-3d');
+    const isNavisworks    = name.includes('navisworks');
+    const isBIMCollaborate= name.includes('bim collaborate');
+    const isReCap         = name.includes('recap');
+    const isAutoCADElec   = name.includes('autocad electrical') || name.includes('autocad-electrical');
+    const isAutoCADArch   = name.includes('autocad architecture') || name.includes('autocad-architecture');
+    const isAdvanceSteel  = name.includes('advance steel');
+    const isRevitLT       = name.includes('revit lt') || name.includes('revit-lt');
+    const isBundle        = name.includes('bundle') || name.includes('+');
+    const isAutoCADElecBundle = name.includes('autocad') && name.includes('electrical');
+
+    // ── Dati per prodotto specifico ───────────────────────────────────────
+    interface SoftwareInfo {
+      icon: string;
+      accentColor: string;
+      accentBg: string;
+      accentBorder: string;
+      accentText: string;
+      category: string;
+      tagline: string;
+      mainUse: string;
+      keyFeatures: Array<{ title: string; desc: string }>;
+      platforms: string[];
+      formats: string[];
+      relatedSoftware: Array<{ name: string; icon: string; handle: string }>;
+      collectionHint: { id: string; title: string; handle: string; color: string } | null;
+    }
+
+    const getSoftwareInfo = (): SoftwareInfo => {
+      if (isAutoCADLT || isRevitLT) {
+        const isLTRevit = isRevitLT;
+        return {
+          icon: isLTRevit ? `${CDN}/revit-lt-2023-simplified-badge-75x75.png` : `${CDN}/autocad-lt-2023-simplified-badge-75x75.png`,
+          accentColor: '#0696D7',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
+          category: isLTRevit ? 'BIM · Progettazione Architettonica' : 'CAD 2D · Disegno Tecnico',
+          tagline: isLTRevit ? 'BIM 3D per architettura, light edition' : 'CAD 2D professionale, versione leggera e accessibile',
+          mainUse: isLTRevit ? 'Progettazione BIM in piccoli team, coordinamento architetturale' : 'Disegno tecnico 2D, documentazione, layout piante',
+          keyFeatures: isLTRevit
+            ? [
+                { title: 'BIM 3D completo', desc: 'Modellazione 3D parametrica per architettura' },
+                { title: 'Tavole e documentazione', desc: 'Generazione automatica di piante, sezioni, prospetti' },
+                { title: 'Collaborazione', desc: 'Modelli condivisi con team fino a 10 utenti' },
+                { title: 'Compatibilità RVT', desc: 'Apre e visualizza file Revit completi' },
+              ]
+            : [
+                { title: 'Disegno 2D avanzato', desc: 'Tutti gli strumenti di disegno CAD professionale' },
+                { title: 'DWG nativo', desc: 'Formato standard del settore, piena compatibilità' },
+                { title: 'PDF to DWG', desc: 'Importa e converti PDF in disegni editabili' },
+                { title: 'Cloud storage', desc: '5 GB Autodesk Docs inclusi' },
+              ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+'],
+          formats: ['DWG', 'DXF', 'PDF'],
+          relatedSoftware: [
+            { name: 'AutoCAD Full', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isAutoCADElec || isAutoCADElecBundle) {
+        return {
+          icon: `${CDN}/autocad-electrical-2023-simplified-badge-75x75.png`,
+          accentColor: '#0696D7',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
+          category: 'CAD Elettrico · Ingegneria Impiantistica',
+          tagline: 'AutoCAD specializzato per progettazione elettrica e pannelli di controllo',
+          mainUse: 'Schemi elettrici, PLC, pannellistica, documentazione tecnica d\'impianto',
+          keyFeatures: [
+            { title: 'Libreria componenti', desc: '65.000+ simboli IEC e NEMA pronti all\'uso' },
+            { title: 'Numerazione automatica', desc: 'Cavi, morsetti e componenti numerati automaticamente' },
+            { title: 'Report PLC', desc: 'Generazione automatica di report e distinte' },
+            { title: 'Tutto AutoCAD', desc: 'Include tutte le funzionalità AutoCAD standard' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['DWG', 'DXF', 'PDF', 'XML'],
+          relatedSoftware: [
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+            { name: 'Inventor', icon: `${CDN}/inventor-professional-2023-simplified-badge-75x75.png`, handle: 'autodesk-inventor-professional' },
+          ],
+          collectionHint: { id: 'pdm', title: 'PD&M Collection', handle: 'autodesk-pdm-collection', color: '#FF6B35' },
+        };
+      }
+      if (isAutoCADArch) {
+        return {
+          icon: `${CDN}/autocad-architecture-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'CAD · Progettazione Architettonica',
+          tagline: 'AutoCAD con strumenti specializzati per architettura e interior design',
+          mainUse: 'Piante, prospetti, sezioni architettoniche con oggetti AEC intelligenti',
+          keyFeatures: [
+            { title: 'Oggetti AEC intelligenti', desc: 'Muri, finestre, porte parametrici' },
+            { title: 'Interference detection', desc: 'Rilevamento automatico conflitti tra elementi' },
+            { title: 'Quotatura automatica', desc: 'Quotatura architettonica conforme a norma' },
+            { title: 'Tutto AutoCAD', desc: 'Include tutte le funzionalità AutoCAD standard' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['DWG', 'DXF', 'IFC', 'PDF'],
+          relatedSoftware: [
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+            { name: 'Civil 3D', icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`, handle: 'autodesk-civil-3d' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isAdvanceSteel) {
+        return {
+          icon: `${CDN}/advance-steel-2023-simplified-badge-75x75.png`,
+          accentColor: '#4B5563',
+          accentBg: 'bg-gray-50',
+          accentBorder: 'border-gray-200',
+          accentText: 'text-gray-700',
+          category: 'CAD · Strutture in Acciaio',
+          tagline: 'Progettazione strutturale in acciaio con automatismi per produzione',
+          mainUse: 'Modellazione strutture in acciaio, generazione automatica di disegni officina e liste taglio',
+          keyFeatures: [
+            { title: 'Modellazione 3D strutturale', desc: 'Travi, colonne, giunti parametrici' },
+            { title: 'Disegni automatici', desc: 'Tavole officina generate automaticamente dal modello' },
+            { title: 'DSTV export', desc: 'File per macchine CNC da produzione diretta' },
+            { title: 'BIM ready', desc: 'Export IFC per coordinamento BIM' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['DWG', 'IFC', 'DSTV', 'CIS/2'],
+          relatedSoftware: [
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isAutoCAD) {
+        return {
+          icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`,
+          accentColor: '#0696D7',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
+          category: 'CAD 2D/3D · Standard del Settore',
+          tagline: 'Il CAD professionale più usato al mondo per disegno tecnico 2D/3D',
+          mainUse: 'Disegno tecnico 2D, progettazione 3D, documentazione ingegneristica e architettonica',
+          keyFeatures: [
+            { title: 'Disegno 2D/3D avanzato', desc: 'Strumenti precisi per qualsiasi tipo di progetto' },
+            { title: '7 toolset specializzati', desc: 'Architettura, MEP, elettrico, meccanico, P&ID, 3D Map, Plant 3D' },
+            { title: 'Automazione Python/LISP', desc: 'Personalizza flussi di lavoro con macro e script' },
+            { title: 'Collaborazione web/mobile', desc: 'AutoCAD Web & App inclusi, DWG condivisi ovunque' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+', 'Web', 'Mobile'],
+          formats: ['DWG', 'DXF', 'DWF', 'PDF', 'SVG'],
+          relatedSoftware: [
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+            { name: 'Civil 3D', icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`, handle: 'autodesk-civil-3d' },
+            { name: 'Inventor', icon: `${CDN}/inventor-professional-2023-simplified-badge-75x75.png`, handle: 'autodesk-inventor-professional' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isRevit) {
+        return {
+          icon: `${CDN}/revit-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'BIM · Architettura · Ingegneria Strutturale',
+          tagline: 'Il software BIM standard per architettura, ingegneria strutturale e MEP',
+          mainUse: 'Progettazione BIM integrata: architettura, strutture, impianti meccanici/elettrici/idraulici',
+          keyFeatures: [
+            { title: 'BIM multi-disciplinare', desc: 'Architettura, strutture e MEP in un\'unico modello' },
+            { title: 'Documentazione automatica', desc: 'Tavole, piante, sezioni, prospetti dal modello 3D' },
+            { title: 'Analisi energetica', desc: 'Simulazione energetica e certificazione integrata' },
+            { title: 'Worksharing', desc: 'Modelli condivisi per team distribuiti, live sync' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['RVT', 'IFC', 'DWG', 'DWF', 'PDF'],
+          relatedSoftware: [
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+            { name: 'Navisworks', icon: `${CDN}/navisworks-manage-2023-simplified-badge-75x75.png`, handle: 'autodesk-navisworks-manage' },
+            { name: 'Civil 3D', icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`, handle: 'autodesk-civil-3d' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isFusion) {
+        return {
+          icon: `${CDN}/fusion-360-2023-simplified-badge-75x75.png`,
+          accentColor: '#FF6B35',
+          accentBg: 'bg-orange-50',
+          accentBorder: 'border-orange-200',
+          accentText: 'text-orange-700',
+          category: 'CAD/CAM/CAE · Progettazione Prodotto',
+          tagline: 'L\'unico strumento CAD/CAM/CAE/PCB integrato su cloud per prodotto fisico',
+          mainUse: 'Progettazione meccanica, simulazione FEM, programmazione CNC, PCB su un\'unica piattaforma',
+          keyFeatures: [
+            { title: 'CAD parametrico + scultura', desc: 'Solid, surface, mesh e T-splines nello stesso ambiente' },
+            { title: 'CAM integrato', desc: 'Toolpath 2.5/3/5 assi per fresatura, tornitura, EDM' },
+            { title: 'Simulazione FEM', desc: 'Analisi strutturale, termica, frequenze proprie' },
+            { title: 'PCB + ECAD', desc: 'Design schede elettroniche integrato nel CAD meccanico' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+'],
+          formats: ['F3D', 'STEP', 'IGES', 'STL', 'DXF', 'SVG'],
+          relatedSoftware: [
+            { name: 'Inventor', icon: `${CDN}/inventor-professional-2023-simplified-badge-75x75.png`, handle: 'autodesk-inventor-professional' },
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+          ],
+          collectionHint: { id: 'pdm', title: 'PD&M Collection', handle: 'autodesk-pdm-collection', color: '#FF6B35' },
+        };
+      }
+      if (isInventor) {
+        return {
+          icon: `${CDN}/inventor-professional-2023-simplified-badge-75x75.png`,
+          accentColor: '#FF6B35',
+          accentBg: 'bg-orange-50',
+          accentBorder: 'border-orange-200',
+          accentText: 'text-orange-700',
+          category: 'CAD 3D Parametrico · Ingegneria Meccanica',
+          tagline: 'CAD meccanico 3D parametrico per progettazione industriale e assemblaggio',
+          mainUse: 'Progettazione meccanica 3D, gestione assiemi complessi, documentazione tecnica e simulazione',
+          keyFeatures: [
+            { title: 'Modellazione parametrica', desc: 'Solid 3D con vincoli e relazioni tra componenti' },
+            { title: 'Assemblaggi complessi', desc: 'Gestione di assiemi con migliaia di componenti' },
+            { title: 'Simulazione dinamica', desc: 'Analisi cinematica e dinamica dei meccanismi' },
+            { title: 'Generazione messa in tavola', desc: 'Tavole tecniche automatiche con tolleranze GD&T' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['IPT', 'IAM', 'IDW', 'STEP', 'IGES', 'DWG'],
+          relatedSoftware: [
+            { name: 'Fusion 360', icon: `${CDN}/fusion-360-2023-simplified-badge-75x75.png`, handle: 'autodesk-fusion-360' },
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+          ],
+          collectionHint: { id: 'pdm', title: 'PD&M Collection', handle: 'autodesk-pdm-collection', color: '#FF6B35' },
+        };
+      }
+      if (isMaya) {
+        return {
+          icon: `${CDN}/maya-2023-simplified-badge-75x75.png`,
+          accentColor: '#6554C0',
+          accentBg: 'bg-violet-50',
+          accentBorder: 'border-violet-200',
+          accentText: 'text-violet-700',
+          category: 'Animazione 3D · VFX · Videogiochi',
+          tagline: 'Lo standard dell\'industria per animazione 3D, rigging, VFX e cinema',
+          mainUse: 'Animazione character, VFX cinematografici, modellazione per film, serie TV e videogiochi',
+          keyFeatures: [
+            { title: 'Rigging avanzato', desc: 'HumanIK, nHair, nCloth, sistemi fisici realistici' },
+            { title: 'Arnold renderer', desc: 'Rendering path-tracing fotorealistico integrato' },
+            { title: 'Pipeline integration', desc: 'Python/MEL API, USD, Bifrost per VFX complessi' },
+            { title: 'Game export', desc: 'FBX ottimizzato per Unreal Engine e Unity' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+', 'Linux'],
+          formats: ['MA', 'MB', 'FBX', 'OBJ', 'USD', 'ABC'],
+          relatedSoftware: [
+            { name: '3ds Max', icon: `${CDN}/3ds-max-2023-simplified-badge-75x75.png`, handle: 'autodesk-3ds-max' },
+            { name: 'Arnold', icon: `${CDN}/arnold-2023-simplified-badge-75x75.png`, handle: 'autodesk-me-collection' },
+          ],
+          collectionHint: { id: 'me', title: 'M&E Collection', handle: 'autodesk-me-collection', color: '#6554C0' },
+        };
+      }
+      if (is3dsMax) {
+        return {
+          icon: `${CDN}/3ds-max-2023-simplified-badge-75x75.png`,
+          accentColor: '#6554C0',
+          accentBg: 'bg-violet-50',
+          accentBorder: 'border-violet-200',
+          accentText: 'text-violet-700',
+          category: 'Visualizzazione 3D · Architettura · VFX',
+          tagline: 'Il leader per rendering architetturale, visualizzazione prodotto e animazione',
+          mainUse: 'Rendering architetturale, animazione prodotto, VFX, visualizzazione interior design',
+          keyFeatures: [
+            { title: 'Renderer avanzati', desc: 'Arnold, V-Ray, Corona compatibili nativamente' },
+            { title: 'Modellazione polys', desc: 'Modellazione poly/patch/NURBS per architettura e prodotto' },
+            { title: 'Particle system', desc: 'PFlow per simulazioni particellari complesse' },
+            { title: 'Plugin ecosystem', desc: 'Migliaia di plugin specializzati per ogni settore' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['MAX', 'FBX', 'OBJ', 'ABC', '3DS'],
+          relatedSoftware: [
+            { name: 'Maya', icon: `${CDN}/maya-2023-simplified-badge-75x75.png`, handle: 'autodesk-maya' },
+            { name: 'Arnold', icon: `${CDN}/arnold-2023-simplified-badge-75x75.png`, handle: 'autodesk-me-collection' },
+          ],
+          collectionHint: { id: 'me', title: 'M&E Collection', handle: 'autodesk-me-collection', color: '#6554C0' },
+        };
+      }
+      if (isCivil3D) {
+        return {
+          icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'Ingegneria Civile · Infrastrutture',
+          tagline: 'Progettazione BIM per infrastrutture civili, strade, reti idriche e ferroviario',
+          mainUse: 'Strade, autostrade, ferrovie, canali, reti idriche, lottizzazioni, livellamento terreno',
+          keyFeatures: [
+            { title: 'Corridoi stradali', desc: 'Progettazione geometrica stradale con profili e sezioni' },
+            { title: 'Movimenti terra', desc: 'Calcolo automatico di scavi e riporti con DTM' },
+            { title: 'Reti idriche', desc: 'Progettazione fognature, acquedotti, reti pluviali' },
+            { title: 'BIM for Infrastructure', desc: 'Export IFC4, coordinamento con Revit e Navisworks' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['DWG', 'LandXML', 'IFC', 'DXF'],
+          relatedSoftware: [
+            { name: 'AutoCAD', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, handle: 'autodesk-autocad' },
+            { name: 'Navisworks', icon: `${CDN}/navisworks-manage-2023-simplified-badge-75x75.png`, handle: 'autodesk-navisworks-manage' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isNavisworks) {
+        return {
+          icon: `${CDN}/navisworks-manage-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'Coordinamento BIM · Clash Detection',
+          tagline: 'Coordinamento modelli BIM e rilevamento interferenze per grandi progetti',
+          mainUse: 'Clash detection, coordinamento multidisciplinare, simulazione 4D, revisione modelli grandi',
+          keyFeatures: [
+            { title: 'Clash detection', desc: 'Rilevamento automatico di interferenze tra discipline' },
+            { title: 'Simulazione 4D', desc: 'Planning temporale visualizzato sul modello 3D' },
+            { title: 'Gestione revisioni', desc: 'Commenti, redlines, issue tracking integrato' },
+            { title: 'Modelli grandi', desc: 'Carica miliardi di poligoni senza rallentamenti' },
+          ],
+          platforms: ['Windows 10/11 64-bit'],
+          formats: ['NWD', 'NWF', 'IFC', 'RVT', 'DWG'],
+          relatedSoftware: [
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+            { name: 'Civil 3D', icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`, handle: 'autodesk-civil-3d' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isBIMCollaborate) {
+        return {
+          icon: `${CDN}/bim-collaborate-pro-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'BIM Cloud · Collaborazione',
+          tagline: 'Piattaforma cloud per collaborazione BIM su grandi progetti',
+          mainUse: 'Gestione dati BIM centralizzata, coordinamento team distribuiti, issue tracking',
+          keyFeatures: [
+            { title: 'Common Data Environment', desc: 'Tutti i modelli e documenti in un\'unica piattaforma' },
+            { title: 'Design Collaboration', desc: 'Pacchetti di pubblicazione e consumo automatici' },
+            { title: 'Model Coordination', desc: 'Clash detection cloud per team distribuiti' },
+            { title: 'Sheets & Docs', desc: 'Gestione tavole, revisioni, approvazioni digitali' },
+          ],
+          platforms: ['Web', 'iOS', 'Android'],
+          formats: ['RVT', 'DWG', 'IFC', 'NWD'],
+          relatedSoftware: [
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+            { name: 'Navisworks', icon: `${CDN}/navisworks-manage-2023-simplified-badge-75x75.png`, handle: 'autodesk-navisworks-manage' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isReCap) {
+        return {
+          icon: `${CDN}/recap-pro-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'Scansione 3D · Reality Capture',
+          tagline: 'Converti scansioni laser e foto in modelli 3D utilizzabili in BIM e CAD',
+          mainUse: 'Rilievi as-built, retroingegneria, topografia, documentazione patrimonio storico',
+          keyFeatures: [
+            { title: 'Reality Capture', desc: 'Fotogrammetria da foto e droni ad alta risoluzione' },
+            { title: 'Point Cloud', desc: 'Gestione nuvole di punti da scanner laser (Leica, Faro)' },
+            { title: 'BIM integration', desc: 'Export diretto in Revit, Civil 3D, AutoCAD' },
+            { title: 'Misure precise', desc: 'Misurazioni dirette sulla nuvola di punti' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'Web'],
+          formats: ['RCP', 'RCS', 'E57', 'LAS', 'PCG'],
+          relatedSoftware: [
+            { name: 'Revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, handle: 'autodesk-revit' },
+            { name: 'Civil 3D', icon: `${CDN}/civil-3d-2023-simplified-badge-75x75.png`, handle: 'autodesk-civil-3d' },
+          ],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      if (isAllApps) {
+        return {
+          icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`,
+          accentColor: '#0696D7',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
+          category: 'Suite Completa · Tutti i Software Autodesk',
+          tagline: 'Accesso illimitato a tutti i software Autodesk con un unico abbonamento',
+          mainUse: 'Ideal per studi multidisciplinari, formazione professionale, utilizzo di più prodotti',
+          keyFeatures: [
+            { title: 'Oltre 100 prodotti', desc: 'AutoCAD, Revit, Inventor, Fusion, Maya, 3ds Max e molto altro' },
+            { title: 'Aggiornamenti automatici', desc: 'Sempre l\'ultima versione disponibile senza costi extra' },
+            { title: 'Flessibilità totale', desc: 'Usa qualsiasi software in base al progetto corrente' },
+            { title: 'Cloud storage incluso', desc: '100 GB Autodesk Docs per ogni software' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+', 'Linux'],
+          formats: ['DWG', 'RVT', 'IPT', 'F3D', 'FBX', '...'],
+          relatedSoftware: [],
+          collectionHint: null,
+        };
+      }
+      if (isBundle) {
+        return {
+          icon: `${CDN}/revit-2023-simplified-badge-75x75.png`,
+          accentColor: '#0052CC',
+          accentBg: 'bg-blue-50',
+          accentBorder: 'border-blue-200',
+          accentText: 'text-blue-700',
+          category: 'Bundle · Combinazione Software',
+          tagline: 'Pacchetto combinato di software Autodesk per massimizzare la produttività',
+          mainUse: 'Workflow completo con strumenti complementari per il tuo settore',
+          keyFeatures: [
+            { title: 'Software complementari', desc: 'Strumenti progettati per lavorare insieme' },
+            { title: 'Prezzo vantaggioso', desc: 'Risparmio rispetto all\'acquisto separato' },
+            { title: 'Un unico abbonamento', desc: 'Gestione semplice con un\'unica licenza' },
+            { title: 'Supporto ufficiale', desc: 'Assistenza Autodesk per tutti i software inclusi' },
+          ],
+          platforms: ['Windows 10/11 64-bit', 'macOS 13+'],
+          formats: ['DWG', 'RVT', 'IFC'],
+          relatedSoftware: [],
+          collectionHint: { id: 'aec', title: 'AEC Collection', handle: 'autodesk-aec-collection', color: '#0052CC' },
+        };
+      }
+      // Fallback generico Autodesk
+      return {
+        icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`,
+        accentColor: '#0696D7',
+        accentBg: 'bg-sky-50',
+        accentBorder: 'border-sky-200',
+        accentText: 'text-sky-700',
+        category: 'Software Professionale Autodesk',
+        tagline: 'Software Autodesk originale con assegnazione diretta al tuo account',
+        mainUse: 'Progettazione professionale con gli strumenti standard del settore',
+        keyFeatures: [
+          { title: 'Licenza ufficiale', desc: 'Abbonamento originale assegnato direttamente da Autodesk' },
+          { title: 'Aggiornamenti inclusi', desc: 'Sempre aggiornato all\'ultima versione disponibile' },
+          { title: 'Supporto tecnico', desc: 'Accesso al supporto ufficiale Autodesk' },
+          { title: 'Uso commerciale', desc: 'Valido per uso professionale e aziendale' },
+        ],
+        platforms: ['Windows 10/11 64-bit', 'macOS 13+'],
+        formats: ['Standard del settore'],
+        relatedSoftware: [],
+        collectionHint: null,
+      };
+    };
+
+    const sw = getSoftwareInfo();
 
     return (
-      <div className="space-y-6 mb-8">
-        {/* Hero badge */}
-        <div className="flex flex-wrap gap-2 items-center">
-          <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full">
-            <Icon name="StarIcon" size={13} className="text-amber-500" />
+      <div className="space-y-5 mb-8">
+        {/* ── Hero dark banner stile Autodesk.com ─────────────────────────── */}
+        <div
+          className="rounded-2xl overflow-hidden"
+          style={{ background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)' }}
+        >
+          <div className="px-6 py-5 flex items-center gap-4">
+            {/* Icona software CDN */}
+            <div className="shrink-0 w-16 h-16 rounded-xl overflow-hidden bg-white/10 flex items-center justify-center p-2 ring-2 ring-white/20">
+              <img
+                src={sw.icon}
+                alt={product.nameIt ?? 'Autodesk'}
+                className="w-full h-full object-contain"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = '0'; }}
+              />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-1 flex-wrap">
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-sky-300 bg-sky-400/20 border border-sky-400/30 px-2.5 py-0.5 rounded-full">
+                  Autodesk Official
+                </span>
+                <span className="text-[10px] text-white/60 font-medium">{sw.category}</span>
+              </div>
+              <p className="text-sm font-semibold text-white/90 leading-snug">{sw.tagline}</p>
+            </div>
+          </div>
+          {/* Barra uso principale */}
+          <div className="px-6 pb-5">
+            <div className="bg-white/5 border border-white/10 rounded-xl px-4 py-3">
+              <p className="text-xs text-white/50 uppercase tracking-wider font-bold mb-1">Ideale per</p>
+              <p className="text-sm text-white/80">{sw.mainUse}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ── Badge ufficiale ─────────────────────────────────────────────── */}
+        <div className="flex flex-wrap gap-2">
+          <span className={`inline-flex items-center gap-1.5 ${sw.accentBg} ${sw.accentBorder} ${sw.accentText} border text-xs font-bold px-3 py-1.5 rounded-full`}>
+            <Icon name="StarIcon" size={12} className="text-amber-500" />
             Abbonamento Ufficiale · Assegnazione Diretta · Uso Commerciale
           </span>
         </div>
 
-        {/* Software inclusi */}
+        {/* ── Feature cards ────────────────────────────────────────────────── */}
         <div>
-          <h2 className="text-base font-bold text-foreground mb-3">
-            {isAEC ? 'AEC Collection — Software Inclusi' :
-             isPDM ? 'PD&M Collection — Software Inclusi' :
-             isME ? 'M&E Collection — Software Inclusi' :
-             'Software Incluso'}
+          <h2 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
+            <Icon name="CubeIcon" size={15} className="text-muted-foreground" />
+            Funzionalità Principali
           </h2>
-          <div className="flex flex-wrap gap-2">
-            {softwareList.map((sw) => (
-              <span
-                key={sw}
-                className="bg-amber-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5"
+          <div className="grid grid-cols-2 gap-3">
+            {sw.keyFeatures.map((f, i) => (
+              <div
+                key={i}
+                className={`rounded-xl border p-4 ${sw.accentBg} ${sw.accentBorder}`}
               >
-                <Icon name="CubeIcon" size={11} />
-                {sw}
-              </span>
+                <div className="flex items-start gap-2">
+                  <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 shrink-0 mt-0.5" />
+                  <div>
+                    <p className={`text-xs font-bold ${sw.accentText} mb-0.5`}>{f.title}</p>
+                    <p className="text-xs text-muted-foreground leading-snug">{f.desc}</p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Come funziona l'assegnazione */}
+        {/* ── Come funziona l'assegnazione ─────────────────────────────────── */}
         <div className="rounded-xl border-2 border-teal-200 bg-teal-50 overflow-hidden">
           <div className="bg-teal-600 px-5 py-3 flex items-center gap-2">
             <Icon name="InformationCircleIcon" size={18} className="text-white" />
@@ -860,9 +1353,70 @@ function ProductTemplate({ product }: { product: Product }) {
           </div>
         </div>
 
-        {/* Piani — Mensile vs Triennale */}
+        {/* ── Spec tecniche: piattaforme + formati ────────────────────────── */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          {/* Piattaforme */}
+          <div className="rounded-xl border border-border bg-muted/20 p-4">
+            <h3 className="text-xs font-bold text-foreground mb-3 flex items-center gap-1.5 uppercase tracking-wider">
+              <Icon name="ComputerDesktopIcon" size={13} className="text-muted-foreground" />
+              Sistemi Supportati
+            </h3>
+            <div className="space-y-1.5">
+              {sw.platforms.map((p) => (
+                <div key={p} className="flex items-center gap-2 text-xs text-foreground">
+                  <Icon name="CheckCircleIcon" size={12} className="text-emerald-500 shrink-0" />
+                  {p}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Formati */}
+          <div className="rounded-xl border border-border bg-muted/20 p-4">
+            <h3 className="text-xs font-bold text-foreground mb-3 flex items-center gap-1.5 uppercase tracking-wider">
+              <Icon name="DocumentIcon" size={13} className="text-muted-foreground" />
+              Formati File
+            </h3>
+            <div className="flex flex-wrap gap-1.5">
+              {sw.formats.map((fmt) => (
+                <span key={fmt} className="text-[10px] font-bold bg-muted border border-border text-muted-foreground px-2 py-1 rounded-md">
+                  {fmt}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── Software correlati ──────────────────────────────────────────── */}
+        {sw.relatedSoftware.length > 0 && (
+          <div>
+            <h2 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
+              <Icon name="LinkIcon" size={14} className="text-muted-foreground" />
+              Software Complementari
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {sw.relatedSoftware.map((rel) => (
+                <a
+                  key={rel.name}
+                  href={`/product-detail?handle=${rel.handle}`}
+                  className="flex items-center gap-2 bg-white border border-border hover:border-primary/40 rounded-xl px-3 py-2.5 transition-colors group"
+                >
+                  <img
+                    src={rel.icon}
+                    alt={rel.name}
+                    className="w-7 h-7 object-contain"
+                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                  />
+                  <span className="text-xs font-semibold text-foreground group-hover:text-primary transition-colors">{rel.name}</span>
+                  <ArrowRight className="w-3 h-3 text-muted-foreground/50 group-hover:text-primary transition-colors" />
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* ── Piani Mensile / Triennale ───────────────────────────────────── */}
         <div>
-          <h2 className="text-base font-bold text-foreground mb-3">Scegli il Tuo Piano</h2>
+          <h2 className="text-sm font-bold text-foreground mb-3">Scegli il Tuo Piano</h2>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="rounded-xl border-2 border-border bg-white p-5">
               <div className="flex items-center justify-between mb-3">
@@ -896,6 +1450,30 @@ function ProductTemplate({ product }: { product: Product }) {
             </div>
           </div>
         </div>
+
+        {/* ── Hint collection (se prodotto singolo) ──────────────────────── */}
+        {sw.collectionHint && (
+          <div
+            className="rounded-xl border p-4 flex items-center gap-4"
+            style={{ borderColor: `${sw.collectionHint.color}30`, background: `${sw.collectionHint.color}08` }}
+          >
+            <SparklesIcon className="w-5 h-5 shrink-0" style={{ color: sw.collectionHint.color }} />
+            <div className="flex-1 min-w-0">
+              <p className="text-xs text-muted-foreground">
+                <span className="font-bold text-foreground">Hai bisogno di più strumenti?</span>
+                {' '}La <strong>{sw.collectionHint.title}</strong> include questo software + 10+ altri allo stesso prezzo mensile.
+              </p>
+            </div>
+            <a
+              href={`/autodesk-collections/${sw.collectionHint.id}`}
+              className="shrink-0 inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-lg text-white"
+              style={{ background: sw.collectionHint.color }}
+            >
+              Scopri
+              <ArrowRight className="w-3 h-3" />
+            </a>
+          </div>
+        )}
       </div>
     );
   }
