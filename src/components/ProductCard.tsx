@@ -66,7 +66,7 @@ function getBrandBadge(product: Product): { label: string; className: string } |
 function getDeliveryBadge(product: Product): { label: string; className: string } {
   const cat = (product.category + ' ' + (product.subcategory ?? '')).toLowerCase();
   if (cat.includes('autodesk')) {
-    return { label: '⏱ 10-15 min', className: 'text-amber-500 font-semibold text-[10px]' };
+    return { label: '⚡ Immediato', className: 'text-emerald-500 font-semibold text-[10px]' };
   }
   return { label: '⚡ Immediato', className: 'text-emerald-500 font-semibold text-[10px]' };
 }
@@ -160,15 +160,6 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
         >
           <Icon name={wishlisted ? 'HeartIcon' : 'HeartIcon'} size={14} variant={wishlisted ? 'solid' : 'outline'} />
         </button>
-
-        {/* Instant delivery */}
-        {product.instantDelivery && !(product.deliveryTime && product.deliveryTime.toLowerCase().includes("minut")) && (
-          <div className="absolute bottom-3 left-3">
-            <span className="instant-badge text-[10px] font-bold px-2 py-1 rounded-full flex items-center gap-1">
-              <span>⚡</span> Istantaneo
-            </span>
-          </div>
-        )}
 
         {/* Hover feature preview overlay */}
         {hovered && featureSnippets.length > 0 && (

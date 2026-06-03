@@ -1778,14 +1778,6 @@ export default function ProductDetailClient() {
                   <span className="discount-badge text-sm font-bold px-3 py-1 rounded-full">-{product.discount}%</span>
                 </div>
               )}
-              {product.instantDelivery && !(product.deliveryTime?.toLowerCase().includes('minut')) && (
-                <div className="absolute top-4 right-4">
-                  <span className="instant-badge text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                    <Icon name="BoltIcon" size={12} variant="solid" />
-                    Consegna Istantanea
-                  </span>
-                </div>
-              )}
             </div>
             {product.images.length > 1 && (
               <div className="flex gap-2">
@@ -1852,7 +1844,7 @@ export default function ProductDetailClient() {
             {/* Garanzie */}
             <div className="space-y-2">
               {(badges.length > 0 ? badges.map((b, i) => ({ icon: i === 0 ? 'BoltIcon' : i === 1 ? 'ShieldCheckIcon' : 'ArrowPathIcon', text: b, color: i === 0 ? 'text-amber-500' : i === 1 ? 'text-emerald-500' : 'text-blue-500' })) : [
-                { icon: 'BoltIcon', text: `Consegna ${deliveryText.toLowerCase()}`, color: 'text-amber-500' },
+                { icon: 'BoltIcon', text: isAutodesk ? 'Assegnazione immediata' : `Consegna ${deliveryText.toLowerCase()}`, color: 'text-amber-500' },
                 { icon: 'ShieldCheckIcon', text: 'Licenza originale garantita al 100%', color: 'text-emerald-500' },
                 { icon: 'ArrowPathIcon', text: product.refundPolicyLabel || 'Garanzia rimborso 30 giorni', color: 'text-blue-500' },
               ]).map((g) => (
@@ -1954,7 +1946,7 @@ export default function ProductDetailClient() {
               <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-2.5 flex items-center gap-2">
                 <Icon name="BoltIcon" size={13} className="text-emerald-600 shrink-0" variant="solid" />
                 <span className="text-emerald-700 text-xs font-semibold">
-                  {isAutodesk ? `Assegnazione ${deliveryText.toLowerCase()}` : `Consegna ${deliveryText.toLowerCase()}`}
+                  {isAutodesk ? `Assegnazione immediata` : `Consegna ${deliveryText.toLowerCase()}`}
                 </span>
               </div>
 
