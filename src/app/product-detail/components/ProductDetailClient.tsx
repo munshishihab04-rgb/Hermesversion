@@ -3,6 +3,28 @@ import { Link } from 'wouter';
 import { useSearch } from 'wouter';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
+import {
+  ShoppingCartIcon,
+  EnvelopeIcon,
+  Cog6ToothIcon,
+  CheckCircleIcon as CheckCircleOutline,
+  GlobeAltIcon as GlobeOutline,
+  KeyIcon as KeyOutline,
+  ArrowDownTrayIcon,
+  EnvelopeOpenIcon,
+  ArrowDownCircleIcon,
+  DevicePhoneMobileIcon,
+  ComputerDesktopIcon as DesktopIcon,
+  ShieldCheckIcon as ShieldOutline,
+  DeviceTabletIcon,
+  SparklesIcon,
+  ArrowTrendingUpIcon,
+  TagIcon,
+  BuildingLibraryIcon,
+  WrenchScrewdriverIcon,
+  FilmIcon,
+  ArrowRightIcon as ArrowRight,
+} from '@heroicons/react/24/outline';
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
@@ -327,6 +349,156 @@ const defaultReviews = [
   { name: 'Roberto Mancini', date: '28 Aprile 2025', rating: 4, text: 'Tutto funzionante, piccolo ritardo nell\'email ma risolto subito dal supporto.', verified: true },
 ];
 
+
+// ─── Sezione upsell Collection per prodotti Autodesk singoli ─────────────────
+
+const CDN_ICONS = 'https://cdn.shopify.com/s/files/1/1049/6268/7317/files';
+
+const AUTODESK_SINGLE_TO_COLLECTION: Record<string, {
+  collectionId: string;
+  collectionHandle: string;
+  collectionTitle: string;
+  accentColor: string;
+  reason: string;
+  extraSoftware: Array<{ name: string; icon: string }>;
+}> = {
+  autocad: {
+    collectionId: 'aec',
+    collectionHandle: 'autodesk-aec-collection',
+    collectionTitle: 'AEC Collection',
+    accentColor: '#0052CC',
+    reason: 'Con la AEC Collection ottieni AutoCAD + Revit + Civil 3D + Navisworks e 10+ altri strumenti allo stesso prezzo mensile.',
+    extraSoftware: [
+      { name: 'Revit', icon: `${CDN_ICONS}/revit-2023-simplified-badge-75x75.png` },
+      { name: 'Civil 3D', icon: `${CDN_ICONS}/civil-3d-2023-simplified-badge-75x75.png` },
+      { name: 'Navisworks', icon: `${CDN_ICONS}/navisworks-simulate-2023-simplified-badge-75x75.png` },
+    ],
+  },
+  revit: {
+    collectionId: 'aec',
+    collectionHandle: 'autodesk-aec-collection',
+    collectionTitle: 'AEC Collection',
+    accentColor: '#0052CC',
+    reason: 'Con la AEC Collection ottieni Revit + AutoCAD + Civil 3D + Navisworks e 10+ altri strumenti BIM allo stesso prezzo.',
+    extraSoftware: [
+      { name: 'AutoCAD', icon: `${CDN_ICONS}/autocad-2023-simplified-badge-75x75.png` },
+      { name: 'Civil 3D', icon: `${CDN_ICONS}/civil-3d-2023-simplified-badge-75x75.png` },
+      { name: 'Navisworks', icon: `${CDN_ICONS}/navisworks-simulate-2023-simplified-badge-75x75.png` },
+    ],
+  },
+  fusion: {
+    collectionId: 'pdm',
+    collectionHandle: 'autodesk-pdm-collection',
+    collectionTitle: 'PD&M Collection',
+    accentColor: '#FF6B35',
+    reason: 'Con la PD&M Collection ottieni Fusion 360 + Inventor + AutoCAD + strumenti CAM avanzati allo stesso prezzo mensile.',
+    extraSoftware: [
+      { name: 'Inventor', icon: `${CDN_ICONS}/inventor-professional-2023-simplified-badge-75x75.png` },
+      { name: 'AutoCAD', icon: `${CDN_ICONS}/autocad-2023-simplified-badge-75x75.png` },
+      { name: 'Navisworks', icon: `${CDN_ICONS}/navisworks-simulate-2023-simplified-badge-75x75.png` },
+    ],
+  },
+};
+
+function getCollectionUpsell(product: Product) {
+  const name = product.nameIt?.toLowerCase() ?? '';
+  if (name.includes('autocad') && !name.includes('inventor') && !name.includes('electrical')) return AUTODESK_SINGLE_TO_COLLECTION['autocad'];
+  if (name.includes('revit')) return AUTODESK_SINGLE_TO_COLLECTION['revit'];
+  if (name.includes('fusion')) return AUTODESK_SINGLE_TO_COLLECTION['fusion'];
+  return null;
+}
+
+function CollectionUpsellBanner({ product }: { product: Product }) {
+  const upsell = getCollectionUpsell(product);
+  if (!upsell) return null;
+
+  return (
+    <div className="mb-5">
+      <div
+        className="rounded-2xl overflow-hidden border"
+        style={{ borderColor: `${upsell.accentColor}30` }}
+      >
+        {/* Header */}
+        <div
+          className="px-6 py-4 flex items-start gap-4"
+          style={{ background: `linear-gradient(135deg, ${upsell.accentColor}15 0%, ${upsell.accentColor}06 100%)` }}
+        >
+          <div className="shrink-0">
+            <SparklesIcon className="w-6 h-6" style={{ color: upsell.accentColor }} />
+          </div>
+          <div className="flex-1">
+            <div className="flex items-center gap-2 mb-1 flex-wrap">
+              <span
+                className="text-[11px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-full text-white"
+                style={{ background: upsell.accentColor }}
+              >
+                Consigliato
+              </span>
+              <h3 className="font-bold text-foreground">Stai valutando la {upsell.collectionTitle}?</h3>
+            </div>
+            <p className="text-sm text-muted-foreground leading-relaxed">{upsell.reason}</p>
+          </div>
+        </div>
+
+        {/* Corpo */}
+        <div className="bg-white p-6">
+          <div className="flex items-center gap-3 mb-4 flex-wrap">
+            <div className="flex items-center gap-1.5 bg-muted/50 border border-border rounded-lg px-2.5 py-1.5">
+              <img
+                src={`${CDN_ICONS}/autocad-2023-simplified-badge-75x75.png`}
+                alt={product.nameIt}
+                className="w-4 h-4 object-contain"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+              <span className="text-xs font-medium text-foreground">{product.nameIt?.split(' ').slice(1).join(' ') || product.nameIt}</span>
+            </div>
+            <span className="text-muted-foreground text-sm">+</span>
+            {upsell.extraSoftware.map((sw) => (
+              <div key={sw.name} className="flex items-center gap-1.5 bg-muted/50 border border-border rounded-lg px-2.5 py-1.5">
+                <img
+                  src={sw.icon}
+                  alt={sw.name}
+                  className="w-4 h-4 object-contain"
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                />
+                <span className="text-xs font-medium text-foreground">{sw.name}</span>
+              </div>
+            ))}
+            <div className="flex items-center gap-1 bg-muted/30 rounded-lg px-2.5 py-1.5">
+              <span className="text-xs text-muted-foreground font-medium">+altri</span>
+            </div>
+          </div>
+
+          <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 mb-4 flex items-start gap-2">
+            <ArrowTrendingUpIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+            <p className="text-xs text-emerald-700 font-semibold">
+              Stesso prezzo mensile (€14,99/mese) · {upsell.collectionTitle} include tutto questo e molto di più
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <Link
+              href={`/autodesk-collections/${upsell.collectionId}`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-white text-sm font-bold transition-all hover:opacity-90"
+              style={{ background: upsell.accentColor }}
+            >
+              <SparklesIcon className="w-4 h-4" />
+              Scopri {upsell.collectionTitle}
+            </Link>
+            <Link
+              href={`/product-detail?handle=${upsell.collectionHandle}`}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-border text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors"
+            >
+              Acquista Collection
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ─── Template multipli per tipo prodotto ─────────────────────────────────────
 
 function ProductTemplate({ product }: { product: Product }) {
@@ -425,13 +597,15 @@ function ProductTemplate({ product }: { product: Product }) {
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Windows</h2>
           <div className="grid sm:grid-cols-4 gap-3">
             {[
-              { emoji: '🛒', step: '01', title: 'Completa il Pagamento', desc: 'Checkout sicuro con Shopify' },
-              { emoji: '📧', step: '02', title: 'Ricevi la Chiave', desc: 'Via email in meno di 30 secondi' },
-              { emoji: '⚙️', step: '03', title: 'Vai ad Attivazione', desc: 'Impostazioni › Sistema › Attivazione' },
-              { emoji: '✅', step: '04', title: 'Inserisci la Chiave', desc: 'Windows si attiva automaticamente' },
+              { IconEl: ShoppingCartIcon, step: '01', title: 'Completa il Pagamento', desc: 'Checkout sicuro con Shopify' },
+              { IconEl: EnvelopeIcon, step: '02', title: 'Ricevi la Chiave', desc: 'Via email in meno di 30 secondi' },
+              { IconEl: Cog6ToothIcon, step: '03', title: 'Vai ad Attivazione', desc: 'Impostazioni › Sistema › Attivazione' },
+              { IconEl: CheckCircleOutline, step: '04', title: 'Inserisci la Chiave', desc: 'Windows si attiva automaticamente' },
             ].map((s) => (
               <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
-                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                  <s.IconEl className="w-5 h-5 text-primary" />
+                </div>
                 <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
                 <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
                 <p className="text-xs text-muted-foreground">{s.desc}</p>
@@ -447,7 +621,7 @@ function ProductTemplate({ product }: { product: Product }) {
             <div className="grid grid-cols-4 bg-muted/60 font-bold text-foreground">
               <div className="p-3 border-r border-border">Funzionalità</div>
               <div className="p-3 border-r border-border text-center">Win 10 Home</div>
-              <div className="p-3 border-r border-border text-center bg-primary/5 text-primary">Win 11 Pro ⭐</div>
+              <div className="p-3 border-r border-border text-center bg-primary/5 text-primary">Win 11 Pro <Icon name="StarIcon" size={12} className="inline text-amber-400" /></div>
               <div className="p-3 text-center">Win 11 Home</div>
             </div>
             {[
@@ -460,9 +634,9 @@ function ProductTemplate({ product }: { product: Product }) {
             ].map((row, i) => (
               <div key={row.feature} className={`grid grid-cols-4 ${i % 2 === 0 ? 'bg-white' : 'bg-muted/20'} border-t border-border`}>
                 <div className="p-3 border-r border-border text-muted-foreground">{row.feature}</div>
-                <div className="p-3 border-r border-border text-center">{row.w10h ? '✅' : '❌'}</div>
-                <div className="p-3 border-r border-border text-center bg-primary/5">{row.w11p ? '✅' : '❌'}</div>
-                <div className="p-3 text-center">{row.w11h ? '✅' : '❌'}</div>
+                <div className="p-3 border-r border-border text-center">{row.w10h ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
+                <div className="p-3 border-r border-border text-center bg-primary/5">{row.w11p ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
+                <div className="p-3 text-center">{row.w11h ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
               </div>
             ))}
           </div>
@@ -561,13 +735,15 @@ function ProductTemplate({ product }: { product: Product }) {
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Office</h2>
           <div className="grid sm:grid-cols-4 gap-3">
             {[
-              { emoji: '🛒', step: '01', title: 'Acquista', desc: 'Ricevi la chiave via email in 30 secondi' },
-              { emoji: '🌐', step: '02', title: 'Vai su office.com/setup', desc: 'Accedi con il tuo account Microsoft' },
-              { emoji: '🔑', step: '03', title: 'Inserisci la Chiave', desc: 'Codice a 25 caratteri dalla tua email' },
-              { emoji: '⬇️', step: '04', title: 'Scarica & Installa', desc: 'Le app Office si installano in pochi minuti' },
+              { IconEl: ShoppingCartIcon, step: '01', title: 'Acquista', desc: 'Ricevi la chiave via email in 30 secondi' },
+              { IconEl: GlobeOutline, step: '02', title: 'Vai su office.com/setup', desc: 'Accedi con il tuo account Microsoft' },
+              { IconEl: KeyOutline, step: '03', title: 'Inserisci la Chiave', desc: 'Codice a 25 caratteri dalla tua email' },
+              { IconEl: ArrowDownTrayIcon, step: '04', title: 'Scarica & Installa', desc: 'Le app Office si installano in pochi minuti' },
             ].map((s) => (
               <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
-                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                  <s.IconEl className="w-5 h-5 text-primary" />
+                </div>
                 <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
                 <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
                 <p className="text-xs text-muted-foreground">{s.desc}</p>
@@ -668,13 +844,15 @@ function ProductTemplate({ product }: { product: Product }) {
           </div>
           <div className="p-5 grid sm:grid-cols-3 gap-4">
             {[
-              { step: '01', emoji: '✉️', title: 'Email al Checkout', desc: 'Usa l\'email del tuo account Autodesk durante l\'acquisto — sarà l\'indirizzo di assegnazione' },
-              { step: '02', emoji: '⚡', title: 'Assegnazione in 10–15 min', desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo account Autodesk' },
-              { step: '03', emoji: '✅', title: 'Conferma da Autodesk', desc: 'Ricevi notifica ufficiale da Autodesk e scarichi il software dal portale ufficiale' },
+              { step: '01', IconEl: EnvelopeOpenIcon, title: 'Email al Checkout', desc: 'Usa l\'email del tuo account Autodesk durante l\'acquisto — sarà l\'indirizzo di assegnazione' },
+              { step: '02', IconEl: ArrowRight, title: 'Assegnazione in 10–15 min', desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo account Autodesk' },
+              { step: '03', IconEl: CheckCircleOutline, title: 'Conferma da Autodesk', desc: 'Ricevi notifica ufficiale da Autodesk e scarichi il software dal portale ufficiale' },
             ].map((s) => (
               <div key={s.step} className="flex flex-col items-center text-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-teal-600 text-white font-extrabold text-sm flex items-center justify-center">{s.step}</div>
-                <div className="text-xl">{s.emoji}</div>
+                <div className="w-8 h-8 rounded-xl bg-teal-100 flex items-center justify-center">
+                  <s.IconEl className="w-4 h-4 text-teal-600" />
+                </div>
                 <p className="text-sm font-bold text-teal-800">{s.title}</p>
                 <p className="text-xs text-teal-700">{s.desc}</p>
               </div>
@@ -766,13 +944,13 @@ function ProductTemplate({ product }: { product: Product }) {
           <h2 className="text-sm font-bold text-foreground mb-3">Dispositivi Compatibili</h2>
           <div className="flex flex-wrap gap-4">
             {[
-              { icon: '🖥️', label: 'Windows PC' },
-              { icon: '🍎', label: 'Mac' },
-              { icon: '🤖', label: 'Android' },
-              { icon: '📱', label: 'iOS / iPhone' },
+              { IconEl: DesktopIcon, label: 'Windows PC' },
+              { IconEl: DeviceTabletIcon, label: 'Mac' },
+              { IconEl: DevicePhoneMobileIcon, label: 'Android' },
+              { IconEl: DevicePhoneMobileIcon, label: 'iOS / iPhone' },
             ].map((d) => (
               <div key={d.label} className="flex items-center gap-2 text-sm font-medium text-foreground">
-                <span className="text-xl">{d.icon}</span>
+                <d.IconEl className="w-5 h-5 text-muted-foreground" />
                 {d.label}
               </div>
             ))}
@@ -784,13 +962,15 @@ function ProductTemplate({ product }: { product: Product }) {
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare la Protezione</h2>
           <div className="grid sm:grid-cols-4 gap-3">
             {[
-              { emoji: '📧', step: '01', title: 'Ricevi il Codice', desc: 'Via email in soli 2 minuti dal pagamento' },
-              { emoji: '⬇️', step: '02', title: 'Scarica Kaspersky', desc: 'Da kaspersky.com — versione ufficiale' },
-              { emoji: '⚙️', step: '03', title: 'Installa & Avvia', desc: 'Guida rapida inclusa nell\'email' },
-              { emoji: '🛡️', step: '04', title: 'Protezione Attiva!', desc: 'Inserisci il codice — sei protetto' },
+              { IconEl: EnvelopeIcon, step: '01', title: 'Ricevi il Codice', desc: 'Via email in soli 2 minuti dal pagamento' },
+              { IconEl: ArrowDownCircleIcon, step: '02', title: 'Scarica Kaspersky', desc: 'Da kaspersky.com — versione ufficiale' },
+              { IconEl: Cog6ToothIcon, step: '03', title: 'Installa & Avvia', desc: 'Guida rapida inclusa nell\'email' },
+              { IconEl: ShieldOutline, step: '04', title: 'Protezione Attiva', desc: 'Inserisci il codice — sei protetto' },
             ].map((s) => (
               <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
-                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-2">
+                  <s.IconEl className="w-5 h-5 text-primary" />
+                </div>
                 <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
                 <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
                 <p className="text-xs text-muted-foreground">{s.desc}</p>
@@ -819,9 +999,9 @@ function ProductTemplate({ product }: { product: Product }) {
             ].map((row, i) => (
               <div key={row.feature} className={`grid grid-cols-4 ${i % 2 === 0 ? 'bg-white' : 'bg-muted/20'} border-t border-border`}>
                 <div className="p-3 border-r border-border text-muted-foreground">{row.feature}</div>
-                <div className={`p-3 border-r border-border text-center ${isStandard ? 'bg-primary/5' : ''}`}>{row.std ? '✅' : '❌'}</div>
-                <div className={`p-3 border-r border-border text-center ${isPlus ? 'bg-primary/5' : ''}`}>{row.plus ? '✅' : '❌'}</div>
-                <div className={`p-3 text-center ${isTotal ? 'bg-primary/5' : ''}`}>{row.total ? '✅' : '❌'}</div>
+                <div className={`p-3 border-r border-border text-center ${isStandard ? 'bg-primary/5' : ''}`}>{row.std ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
+                <div className={`p-3 border-r border-border text-center ${isPlus ? 'bg-primary/5' : ''}`}>{row.plus ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
+                <div className={`p-3 text-center ${isTotal ? 'bg-primary/5' : ''}`}>{row.total ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
               </div>
             ))}
           </div>
@@ -1216,6 +1396,9 @@ export default function ProductDetailClient() {
 
         {/* ── TEMPLATE SPECIFICO PER TIPO PRODOTTO ── */}
         <ProductTemplate product={product} />
+
+        {/* ── UPSELL COLLECTION (solo Autodesk singoli) ── */}
+        <CollectionUpsellBanner product={product} />
 
         {/* ── TAB CONTENUTO ── */}
         <div className="mb-5">
