@@ -199,7 +199,7 @@ export default function AutodeskCollectionDetailPage() {
           )}
 
           <Link
-            href={product ? `/product-detail?handle=${product.handle}` : `/product-catalog?q=${encodeURIComponent(col.title)}`}
+            href={`/product-detail?handle=${col.handle}`}
             className="inline-flex items-center gap-2 px-8 py-3 rounded-xl font-semibold text-white text-sm transition-opacity hover:opacity-90"
             style={{ backgroundColor: col.color }}
           >

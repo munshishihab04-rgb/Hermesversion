@@ -7,7 +7,7 @@ import { useWishlist } from '@/context/WishlistContext';
 
 const navCategories = [
   { label: 'Windows & Office', href: '/product-catalog?cat=windows-office', icon: 'WindowIcon' },
-  { label: 'Autodesk', href: '/autodesk-collections', icon: 'CubeIcon' },
+  { label: 'Autodesk Collections', href: '/autodesk-collections', icon: 'CubeIcon' },
   { label: 'Antivirus', href: '/product-catalog?cat=antivirus', icon: 'ShieldCheckIcon' },
 ];
 

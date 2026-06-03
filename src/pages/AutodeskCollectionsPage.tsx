@@ -156,7 +156,7 @@ function CollectionCard({ collection, product }: CollectionCardProps) {
 
         {/* CTA */}
         <Link
-          href={product ? `/product-detail?handle=${product.handle}` : `/product-catalog?q=${encodeURIComponent(collection.fullTitle)}`}
+          href={`/product-detail?handle=${collection.handle}`}
           className="block w-full text-center py-3 px-4 rounded-xl font-semibold text-white text-sm transition-opacity hover:opacity-90"
           style={{ backgroundColor: collection.color }}
         >
