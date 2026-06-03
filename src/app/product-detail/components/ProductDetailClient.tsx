@@ -75,7 +75,7 @@ function getFaqItems(product: Product) {
   const isCollection = product.nameIt?.toLowerCase().includes('collection') || product.nameIt?.toLowerCase().includes('aec') || product.nameIt?.toLowerCase().includes('pd&m') || product.nameIt?.toLowerCase().includes('m&e');
 
   if (isAutodesk || isCollection) {
-    const deliveryTime = product.deliveryTime || 'entro 10 minuti';
+    const deliveryTime = product.deliveryTime || 'immediatamente';
     return [
       {
         q: 'Come funziona l\'assegnazione dell\'abbonamento Autodesk?',
@@ -1338,7 +1338,7 @@ function ProductTemplate({ product }: { product: Product }) {
           <div className="p-5 grid sm:grid-cols-3 gap-4">
             {[
               { step: '01', IconEl: EnvelopeOpenIcon, title: 'Email al Checkout', desc: 'Usa l\'email del tuo account Autodesk durante l\'acquisto — sarà l\'indirizzo di assegnazione' },
-              { step: '02', IconEl: ArrowRight, title: 'Assegnazione in 10–15 min', desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo account Autodesk' },
+              { step: '02', IconEl: ArrowRight, title: 'Assegnazione immediata', desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo account Autodesk' },
               { step: '03', IconEl: CheckCircleOutline, title: 'Conferma da Autodesk', desc: 'Ricevi notifica ufficiale da Autodesk e scarichi il software dal portale ufficiale' },
             ].map((s) => (
               <div key={s.step} className="flex flex-col items-center text-center gap-2">
@@ -1719,7 +1719,7 @@ export default function ProductDetailClient() {
     ? product.softwareFeatures.split('\n').filter((f) => f.trim())
     : ['Licenza originale con attivazione garantita', 'Aggiornamenti inclusi per tutta la durata', 'Supporto tecnico in italiano', 'Consegna via email'];
 
-  const deliveryText = product.deliveryTime || 'Entro pochi secondi';
+  const deliveryText = product.deliveryTime || 'Immediata';
   const isCheckoutEmailRequired = product.checkoutEmailRequired?.toLowerCase().startsWith('sì');
 
   return (

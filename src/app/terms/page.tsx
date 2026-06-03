@@ -109,7 +109,7 @@ const htmlContent = `
 <p>Per maggiori dettagli sulle modalità di consegna, il Cliente può consultare la pagina dedicata <a href="/help-center">Spedizione e Consegna</a>.</p>
 <h3>4.2 Tempi di consegna</h3>
 <ul>
-<li><strong>Prodotti Autodesk:</strong> consegna entro 15 minuti dall'elaborazione dell'ordine, durante l'orario lavorativo.</li>
+<li><strong>Prodotti Autodesk:</strong> consegna immediatamente dall'elaborazione dell'ordine, durante l'orario lavorativo.</li>
 <li><strong>Prodotti Microsoft, Antivirus e altri:</strong> consegna generalmente immediata; in casi eccezionali, entro un massimo di 24 ore.</li>
 </ul>
 <p>I tempi indicati si riferiscono agli ordini effettuati e confermati durante l'orario lavorativo (Lun–Ven, 08:00–17:00). Ordini effettuati al di fuori di tale orario saranno elaborati il primo giorno lavorativo utile.</p>

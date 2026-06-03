@@ -148,7 +148,7 @@ export const shippingHTML = `<p>DIGITALSOFT DI MUNSHI SHIHAB vende esclusivament
 <tr style="background:rgba(0,0,0,0.15);">
 <td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Autodesk (tutti i prodotti)</td>
 <td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Assegnazione manuale</td>
-<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#f59e0b;font-weight:600;">10&ndash;15 minuti</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#f59e0b;font-weight:600;">Immediato</td>
 </tr>
 </tbody>
 </table>

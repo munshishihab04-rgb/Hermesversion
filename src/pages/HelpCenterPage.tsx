@@ -95,7 +95,7 @@ const guides: Guide[] = [
     steps: [
       { step: 1, text: 'Usa la stessa email inserita al checkout su Licenvo' },
       { step: 2, text: "Vai su accounts.autodesk.com e accedi (o crea l'account)" },
-      { step: 3, text: "Attendi 10-15 minuti: l'abbonamento apparirà nel tuo account" },
+      { step: 3, text: "L'abbonamento apparirà immediatamente nel tuo account" },
       { step: 4, text: 'Scarica il software dal portale Autodesk Access' },
       { step: 5, text: 'Avvia il software e accedi con il tuo account Autodesk' },
     ],

@@ -249,7 +249,7 @@ export default function AutodeskCollectionDetailPage() {
     },
     {
       q: 'Come funziona l\'assegnazione?',
-      a: 'Dopo il pagamento, il nostro team assegna l\'abbonamento al tuo Autodesk ID entro 10–15 minuti. Riceverai una notifica ufficiale da Autodesk e potrai scaricare il software direttamente da autodesk.com.',
+      a: 'Dopo il pagamento, il nostro team assegna l\'abbonamento al tuo Autodesk ID immediatamente. Riceverai una notifica ufficiale da Autodesk e potrai scaricare il software direttamente da autodesk.com.',
     },
     {
       q: 'Qual è la differenza tra mensile e triennale?',
@@ -449,7 +449,7 @@ export default function AutodeskCollectionDetailPage() {
                   <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-3 flex items-center gap-2">
                     <BoltIcon className="w-4 h-4 text-emerald-600 shrink-0" />
                     <div>
-                      <p className="text-xs font-semibold text-emerald-700">Assegnazione in 10–15 minuti</p>
+                      <p className="text-xs font-semibold text-emerald-700">Assegnazione immediata</p>
                       <p className="text-[10px] text-emerald-600">Usa l'email del tuo Autodesk ID al checkout</p>
                     </div>
                   </div>

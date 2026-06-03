@@ -87,7 +87,7 @@ const faqSections: FaqSection[] = [
           <p>
             I tempi variano in base al prodotto:
             <br />• <strong>Prodotti Microsoft</strong> (Windows, Office): consegna <strong>immediata</strong> dopo il pagamento, solitamente entro pochi secondi.
-            <br />• <strong>Prodotti Autodesk</strong>: da <strong>10 a 15 minuti</strong> per l'assegnazione dell'abbonamento al tuo account.
+            <br />• <strong>Prodotti Autodesk</strong>: in pochi secondi per l'assegnazione dell'abbonamento al tuo account.
           </p>
         ),
       },
@@ -134,7 +134,7 @@ const faqSections: FaqSection[] = [
         a: (
           <p>
             1. Accedi (o crea) il tuo account su <a href="https://accounts.autodesk.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">accounts.autodesk.com</a> con <strong>la stessa email usata al checkout</strong>
-            <br />2. L'abbonamento apparirà automaticamente nel tuo account entro 10-15 minuti dall'acquisto
+            <br />2. L'abbonamento apparirà automaticamente nel tuo account immediatamente dall'acquisto
             <br />3. Scarica il software dal portale Autodesk Access
             <br />4. Avvia il software — il login con il tuo account Autodesk lo attiverà in automatico.
           </p>
@@ -202,7 +202,7 @@ const faqSections: FaqSection[] = [
         a: (
           <p>
             Al checkout, inserisci <strong>la stessa email che usi per il tuo account Autodesk</strong>. Dopo l'acquisto,
-            l'abbonamento viene assegnato direttamente a quell'account entro 10-15 minuti.
+            l'abbonamento viene assegnato direttamente a quell'account immediatamente.
             Non serve nessun codice di attivazione: basta accedere al portale Autodesk con quell'email e il software sarà disponibile.
           </p>
         ),

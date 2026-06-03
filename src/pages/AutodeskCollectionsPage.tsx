@@ -295,7 +295,7 @@ function ValuePropsSection() {
     },
     {
       Icon: BoltIcon,
-      title: 'Assegnazione in 10–15 min',
+      title: 'Assegnazione immediata',
       desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo Autodesk ID. Nessun download di terze parti.',
       color: 'text-amber-600',
       bg: 'bg-amber-50',
@@ -426,7 +426,7 @@ function FaqSection() {
     },
     {
       q: 'Come funziona l\'assegnazione dell\'abbonamento?',
-      a: 'Dopo il pagamento, il nostro team assegna l\'abbonamento direttamente al tuo Autodesk ID entro 10–15 minuti. Riceverai una notifica ufficiale da Autodesk. Il software si scarica dal portale ufficiale autodesk.com — nessun intermediario.',
+      a: 'Dopo il pagamento, il nostro team assegna l\'abbonamento direttamente al tuo Autodesk ID immediatamente. Riceverai una notifica ufficiale da Autodesk. Il software si scarica dal portale ufficiale autodesk.com — nessun intermediario.',
     },
     {
       q: 'Qual è la differenza tra piano mensile e piano triennale?',

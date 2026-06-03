@@ -288,7 +288,7 @@ export function shopifyProductToProduct(p: ShopifyProduct): Product & { variantI
     description: p.title,
     descriptionIt: getMeta('short_description') || p.descriptionHtml.replace(/<[^>]+>/g, '') || p.title,
     stock: variant?.availableForSale ? 999 : 0,
-    badge: getMeta('badge') || getMeta('badge_1') || undefined,
+    badge: getMeta('badge') || undefined,
     tags: p.tags,
     variantId: variant?.id,
     // Extended metafield data
