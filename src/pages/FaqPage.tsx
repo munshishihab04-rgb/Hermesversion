@@ -1,14 +1,15 @@
 import LegalPageLayout from "@/app/components/LegalPageLayout";
-import { faqHTML } from "@/content/legalPages";
+import { faturazioneHTML } from "@/content/legalPages";
 
 export default function FaqPage() {
   return (
     <LegalPageLayout
       title="Fatturazione"
-      subtitle="Tutto quello che devi sapere su fatture, IVA e documentazione fiscale"
+      subtitle="Tutto sulla fatturazione, IVA e documentazione fiscale"
       lastUpdated="Maggio 2026"
-      htmlContent={faqHTML}
+      htmlContent={faturazioneHTML}
       breadcrumb="Fatturazione"
+      icon="DocumentTextIcon"
     />
   );
 }

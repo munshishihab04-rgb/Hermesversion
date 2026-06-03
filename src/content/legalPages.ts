@@ -1,26 +1,45 @@
 // Auto-extracted legal HTML content for code splitting
-export const faqHTML = `<h1>Fatturazione</h1>
-<p><strong>Ultimo aggiornamento:</strong> Maggio 2026</p>
-<p>locenvo.com emette regolare documentazione fiscale per ogni acquisto, in conformit&agrave; alla normativa fiscale italiana vigente.</p>
+
+export const faturazioneHTML = `<p>La presente pagina descrive le modalità di fatturazione e documentazione fiscale adottate da <strong>DIGITALSOFT DI MUNSHI SHIHAB</strong> (P.IVA IT04358941203) per tutti gli acquisti effettuati su <strong>licenvo.com</strong>. Ogni transazione viene gestita nel pieno rispetto della normativa fiscale italiana vigente.</p>
 
 <hr/>
 <h2>1. Documentazione Fiscale Emessa</h2>
-<p>Per ogni ordine completato, locenvo.com emette automaticamente un <strong>documento commerciale (ricevuta)</strong> inviato via email all&rsquo;indirizzo fornito dal Cliente.</p>
+<p>Per ogni ordine completato, <strong>licenvo.com</strong> emette automaticamente un <strong>documento commerciale (ricevuta)</strong> inviato via email all&rsquo;indirizzo fornito dal Cliente.</p>
 <p>Su richiesta, il Titolare emette <strong>fattura elettronica</strong> ai sensi del D.lgs. 127/2015, trasmessa attraverso il Sistema di Interscambio (SDI) dell&rsquo;Agenzia delle Entrate.</p>
 
 <hr/>
-<h2>2. Richiesta di Fattura</h2>
-<h3>2.1 Quando richiedere la fattura</h3>
-<p>La richiesta deve essere effettuata <strong>al momento dell&rsquo;ordine o entro 24 ore</strong> dalla conferma dell&rsquo;acquisto. Richieste successive saranno comunque prese in carico nei limiti della normativa fiscale.</p>
-<h3>2.2 Dati necessari per la fattura</h3>
-<p><strong>Per privati (Consumatori):</strong></p>
+<h2>2. Dati Aziendali per la Fatturazione</h2>
+<ul>
+<li><strong>Ragione Sociale:</strong> DIGITALSOFT DI MUNSHI SHIHAB</li>
+<li><strong>Sede legale:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
+<li><strong>Partita IVA:</strong> IT04358941203</li>
+<li><strong>Numero REA:</strong> BO-588058</li>
+<li><strong>PEC:</strong> munshishihab@legalmail.it</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
+</ul>
+
+<hr/>
+<h2>3. Come Richiedere la Fattura</h2>
+<p>Per richiedere la fattura elettronica, segui questi semplici passaggi:</p>
+<ol>
+<li>Completa il tuo acquisto su <strong>licenvo.com</strong> e annota il <strong>numero d&rsquo;ordine</strong> ricevuto via email.</li>
+<li>Raccogli i dati necessari: per privati servono nome, cognome, codice fiscale e indirizzo; per aziende servono ragione sociale, P.IVA, codice SDI o PEC.</li>
+<li>Invia una richiesta via email a <strong>supporto@licenvo.com</strong> oppure tramite <strong>WhatsApp al +39 351 479 4187</strong>, indicando il numero d&rsquo;ordine e i dati di fatturazione.</li>
+<li>In alternativa, puoi comunicare i dati direttamente durante il checkout, compilando i campi di fatturazione appositi.</li>
+<li>Riceverai la fattura elettronica tramite SDI entro <strong>12 giorni</strong> dalla data dell&rsquo;operazione, con copia di cortesia PDF via email.</li>
+</ol>
+<p><strong>Nota:</strong> La richiesta va effettuata preferibilmente <strong>al momento dell&rsquo;ordine o entro 24 ore</strong> dalla conferma. Richieste successive saranno comunque prese in carico nei limiti della normativa fiscale.</p>
+
+<hr/>
+<h2>4. Dati Necessari per la Fattura</h2>
+<h3>Per privati (Consumatori)</h3>
 <ul>
 <li>Nome e cognome</li>
 <li>Codice fiscale</li>
 <li>Indirizzo di residenza completo (via, CAP, citt&agrave;, provincia)</li>
 <li>Indirizzo email per la copia di cortesia</li>
 </ul>
-<p><strong>Per aziende e professionisti (titolari di Partita IVA):</strong></p>
+<h3>Per aziende e professionisti (titolari di Partita IVA)</h3>
 <ul>
 <li>Ragione sociale o nome e cognome</li>
 <li>Partita IVA | Codice fiscale (se diverso dalla P.IVA)</li>
@@ -28,35 +47,18 @@ export const faqHTML = `<h1>Fatturazione</h1>
 <li>Codice SDI (7 caratteri) oppure indirizzo PEC</li>
 <li>Indirizzo email per la copia di cortesia</li>
 </ul>
-<h3>2.3 Come comunicare i dati</h3>
-<ul>
-<li>Durante l&rsquo;acquisto: compilando i campi di fatturazione nel checkout.</li>
-<li>Email: supporto@locenvo.com indicando il numero d&rsquo;ordine.</li>
-<li>WhatsApp: +39 351 479 4187 indicando il numero d&rsquo;ordine.</li>
-</ul>
 
 <hr/>
-<h2>3. Emissione e Invio della Fattura</h2>
-<h3>3.1 Tempi di emissione</h3>
+<h2>5. Emissione e Tempi di Consegna</h2>
 <ul>
 <li>La fattura elettronica viene emessa entro <strong>12 giorni</strong> dalla data dell&rsquo;operazione (art. 21, comma 4, DPR 633/1972).</li>
 <li>Viene trasmessa al Sistema di Interscambio (SDI) che provvede al recapito al destinatario.</li>
-</ul>
-<h3>3.2 Modalit&agrave; di ricezione</h3>
-<p><strong>Per titolari di Partita IVA:</strong></p>
-<ul>
-<li>Fattura elettronica XML recapitata automaticamente tramite Codice SDI o PEC indicati.</li>
-<li>Consultabile nel cassetto fiscale del Cliente (Agenzia delle Entrate).</li>
 <li>Copia di cortesia in PDF inviata via email su richiesta.</li>
-</ul>
-<p><strong>Per privati (Consumatori):</strong></p>
-<ul>
-<li>Fattura depositata nell&rsquo;area riservata dell&rsquo;Agenzia delle Entrate (SPID, CIE o CNS).</li>
-<li>Copia di cortesia in PDF inviata via email.</li>
+<li>Per titolari di P.IVA: consultabile anche nel cassetto fiscale (Agenzia delle Entrate).</li>
 </ul>
 
 <hr/>
-<h2>4. IVA</h2>
+<h2>6. IVA</h2>
 <ul>
 <li>Tutti i prezzi esposti sono <strong>comprensivi di IVA</strong> ai sensi della normativa italiana.</li>
 <li>Per Clienti con <strong>Partita IVA intracomunitaria</strong> (UE, non Italia): l&rsquo;IVA potrebbe non essere applicata in regime di <strong>reverse charge</strong>, previa verifica VIES. Comunicare la P.IVA prima o al momento dell&rsquo;acquisto.</li>
@@ -64,7 +66,7 @@ export const faqHTML = `<h1>Fatturazione</h1>
 </ul>
 
 <hr/>
-<h2>5. Correzione della Fattura</h2>
+<h2>7. Correzione della Fattura</h2>
 <p>In caso di errore nei dati di fatturazione, il Cliente pu&ograve; richiedere nota di credito e riemissione della fattura corretta:</p>
 <ul>
 <li>Contattare il Servizio Clienti entro <strong>7 giorni</strong> dall&rsquo;emissione.</li>
@@ -73,40 +75,28 @@ export const faqHTML = `<h1>Fatturazione</h1>
 <p>La nota di credito e la fattura corretta saranno emesse tramite SDI entro <strong>7 giorni lavorativi</strong> dalla richiesta.</p>
 
 <hr/>
-<h2>6. Fatturazione con Codice Sconto</h2>
+<h2>8. Fatturazione con Codice Sconto</h2>
 <p>In caso di acquisto con codice sconto o promozione, la fattura riporter&agrave; l&rsquo;<strong>importo effettivamente pagato</strong>, con lo sconto indicato come voce separata nel documento fiscale.</p>
 
 <hr/>
-<h2>7. Fatturazione in Caso di Rimborso</h2>
+<h2>9. Fatturazione in Caso di Rimborso</h2>
 <p>In caso di rimborso totale o parziale, il Titolare emette una <strong>nota di credito</strong> per l&rsquo;importo corrispondente, trasmessa tramite SDI. Il Cliente la riceve con le stesse modalit&agrave; della fattura originale.</p>
 
 <hr/>
-<h2>8. Conservazione dei Documenti Fiscali</h2>
+<h2>10. Conservazione dei Documenti Fiscali</h2>
 <p>Il Titolare conserva tutte le fatture elettroniche in conformit&agrave; all&rsquo;art. 39 del DPR 633/1972 e alle disposizioni sulla conservazione sostitutiva digitale. I documenti sono conservati per <strong>10 anni</strong> e disponibili su richiesta.</p>
 
 <hr/>
-<h2>9. Dati di Fatturazione del Titolare</h2>
+<h2>11. Contatti per la Fatturazione</h2>
 <ul>
-<li><strong>Ragione Sociale:</strong> DIGITALSOFT DI MUNSHI SHIHAB</li>
-<li><strong>Sede legale:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
-<li><strong>Partita IVA:</strong> IT04358941203</li>
-<li><strong>Numero REA:</strong> BO-588058</li>
-<li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-</ul>
-
-<hr/>
-<h2>10. Contatti</h2>
-<ul>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
 </ul>
 <p>Servizio Clienti operativo Luned&igrave;&ndash;Venerd&igrave;, ore 08:00&ndash;17:00.</p>`;
 
-export const shippingHTML = `<h1>Spedizione e Consegna</h1>
-<p><strong>Ultimo aggiornamento:</strong> Maggio 2026</p>
-<p>DIGITALSOFT DI MUNSHI SHIHAB vende esclusivamente prodotti digitali: licenze software, chiavi di attivazione, abbonamenti e soluzioni per ufficio. Tutti i Prodotti vengono consegnati in formato digitale tramite email. <strong>Non &egrave; prevista alcuna spedizione fisica.</strong></p>
+export const shippingHTML = `<p>DIGITALSOFT DI MUNSHI SHIHAB vende esclusivamente prodotti digitali: licenze software, chiavi di attivazione, abbonamenti e soluzioni per ufficio. Tutti i Prodotti vengono consegnati in formato digitale tramite email. <strong>Non &egrave; prevista alcuna spedizione fisica.</strong></p>
 <ul>
 <li>&#10003; Consegna <strong>100% digitale</strong> &mdash; nessuna spedizione fisica.</li>
 <li>&#10003; Costi di spedizione: <strong>&euro; 0,00</strong> &mdash; sempre gratuita.</li>
@@ -129,14 +119,39 @@ export const shippingHTML = `<h1>Spedizione e Consegna</h1>
 <p>Trattandosi di prodotti digitali, la consegna &egrave; <strong>sempre gratuita</strong>. Non sono previsti costi di spedizione, gestione o consegna di alcun tipo. Il prezzo visualizzato al momento dell&rsquo;acquisto &egrave; l&rsquo;unico importo dovuto dal Cliente.</p>
 
 <hr/>
-<h2>3. Tempi di Consegna</h2>
-<p>I tempi variano in base alla tipologia di Prodotto acquistato:</p>
-<ul>
-<li><strong>Prodotti Microsoft</strong> (Windows, Office, Microsoft 365): generalmente immediata; in casi eccezionali entro 24 ore.</li>
-<li><strong>Antivirus e sicurezza</strong> (Norton, Kaspersky, Bitdefender, ecc.): generalmente immediata; in casi eccezionali entro 24 ore.</li>
-<li><strong>Prodotti Autodesk</strong> (AutoCAD, Revit, ecc.): entro <strong>15 minuti</strong> dall&rsquo;elaborazione, durante l&rsquo;orario lavorativo.</li>
-<li><strong>Altri prodotti software:</strong> generalmente immediata; in casi eccezionali entro 24 ore.</li>
-</ul>
+<h2>3. Tempi di Consegna per Prodotto</h2>
+<p>I tempi variano in base alla tipologia di Prodotto acquistato. La tabella seguente riepiloga le modalit&agrave; e i tempi previsti:</p>
+<table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.875rem;">
+<thead>
+<tr style="background:rgba(99,102,241,0.15);">
+<th style="padding:0.6rem 1rem;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--foreground);">Prodotto</th>
+<th style="padding:0.6rem 1rem;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--foreground);">Metodo</th>
+<th style="padding:0.6rem 1rem;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--foreground);">Tempo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Microsoft (Windows / Office)</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Email automatica</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#10b981;font-weight:600;">&lt; 30 secondi</td>
+</tr>
+<tr style="background:rgba(0,0,0,0.15);">
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Microsoft 365</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Email automatica</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#10b981;font-weight:600;">&lt; 30 secondi</td>
+</tr>
+<tr>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Antivirus Kaspersky</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Email automatica</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#10b981;font-weight:600;">&lt; 2 minuti</td>
+</tr>
+<tr style="background:rgba(0,0,0,0.15);">
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Autodesk (tutti i prodotti)</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:var(--muted-foreground);">Assegnazione manuale</td>
+<td style="padding:0.55rem 1rem;border:1px solid var(--border);color:#f59e0b;font-weight:600;">10&ndash;15 minuti</td>
+</tr>
+</tbody>
+</table>
 <p>I tempi si riferiscono agli ordini confermati durante l&rsquo;orario lavorativo (<strong>Lun&ndash;Ven, 08:00&ndash;17:00</strong>). Gli ordini fuori orario saranno elaborati il primo giorno lavorativo utile.</p>
 
 <hr/>
@@ -155,17 +170,28 @@ export const shippingHTML = `<h1>Spedizione e Consegna</h1>
 
 <hr/>
 <h2>6. Problemi con la Consegna</h2>
-<p>In caso di problemi, il Servizio Clienti &egrave; disponibile per assistenza immediata:</p>
+<p>In caso di problemi, il Servizio Clienti &egrave; disponibile per assistenza immediata. Ecco le situazioni pi&ugrave; comuni e come risolverle:</p>
 <ul>
-<li><strong>Non ho ricevuto l&rsquo;email:</strong> verificare la cartella Spam. Se non presente, contattarci con il numero d&rsquo;ordine: invieremo nuovamente l&rsquo;email di consegna.</li>
-<li><strong>La chiave di licenza non funziona:</strong> contattarci con uno screenshot dell&rsquo;errore. Provvederemo alla sostituzione immediata o al rimborso completo.</li>
-<li><strong>Ho ricevuto un prodotto diverso:</strong> contattarci indicando l&rsquo;ordine e il prodotto ricevuto. Provvederemo alla correzione o al rimborso.</li>
-<li><strong>Assistenza per l&rsquo;installazione:</strong> il nostro team &egrave; disponibile per guidarti passo dopo passo nell&rsquo;installazione e attivazione del software.</li>
+<li><strong>Non ho ricevuto l&rsquo;email:</strong> verifica prima la cartella Spam / Posta indesiderata. Se non &egrave; presente, contattaci con il numero d&rsquo;ordine: invieremo nuovamente l&rsquo;email di consegna entro pochi minuti.</li>
+<li><strong>La chiave di licenza non funziona:</strong> contattaci immediatamente con uno screenshot dell&rsquo;errore. Provvederemo alla sostituzione della chiave entro 1 ora lavorativa o al rimborso completo.</li>
+<li><strong>Ho ricevuto un prodotto diverso:</strong> contattaci indicando l&rsquo;ordine e il prodotto ricevuto. Provvederemo alla correzione immediata o al rimborso integrale.</li>
+<li><strong>Assistenza per l&rsquo;installazione:</strong> il nostro team &egrave; disponibile per guidarti passo dopo passo nell&rsquo;installazione e attivazione del software tramite email o WhatsApp.</li>
+<li><strong>Ordine Autodesk in ritardo:</strong> se sono trascorsi pi&ugrave; di 30 minuti durante l&rsquo;orario lavorativo senza ricevere la licenza, contattaci urgentemente via WhatsApp al <strong>+39 351 479 4187</strong>.</li>
 </ul>
 <p>Per maggiori dettagli su resi e rimborsi, consulta la <a href="/refund">Politica di Reso e Rimborso</a>.</p>
 
 <hr/>
-<h2>7. Limitazioni di Responsabilit&agrave;</h2>
+<h2>7. Contatti per Urgenze</h2>
+<ul>
+<li><strong>WhatsApp (urgenze):</strong> +39 351 479 4187</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
+<li><strong>PEC:</strong> munshishihab@legalmail.it</li>
+<li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
+</ul>
+<p>Servizio Clienti operativo Luned&igrave;&ndash;Venerd&igrave;, ore 08:00&ndash;17:00. Per urgenze fuori orario, invia un messaggio WhatsApp e sarai contattato appena possibile.</p>
+
+<hr/>
+<h2>8. Limitazioni di Responsabilit&agrave;</h2>
 <p>Il Titolare non &egrave; responsabile per ritardi o mancata consegna dovuti a:</p>
 <ul>
 <li>Errori nell&rsquo;indirizzo email fornito dal Cliente in fase di acquisto.</li>
@@ -174,19 +200,9 @@ export const shippingHTML = `<h1>Spedizione e Consegna</h1>
 <li>Interruzioni della connessione internet del Cliente.</li>
 <li>Cause di forza maggiore.</li>
 </ul>
-<p>In ogni caso, qualora il Cliente non riceva il Prodotto per qualsiasi motivo, il Titolare si impegna a reinviare la chiave di licenza a un indirizzo email valido oppure a procedere al <strong>rimborso completo</strong>.</p>
+<p>In ogni caso, qualora il Cliente non riceva il Prodotto per qualsiasi motivo, il Titolare si impegna a reinviare la chiave di licenza a un indirizzo email valido oppure a procedere al <strong>rimborso completo</strong>.</p>`;
 
-<hr/>
-<h2>8. Contatti</h2>
-<ul>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
-<li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
-<li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
-</ul>
-<p>Servizio Clienti operativo Luned&igrave;&ndash;Venerd&igrave;, ore 08:00&ndash;17:00.</p>`;
-
-export const cookieInlineHTML = `<h1>Cookie Policy di locenvo.com</h1>
+export const cookieInlineHTML = `<h1>Cookie Policy di licenvo.com</h1>
 <p><strong>Ultimo aggiornamento:</strong> Maggio 2026</p>
 <p>Questa policy ti aiuter&agrave; a comprendere quali cookie e tecnologie di tracciamento utilizziamo, come li utilizziamo e quali sono i tuoi diritti in merito.</p>
 
@@ -203,7 +219,7 @@ export const cookieInlineHTML = `<h1>Cookie Policy di locenvo.com</h1>
 
 <hr/>
 <h2>Introduzione</h2>
-<p>Questo documento contiene informazioni in merito alle tecnologie che consentono a questa Applicazione (il sito web <strong>locenvo.com</strong>) di raggiungere gli scopi descritti di seguito. Tali tecnologie, definite sinteticamente come &ldquo;Strumenti di Tracciamento&rdquo;, permettono al Titolare di raccogliere e salvare informazioni (per esempio tramite cookie) o di utilizzare risorse (per esempio eseguendo uno script) sul tuo dispositivo quando interagisci con questo sito.</p>
+<p>Questo documento contiene informazioni in merito alle tecnologie che consentono a questa Applicazione (il sito web <strong>licenvo.com</strong>) di raggiungere gli scopi descritti di seguito. Tali tecnologie, definite sinteticamente come &ldquo;Strumenti di Tracciamento&rdquo;, permettono al Titolare di raccogliere e salvare informazioni (per esempio tramite cookie) o di utilizzare risorse (per esempio eseguendo uno script) sul tuo dispositivo quando interagisci con questo sito.</p>
 <p>Alcune delle finalit&agrave; per le quali vengono impiegati Strumenti di Tracciamento potrebbero richiedere il tuo consenso. Se viene prestato, il consenso pu&ograve; essere revocato liberamente in qualsiasi momento tramite il banner dei cookie o le impostazioni qui descritte.</p>
 
 <hr/>
@@ -211,7 +227,7 @@ export const cookieInlineHTML = `<h1>Cookie Policy di locenvo.com</h1>
 <p><strong>DIGITALSOFT DI MUNSHI SHIHAB</strong><br/>
 Sede Legale: Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia<br/>
 Partita IVA: IT04358941203 | Numero REA: BO-588058<br/>
-Email: <strong>supporto@locenvo.com</strong></p>
+Email: <strong>supporto@licenvo.com</strong></p>
 
 <hr/>
 <h2>Finalit&agrave; del Tracciamento e Categorie di Cookie</h2>
@@ -286,28 +302,26 @@ Email: <strong>supporto@locenvo.com</strong></p>
 <li><strong>Cookie:</strong> piccole porzioni di dati conservate all&rsquo;interno del browser dell&rsquo;Utente.</li>
 <li><strong>Strumento di Tracciamento:</strong> qualsiasi tecnologia (cookie, script, pixel, identificatori online) che consenta di tracciare gli Utenti e raccogliere informazioni sulla loro navigazione.</li>
 </ul>
-<p>Questa informativa &egrave; redatta sulla base degli artt. 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e riguarda esclusivamente locenvo.com. Si integra con la nostra <a href="/privacy">Informativa sulla Privacy</a>.</p>`;
+<p>Questa informativa &egrave; redatta sulla base degli artt. 13 e 14 del Regolamento (UE) 2016/679 (GDPR) e riguarda esclusivamente licenvo.com. Si integra con la nostra <a href="/privacy">Informativa sulla Privacy</a>.</p>`;
 
-export const legalNotesHTML = `<h1>Note Legali</h1>
-<p><strong>Ultimo aggiornamento:</strong> Maggio 2026</p>
-<p>La presente pagina contiene le informazioni legali obbligatorie relative al sito web <strong>locenvo.com</strong>, in conformit&agrave; al D.lgs. 70/2003 (commercio elettronico), al D.lgs. 206/2005 (Codice del Consumo) e alla normativa italiana ed europea applicabile.</p>
+export const legalNotesHTML = `<p>La presente pagina contiene le informazioni legali obbligatorie relative al sito web <strong>licenvo.com</strong>, in conformit&agrave; al D.lgs. 70/2003 (commercio elettronico), al D.lgs. 206/2005 (Codice del Consumo) e alla normativa italiana ed europea applicabile.</p>
 
 <hr/>
 <h2>1. Titolare del Sito</h2>
-<p>Il sito web locenvo.com &egrave; di propriet&agrave; e gestito da:</p>
+<p>Il sito web <strong>licenvo.com</strong> &egrave; di propriet&agrave; e gestito da:</p>
 <ul>
 <li><strong>Ragione Sociale:</strong> DIGITALSOFT DI MUNSHI SHIHAB</li>
 <li><strong>Sede legale:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
 <li><strong>Partita IVA:</strong> IT04358941203 | <strong>REA:</strong> BO-588058</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 </ul>
 <p>Il Titolare &egrave; iscritto al Registro delle Imprese della Camera di Commercio di Bologna.</p>
 
 <hr/>
 <h2>2. Attivit&agrave; del Sito</h2>
-<p>locenvo.com &egrave; un sito di commercio elettronico specializzato nella vendita di prodotti digitali:</p>
+<p><strong>licenvo.com</strong> &egrave; un sito di commercio elettronico specializzato nella vendita di prodotti digitali:</p>
 <ul>
 <li>Licenze software nuove e usate</li>
 <li>Chiavi di attivazione software</li>
@@ -344,7 +358,7 @@ export const legalNotesHTML = `<h1>Note Legali</h1>
 <hr/>
 <h2>4. Propriet&agrave; Intellettuale</h2>
 <h3>4.1 Contenuti del Sito</h3>
-<p>Tutti i contenuti di locenvo.com &mdash; testi, grafica, immagini, layout, design, loghi, icone e codice sorgente &mdash; sono di propriet&agrave; di DIGITALSOFT DI MUNSHI SHIHAB o utilizzati su licenza, protetti dalla normativa sul diritto d&rsquo;autore (L. 633/1941) e sulla propriet&agrave; industriale (D.lgs. 30/2005).</p>
+<p>Tutti i contenuti di <strong>licenvo.com</strong> &mdash; testi, grafica, immagini, layout, design, loghi, icone e codice sorgente &mdash; sono di propriet&agrave; di DIGITALSOFT DI MUNSHI SHIHAB o utilizzati su licenza, protetti dalla normativa sul diritto d&rsquo;autore (L. 633/1941) e sulla propriet&agrave; industriale (D.lgs. 30/2005).</p>
 <p><strong>Senza il preventivo consenso scritto del Titolare &egrave; vietato:</strong></p>
 <ul>
 <li>Riprodurre, copiare, distribuire o pubblicare qualsiasi contenuto del Sito.</li>
@@ -397,14 +411,14 @@ export const legalNotesHTML = `<h1>Note Legali</h1>
 <p>Ai sensi dell&rsquo;art. 14 del Regolamento (UE) n. 524/2013, il Titolare informa il Consumatore dell&rsquo;esistenza della <strong>Piattaforma ODR</strong> europea per la risoluzione extragiudiziale delle controversie online:</p>
 <ul>
 <li>Piattaforma ODR: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a></li>
-<li>Email Titolare per ODR: supporto@locenvo.com</li>
+<li>Email Titolare per ODR: supporto@licenvo.com</li>
 </ul>
 <p>Per la risoluzione extragiudiziale in Italia, il Consumatore pu&ograve; rivolgersi a un organismo ADR iscritto nell&rsquo;elenco del Ministero delle Imprese e del Made in Italy.</p>
 
 <hr/>
 <h2>11. Comunicazioni e Segnalazioni</h2>
 <ul>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
