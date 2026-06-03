@@ -5,10 +5,36 @@ import Icon from '@/components/ui/AppIcon';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 
+// ── MENU PRINCIPALE ──────────────────────────────────────────────────────────
+const navItems = [
+  {
+    label: 'Microsoft',
+    dropdown: [
+      { label: 'Windows',       href: '/product-catalog?category=windows',       icon: 'WindowIcon' },
+      { label: 'Office',        href: '/product-catalog?category=office',        icon: 'DocumentTextIcon' },
+      { label: 'Microsoft 365', href: '/product-catalog?category=microsoft-365', icon: 'CloudIcon' },
+    ],
+  },
+  {
+    label: 'Autodesk',
+    dropdown: [
+      { label: 'Autodesk Collections',     href: '/autodesk-collections',                    icon: 'CubeIcon' },
+      { label: 'Tutti i prodotti Autodesk', href: '/product-catalog?category=autodesk',      icon: 'Squares2X2Icon' },
+    ],
+  },
+  { label: 'Antivirus',  href: '/product-catalog?category=antivirus' },
+  { label: 'Catalogo',   href: '/product-catalog' },
+  { label: 'Assistenza', href: '/assistenza' },
+];
+
+// Mobile flat list (per il drawer mobile)
 const navCategories = [
-  { label: 'Windows & Office', href: '/product-catalog?cat=windows-office', icon: 'WindowIcon' },
-  { label: 'Autodesk Collections', href: '/autodesk-collections', icon: 'CubeIcon' },
-  { label: 'Antivirus', href: '/product-catalog?cat=antivirus', icon: 'ShieldCheckIcon' },
+  { label: 'Windows',               href: '/product-catalog?category=windows',       icon: 'WindowIcon' },
+  { label: 'Office',                href: '/product-catalog?category=office',        icon: 'DocumentTextIcon' },
+  { label: 'Microsoft 365',         href: '/product-catalog?category=microsoft-365', icon: 'CloudIcon' },
+  { label: 'Autodesk Collections',  href: '/autodesk-collections',                   icon: 'CubeIcon' },
+  { label: 'Tutti i prodotti Autodesk', href: '/product-catalog?category=autodesk', icon: 'Squares2X2Icon' },
+  { label: 'Antivirus',             href: '/product-catalog?category=antivirus',     icon: 'ShieldCheckIcon' },
 ];
 
 const announcementMessages = [
@@ -18,13 +44,13 @@ const announcementMessages = [
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [catOpen, setCatOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [mobileSearch, setMobileSearch] = useState('');
-  const [annIdx, setAnnIdx] = useState(0);
-  const catRef = useRef<HTMLDivElement>(null);
+  const [scrolled, setScrolled]             = useState(false);
+  const [mobileOpen, setMobileOpen]         = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery]       = useState('');
+  const [mobileSearch, setMobileSearch]     = useState('');
+  const [annIdx, setAnnIdx]                 = useState(0);
+  const navRef = useRef<HTMLDivElement>(null);
   const { openCart, itemCount } = useCart();
   const { count: wishlistCount } = useWishlist();
   const [, navigate] = useLocation();
@@ -42,7 +68,7 @@ export default function Header() {
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
-      if (catRef.current && !catRef.current.contains(e.target as Node)) setCatOpen(false);
+      if (navRef.current && !navRef.current.contains(e.target as Node)) setActiveDropdown(null);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -126,47 +152,73 @@ export default function Header() {
           </div>
 
           {/* ── DESKTOP HEADER ── */}
-          <div className="hidden lg:flex items-center gap-5 h-16">
+          <div className="hidden lg:flex items-center gap-2 h-16" ref={navRef}>
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 shrink-0 mr-2">
+            <Link href="/" className="flex items-center gap-2 shrink-0 mr-4">
               <LogoIcon size={32} />
               <span className="font-extrabold text-xl text-foreground" style={{ letterSpacing: '-0.025em' }}>Licenvo</span>
             </Link>
 
-            {/* Category Dropdown */}
-            <div className="relative" ref={catRef}>
-              <button
-                onClick={() => setCatOpen((v) => !v)}
-                className="flex items-center gap-1.5 text-sm font-medium text-foreground hover:text-primary transition-colors px-3 py-2 rounded-lg hover:bg-muted/50"
-              >
-                <Icon name="Squares2X2Icon" size={16} className="text-primary" />
-                Prodotti
-                <Icon name="ChevronDownIcon" size={13} className={`text-muted-foreground transition-transform ${catOpen ? 'rotate-180' : ''}`} />
-              </button>
-              {catOpen && (
-                <div className="absolute top-full left-0 mt-2 w-60 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50">
-                  <div className="px-3 py-2 border-b border-border">
-                    <span className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground">Categorie</span>
-                  </div>
-                  {navCategories.map((cat) => (
-                    <Link
-                      key={cat.label}
-                      href={cat.href}
-                      onClick={() => setCatOpen(false)}
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-muted/40 hover:text-primary transition-colors"
-                    >
-                      <div className="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
-                        <Icon name={cat.icon as Parameters<typeof Icon>[0]['name']} size={14} className="text-primary" />
-                      </div>
-                      {cat.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+            {/* ── NAV ITEMS ── */}
+            <nav className="flex items-center gap-1">
+              {navItems.map((item) => {
+                if (item.dropdown) {
+                  const isOpen = activeDropdown === item.label;
+                  return (
+                    <div key={item.label} className="relative">
+                      <button
+                        onClick={() => setActiveDropdown(isOpen ? null : item.label)}
+                        className={`flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-lg transition-colors ${
+                          isOpen
+                            ? 'text-primary bg-primary/5'
+                            : 'text-foreground hover:text-primary hover:bg-muted/50'
+                        }`}
+                      >
+                        {item.label}
+                        <Icon
+                          name="ChevronDownIcon"
+                          size={13}
+                          className={`text-muted-foreground transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      {isOpen && (
+                        <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50">
+                          <div className="px-3 py-2 border-b border-border">
+                            <span className="text-[10px] uppercase tracking-widest font-semibold text-muted-foreground">{item.label}</span>
+                          </div>
+                          {item.dropdown.map((sub) => (
+                            <Link
+                              key={sub.label}
+                              href={sub.href}
+                              onClick={() => setActiveDropdown(null)}
+                              className="flex items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-muted/40 hover:text-primary transition-colors"
+                            >
+                              <div className="w-7 h-7 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                                <Icon name={sub.icon as Parameters<typeof Icon>[0]['name']} size={14} className="text-primary" />
+                              </div>
+                              {sub.label}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                // Link semplice (Antivirus, Catalogo, Assistenza)
+                return (
+                  <Link
+                    key={item.label}
+                    href={item.href!}
+                    className="text-sm font-medium text-foreground hover:text-primary hover:bg-muted/50 px-3 py-2 rounded-lg transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
 
             {/* Search */}
-            <form className="flex flex-1 max-w-lg" onSubmit={handleSearch}>
+            <form className="flex flex-1 max-w-md ml-4" onSubmit={handleSearch}>
               <div className="relative w-full">
                 <Icon name="MagnifyingGlassIcon" size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground pointer-events-none" />
                 <input
@@ -181,13 +233,6 @@ export default function Header() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-1 ml-auto shrink-0">
-              <Link href="/product-catalog" className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors">
-                Catalogo
-              </Link>
-              <Link href="/help-center" className="text-sm font-medium text-muted-foreground hover:text-foreground px-3 py-2 rounded-lg hover:bg-muted/50 transition-colors">
-                Assistenza
-              </Link>
-
               <div className="w-px h-5 bg-border mx-1" />
 
               <button className="relative p-2 text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-muted/50">
@@ -282,11 +327,39 @@ export default function Header() {
                 Tutti i Prodotti
               </Link>
 
+              {/* Microsoft */}
               <div className="pt-3 pb-1 px-2">
-                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Categorie</span>
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Microsoft</span>
               </div>
+              {navCategories.slice(0, 3).map((cat) => (
+                <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
+                  <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                    <Icon name={cat.icon as Parameters<typeof Icon>[0]['name']} size={13} className="text-primary" />
+                  </div>
+                  {cat.label}
+                </Link>
+              ))}
 
-              {navCategories.map((cat) => (
+              {/* Autodesk */}
+              <div className="pt-3 pb-1 px-2">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Autodesk</span>
+              </div>
+              {navCategories.slice(3, 5).map((cat) => (
+                <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
+                  <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
+                    <Icon name={cat.icon as Parameters<typeof Icon>[0]['name']} size={13} className="text-primary" />
+                  </div>
+                  {cat.label}
+                </Link>
+              ))}
+
+              {/* Sicurezza */}
+              <div className="pt-3 pb-1 px-2">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Sicurezza</span>
+              </div>
+              {navCategories.slice(5).map((cat) => (
                 <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
                   <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
@@ -307,7 +380,7 @@ export default function Header() {
                 )}
               </button>
 
-              <Link href="/help-center" onClick={() => setMobileOpen(false)}
+              <Link href="/assistenza" onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-3 px-3 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
                 <Icon name="QuestionMarkCircleIcon" size={17} className="text-primary/70" />
                 Assistenza
