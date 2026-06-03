@@ -27,6 +27,27 @@ const borderMap: Record<string, string> = {
   antivirus: 'hover:border-emerald-500/40',
 };
 
+const categoryOverrides: Record<string, { nameIt: string; count: number; href: string; description: string }> = {
+  'windows-office': {
+    nameIt: 'Microsoft',
+    count: 15,
+    href: '/product-catalog?category=microsoft',
+    description: 'Windows, Office, Microsoft 365',
+  },
+  autodesk: {
+    nameIt: 'Autodesk',
+    count: 21,
+    href: '/autodesk-collections',
+    description: 'AutoCAD, Revit, Maya e 30+ prodotti',
+  },
+  antivirus: {
+    nameIt: 'Antivirus & VPN',
+    count: 3,
+    href: '/product-catalog?cat=antivirus',
+    description: 'Kaspersky Standard, Plus, Premium',
+  },
+};
+
 export default function CategoryGrid() {
   return (
     <section className="py-8 bg-secondary/10">
@@ -44,10 +65,11 @@ export default function CategoryGrid() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {categories.map((cat) => {
             const cfg = categoryConfig.find((c) => c.id === cat.id);
+            const override = categoryOverrides[cat.id];
             return (
               <Link
                 key={cat.id}
-                href={cat.id === 'autodesk' ? '/autodesk-collections' : `/product-catalog?cat=${cat.slug}`}
+                href={override?.href ?? (cat.id === 'autodesk' ? '/autodesk-collections' : `/product-catalog?cat=${cat.slug}`)}
                 className={`group relative rounded-2xl border border-border bg-card overflow-hidden transition-all duration-300 ${cfg?.colSpan || ''} ${cfg?.minH || 'min-h-[140px]'} ${borderMap[cat.id] || 'hover:border-primary/40'} category-card-hover`}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${gradientMap[cat.id] || 'from-primary/20 to-transparent'} opacity-60 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -63,8 +85,11 @@ export default function CategoryGrid() {
                     <Icon name="ArrowUpRightIcon" size={16} className="text-muted-foreground group-hover:text-foreground transition-colors opacity-0 group-hover:opacity-100" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground text-base mb-1">{cat.nameIt}</h3>
-                    <p className="text-xs text-muted-foreground">{cat.count} prodotti</p>
+                    <h3 className="font-bold text-foreground text-base mb-1">{override?.nameIt ?? cat.nameIt}</h3>
+                    <p className="text-xs text-muted-foreground">{override?.count ?? cat.count} prodotti</p>
+                    {override?.description && (
+                      <p className="text-xs text-muted-foreground mt-1">{override.description}</p>
+                    )}
                   </div>
                 </div>
               </Link>

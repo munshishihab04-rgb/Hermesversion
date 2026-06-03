@@ -29,6 +29,24 @@ const testimonials = [
   text: `Ottima esperienza, sono anni che acquisto licenze su questo sito. L'assistenza risponde immediatamente ed e' cordiale.`,
   product: 'Licenze Software',
   date: '18 Aprile 2026'
+},
+{
+  name: 'Giulia M.',
+  role: 'Architetta, Milano',
+  avatar: `https://ui-avatars.com/api/?name=GM&background=0891b2&color=fff&size=96`,
+  rating: 5,
+  text: `Ho acquistato l'abbonamento Revit e AutoCAD in bundle. L'assegnazione è avvenuta in 8 minuti come promesso. Il risparmio rispetto al sito ufficiale è enorme.`,
+  product: 'Autodesk AEC Collection',
+  date: '2 Giugno 2026'
+},
+{
+  name: 'Marco Ferretti',
+  role: 'Ingegnere Meccanico, Torino',
+  avatar: `https://ui-avatars.com/api/?name=MF&background=7c3aed&color=fff&size=96`,
+  rating: 5,
+  text: `Uso Fusion 360 da anni. Finalmente ho trovato un rivenditore italiano affidabile. Supporto eccellente, risposta in 10 minuti anche la sera.`,
+  product: 'Autodesk Fusion 360',
+  date: '28 Maggio 2026'
 }];
 
 
@@ -98,7 +116,7 @@ export default function TestimonialsSection() {
           <div className="text-center sm:text-left">
             <div className="price-mono text-4xl font-extrabold text-foreground">4.9</div>
             <StarRating count={5} />
-            <p className="text-xs text-muted-foreground mt-1">Media su 50.000+ recensioni</p>
+            <p className="text-xs text-muted-foreground mt-1">Media su 52.000+ recensioni</p>
           </div>
           <div className="w-px h-16 bg-border hidden sm:block" />
           <div className="grid grid-cols-2 gap-4 text-sm">

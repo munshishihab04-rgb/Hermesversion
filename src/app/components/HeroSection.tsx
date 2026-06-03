@@ -18,25 +18,25 @@ const floatingCards = [
     parallax: { x: -8, y: -6 },
   },
   {
-    icon: 'PuzzlePieceIcon',
+    icon: 'WrenchScrewdriverIcon',
     iconBg: 'bg-amber-500/20',
     iconColor: 'text-amber-400',
-    name: 'Xbox Game Pass',
-    sub: '3 Mesi Ultimate',
-    price: '€28,90',
-    badge: '-36%',
+    name: 'AutoCAD',
+    sub: 'Abbonamento 1 Anno',
+    price: '€14,99/mese',
+    badge: '-65%',
     badgeColor: 'bg-amber-500/20 text-amber-400',
     style: { top: '38%', left: '0px' },
     parallax: { x: 6, y: 8 },
   },
   {
-    icon: 'ShieldCheckIcon',
+    icon: 'CubeIcon',
     iconBg: 'bg-emerald-500/20',
     iconColor: 'text-emerald-400',
-    name: 'Kaspersky Total',
-    sub: '3 Dispositivi · 1 Anno',
-    price: '€18,90',
-    badge: '-76%',
+    name: 'Autodesk AEC Collection',
+    sub: 'Abbonamento Mensile',
+    price: '€87,99',
+    badge: '-72%',
     badgeColor: 'bg-emerald-500/20 text-emerald-400',
     style: { bottom: '8%', right: '16px' },
     parallax: { x: -5, y: 10 },
@@ -193,7 +193,7 @@ export default function HeroSection() {
         <div className="section-container py-4">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             <span className="text-[10px] uppercase tracking-widest text-muted-foreground shrink-0">Brand</span>
-            {['Windows', 'Office', 'Autodesk', 'Kaspersky', 'AutoCAD', 'Revit', '3ds Max', 'Maya'].map((brand) => (
+            {['Windows', 'Office', 'Autodesk', 'Kaspersky', 'AutoCAD', 'Revit', 'Fusion', 'Inventor', 'Civil 3D', 'Maya', '3ds Max'].map((brand) => (
               <span key={brand} className="text-sm font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors cursor-default whitespace-nowrap">
                 {brand}
               </span>

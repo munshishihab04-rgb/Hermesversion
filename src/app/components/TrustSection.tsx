@@ -4,8 +4,8 @@ import Icon from '@/components/ui/AppIcon';
 const trustItems = [
   {
     icon: 'BoltIcon',
-    title: 'Consegna Istantanea',
-    desc: 'Ricevi la chiave di licenza via email entro pochi secondi dall\'acquisto, 24 ore su 24, 7 giorni su 7.',
+    title: 'Consegna in 30 Secondi',
+    desc: 'La chiave di attivazione arriva via email in meno di 30 secondi. Disponibile 24/7, anche nei weekend e festivi.',
     color: 'text-amber-400',
     bg: 'bg-amber-500/10',
     border: 'border-amber-500/25',
@@ -13,8 +13,8 @@ const trustItems = [
   },
   {
     icon: 'ShieldCheckIcon',
-    title: 'Licenze Originali',
-    desc: 'Tutte le licenze sono originali e garantite al 100%. Attivazione diretta dai server ufficiali del produttore.',
+    title: 'Licenze 100% Originali',
+    desc: 'Licenze genuine acquistate da distributori autorizzati. Attivazione diretta sui server Microsoft, Autodesk e Kaspersky.',
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/25',
@@ -22,8 +22,8 @@ const trustItems = [
   },
   {
     icon: 'ArrowPathIcon',
-    title: 'Rimborso 30 Giorni',
-    desc: 'Se la chiave non funziona, la sostituiamo o rimborsiamo completamente entro 30 giorni dall\'acquisto.',
+    title: 'Garanzia Soddisfatti o Rimborsati',
+    desc: 'Chiave non funzionante? Sostituzione immediata o rimborso completo entro 30 giorni. Nessuna domanda.',
     color: 'text-blue-400',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/25',
@@ -31,8 +31,8 @@ const trustItems = [
   },
   {
     icon: 'LockClosedIcon',
-    title: 'Pagamento Sicuro',
-    desc: 'Checkout protetto da Shopify con crittografia SSL. Accettiamo Visa, Mastercard, PayPal e Klarna.',
+    title: 'Checkout Protetto Shopify',
+    desc: 'Pagamento SSL con Visa, Mastercard, Apple Pay. Checkout gestito da Shopify — lo stesso di milioni di e-commerce.',
     color: 'text-purple-400',
     bg: 'bg-purple-500/10',
     border: 'border-purple-500/25',
