@@ -94,7 +94,11 @@ export const products: Product[] = [
   descriptionIt: 'Licenza originale Windows 11 Pro. Attivazione retail completa. Aggiornamenti gratuiti a vita, BitLocker, Hyper-V e Remote Desktop inclusi. Compatibile con PC a 64-bit.',
   stock: 999,
   badge: 'Più Venduto',
-  tags: ['windows', 'microsoft', 'os', 'pro']
+  tags: ['windows', 'microsoft', 'os', 'pro'],
+  softwareBrand: 'Microsoft',
+  licenseType: 'Perpetua',
+  deliveryTime: '< 30 secondi',
+  compatibility: 'Windows',
 },
 {
   id: '2',
@@ -123,7 +127,11 @@ export const products: Product[] = [
   descriptionIt: 'Suite completa Microsoft Office 2021 con Word, Excel, PowerPoint, Outlook. Licenza perpetua per 1 PC o Mac. Nessun abbonamento richiesto.',
   stock: 999,
   badge: 'Offerta',
-  tags: ['office', 'microsoft', 'word', 'excel', 'powerpoint']
+  tags: ['office', 'microsoft', 'word', 'excel', 'powerpoint'],
+  softwareBrand: 'Microsoft',
+  licenseType: 'Perpetua',
+  deliveryTime: '< 30 secondi',
+  compatibility: 'PC/Mac',
 },
 {
   id: '3',
@@ -148,7 +156,11 @@ export const products: Product[] = [
   description: 'Microsoft 365 Personal 1-year subscription.',
   descriptionIt: 'Abbonamento Microsoft 365 Personal di 1 anno. Include le ultime versioni di Word, Excel, PowerPoint, Outlook. 1 TB di spazio OneDrive incluso.',
   stock: 999,
-  tags: ['microsoft365', 'abbonamento', 'cloud', 'office']
+  tags: ['microsoft365', 'abbonamento', 'cloud', 'office'],
+  softwareBrand: 'Microsoft',
+  licenseType: 'Abbonamento',
+  deliveryTime: '< 30 secondi',
+  subscriptionDuration: '1 Anno',
 },
 {
   id: '4',
@@ -174,7 +186,11 @@ export const products: Product[] = [
   descriptionIt: 'Protezione completa Kaspersky Total Security 2025 per 3 dispositivi. Antivirus, anti-ransomware, VPN, gestore password e controllo parentale inclusi.',
   stock: 999,
   badge: 'Top Sicurezza',
-  tags: ['kaspersky', 'antivirus', 'sicurezza', 'vpn']
+  tags: ['kaspersky', 'antivirus', 'sicurezza', 'vpn'],
+  softwareBrand: 'Kaspersky',
+  licenseType: 'Abbonamento',
+  deliveryTime: '< 2 minuti',
+  devicesSupported: '3 Dispositivi',
 }];
 
 

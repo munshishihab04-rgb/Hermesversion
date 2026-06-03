@@ -16,6 +16,12 @@ const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'bestseller', label: 'Più Venduti' },
 ];
 
+// Microsoft category: filters products whose category contains 'Windows' or 'Office'
+function isMicrosoftCategory(category: string): boolean {
+  const cat = category.toLowerCase();
+  return cat.includes('windows') || cat.includes('office');
+}
+
 export default function CatalogClient() {
   const { products, loading } = useShopifyProducts();
   const searchStr = useSearch();
@@ -25,6 +31,7 @@ export default function CatalogClient() {
 
   const [search, setSearch] = useState(() => urlParams.get('q') ?? '');
   const [selectedCat, setSelectedCat] = useState<string>(() => urlParams.get('cat') ?? 'all');
+  const [categoryParam, setCategoryParam] = useState<string>(() => urlParams.get('category') ?? '');
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(300);
   const [minRating, setMinRating] = useState(0);
@@ -39,9 +46,11 @@ export default function CatalogClient() {
   useEffect(() => {
     const q = urlParams.get('q') ?? '';
     const cat = urlParams.get('cat') ?? 'all';
+    const category = urlParams.get('category') ?? '';
     const filter = urlParams.get('filter');
     setSearch(q);
     setSelectedCat(cat);
+    setCategoryParam(category);
     if (filter === 'bestseller') setSort('bestseller');
   }, [urlParams]);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -59,7 +68,10 @@ export default function CatalogClient() {
       );
     }
 
-    if (selectedCat !== 'all') {
+    // Filter by ?category=microsoft param
+    if (categoryParam === 'microsoft') {
+      list = list.filter((p) => isMicrosoftCategory(p.category));
+    } else if (selectedCat !== 'all') {
       const cat = categories.find((c) => c.slug === selectedCat);
       if (cat) list = list.filter((p) => p.category === cat.name);
     }
@@ -80,10 +92,11 @@ export default function CatalogClient() {
     }
 
     return list;
-  }, [products, search, selectedCat, minPrice, maxPrice, minRating, instantOnly, sort]);
+  }, [products, search, selectedCat, categoryParam, minPrice, maxPrice, minRating, instantOnly, sort]);
 
   const activeFilters = [
-    selectedCat !== 'all' && categories.find((c) => c.slug === selectedCat)?.nameIt,
+    categoryParam === 'microsoft' && 'Microsoft',
+    categoryParam !== 'microsoft' && selectedCat !== 'all' && categories.find((c) => c.slug === selectedCat)?.nameIt,
     instantOnly && 'Consegna Istantanea',
     minRating > 0 && `Min ${minRating}★`,
   ].filter(Boolean) as string[];
@@ -94,16 +107,24 @@ export default function CatalogClient() {
         <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-3 font-semibold">Categoria</h3>
         <div className="space-y-1">
           <button
-            onClick={() => setSelectedCat('all')}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedCat === 'all' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+            onClick={() => { setSelectedCat('all'); setCategoryParam(''); }}
+            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedCat === 'all' && categoryParam === '' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
           >
             Tutte le categorie
+          </button>
+          {/* Microsoft shortcut */}
+          <button
+            onClick={() => { setCategoryParam('microsoft'); setSelectedCat('all'); }}
+            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${categoryParam === 'microsoft' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+          >
+            <span>Microsoft</span>
+            <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded-full">W+O</span>
           </button>
           {categories.map((cat) => (
             <button
               key={cat.id}
-              onClick={() => setSelectedCat(cat.slug)}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${selectedCat === cat.slug ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+              onClick={() => { setSelectedCat(cat.slug); setCategoryParam(''); }}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${selectedCat === cat.slug && categoryParam === '' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
             >
               <span>{cat.nameIt}</span>
               <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded-full">{cat.count}</span>
@@ -183,6 +204,7 @@ export default function CatalogClient() {
       <button
         onClick={() => {
           setSelectedCat('all');
+          setCategoryParam('');
           setMinPrice(0);
           setMaxPrice(300);
           setMinRating(0);
@@ -263,6 +285,7 @@ export default function CatalogClient() {
                 onClick={() => {
                   if (f === 'Consegna Istantanea') setInstantOnly(false);
                   else if (f.startsWith('Min')) setMinRating(0);
+                  else if (f === 'Microsoft') setCategoryParam('');
                   else setSelectedCat('all');
                 }}
                 className="hover:text-white transition-colors"
@@ -298,7 +321,7 @@ export default function CatalogClient() {
               <h3 className="text-lg font-bold text-foreground mb-2">Nessun prodotto trovato</h3>
               <p className="text-muted-foreground text-sm mb-4">Prova a modificare i filtri o la ricerca</p>
               <button
-                onClick={() => { setSearch(''); setSelectedCat('all'); setInstantOnly(false); setMinRating(0); }}
+                onClick={() => { setSearch(''); setSelectedCat('all'); setCategoryParam(''); setInstantOnly(false); setMinRating(0); }}
                 className="btn-primary text-sm"
               >
                 Azzera Filtri

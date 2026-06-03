@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'wouter';
 import AppImage from '@/components/ui/AppImage';
 import Icon from '@/components/ui/AppIcon';
@@ -47,16 +47,74 @@ function StarRating({ rating }: { rating: number }) {
   );
 }
 
+/** Determine category brand badge info based on category/subcategory */
+function getBrandBadge(product: Product): { label: string; className: string } | null {
+  const cat = (product.category + ' ' + (product.subcategory ?? '')).toLowerCase();
+  if (cat.includes('autodesk')) {
+    return { label: 'Autodesk', className: 'bg-blue-900/90 text-blue-100 border border-blue-700/60' };
+  }
+  if (cat.includes('windows') || cat.includes('office') || cat.includes('microsoft')) {
+    return { label: 'Microsoft', className: 'bg-blue-600/90 text-white border border-blue-500/60' };
+  }
+  if (cat.includes('antivirus') || cat.includes('kaspersky')) {
+    return { label: 'Kaspersky', className: 'bg-emerald-700/90 text-white border border-emerald-500/60' };
+  }
+  return null;
+}
+
+/** Delivery time label based on product */
+function getDeliveryBadge(product: Product): { label: string; className: string } {
+  const cat = (product.category + ' ' + (product.subcategory ?? '')).toLowerCase();
+  if (cat.includes('autodesk')) {
+    return { label: '⏱ 10-15 min', className: 'text-amber-500 font-semibold text-[10px]' };
+  }
+  return { label: '⚡ Immediato', className: 'text-emerald-500 font-semibold text-[10px]' };
+}
+
+/** Extract 2-3 feature bullet points from descriptionIt */
+function getFeatureSnippets(description: string): string[] {
+  if (!description) return [];
+  // Split by common delimiters: period, comma at end of clause, or newline
+  const parts = description
+    .split(/[.\n]/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 10 && s.length < 80);
+  return parts.slice(0, 3);
+}
+
+/** Resolve product detail link — use handle (slug) for Shopify products */
+function getProductLink(product: Product): string {
+  // If product has a variantId it came from Shopify — use handle/slug
+  if (product.variantId && product.slug) {
+    return `/product-detail?handle=${product.slug}`;
+  }
+  // Fallback for static products: prefer slug, otherwise id
+  if (product.slug) {
+    return `/product-detail?handle=${product.slug}`;
+  }
+  return `/product-detail?id=${product.id}`;
+}
+
 export default function ProductCard({ product, className = '' }: ProductCardProps) {
   const { addToCart } = useCart();
   const { toggle, isWishlisted } = useWishlist();
   const wishlisted = isWishlisted(product.id);
+  const [hovered, setHovered] = useState(false);
+
+  const brandBadge = getBrandBadge(product);
+  const deliveryBadge = getDeliveryBadge(product);
+  const featureSnippets = getFeatureSnippets(product.descriptionIt || product.description || '');
+  const productLink = getProductLink(product);
 
   return (
-    <div className={`group relative bg-card border border-border rounded-2xl overflow-hidden card-hover-glow flex flex-col ${className}`}>
+    <div
+      className={`group relative bg-card border border-border rounded-2xl overflow-hidden card-hover-glow flex flex-col ${className}`}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
       {/* Image */}
       <div className="relative aspect-square overflow-hidden bg-muted flex items-center justify-center">
-        <Link href={`/product-detail?id=${product.id}`} className="w-full h-full flex items-center justify-center">
+        <Link href={productLink} className="w-full h-full flex items-center justify-center">
           <AppImage
             src={product.image}
             alt={product.nameIt}
@@ -66,7 +124,7 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
           />
         </Link>
 
-        {/* Badges */}
+        {/* Badges top-left */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           {product.discount > 0 && (
             <span className="discount-badge text-[10px] font-bold px-2 py-0.5 rounded-full">
@@ -81,6 +139,12 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
           {product.isNew && (
             <span className="bg-cyan-50 border border-cyan-200 text-cyan-700 text-[10px] font-bold px-2 py-0.5 rounded-full">
               Nuovo
+            </span>
+          )}
+          {/* Brand badge */}
+          {brandBadge && (
+            <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${brandBadge.className}`}>
+              {brandBadge.label}
             </span>
           )}
         </div>
@@ -105,6 +169,21 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
             </span>
           </div>
         )}
+
+        {/* Hover feature preview overlay */}
+        {hovered && featureSnippets.length > 0 && (
+          <div className="absolute inset-0 bg-black/75 backdrop-blur-sm flex flex-col justify-end p-3 transition-all duration-300 pointer-events-none">
+            <p className="text-[10px] text-white/60 uppercase tracking-widest mb-1.5 font-semibold">Caratteristiche</p>
+            <ul className="space-y-1">
+              {featureSnippets.map((feat, i) => (
+                <li key={i} className="flex items-start gap-1.5 text-[11px] text-white/90 leading-tight">
+                  <span className="text-primary mt-0.5">•</span>
+                  <span>{feat}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
       {/* Content */}
@@ -120,7 +199,7 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
         </div>
 
         {/* Title */}
-        <Link href={`/product-detail?id=${product.id}`}>
+        <Link href={productLink}>
           <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight line-clamp-2 hover:text-primary transition-colors">
             {product.nameIt}
           </h3>
@@ -144,6 +223,11 @@ export default function ProductCard({ product, className = '' }: ProductCardProp
               €{fmtEur(product.originalPrice)}
             </span>
           )}
+        </div>
+
+        {/* Delivery time footer */}
+        <div className="flex items-center justify-between">
+          <span className={deliveryBadge.className}>{deliveryBadge.label}</span>
         </div>
 
         {/* Add to Cart */}

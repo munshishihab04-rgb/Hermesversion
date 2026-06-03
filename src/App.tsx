@@ -69,6 +69,7 @@ function Router() {
         <Route path="/faq">{() => <PageWrapper><FaqPage /></PageWrapper>}</Route>
         <Route path="/contact">{() => <PageWrapper><ContactPage /></PageWrapper>}</Route>
         <Route path="/help-center">{() => <PageWrapper><HelpCenterPage /></PageWrapper>}</Route>
+        <Route path="/assistenza">{() => <PageWrapper><HelpCenterPage /></PageWrapper>}</Route>
         <Route path="/privacy">{() => <PageWrapper><PrivacyPage /></PageWrapper>}</Route>
         <Route path="/terms">{() => <PageWrapper><TermsPage /></PageWrapper>}</Route>
         <Route path="/refund">{() => <PageWrapper><RefundPage /></PageWrapper>}</Route>

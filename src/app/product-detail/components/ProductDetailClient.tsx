@@ -164,9 +164,9 @@ function BusinessConsultingSection({ product }: { product: Product }) {
             <div>
               <h2 className="text-xl font-bold text-white mb-1">Consulenza per Aziende</h2>
               <p className="text-sm text-white/80 max-w-2xl">
-                Stai valutando l'adozione di Autodesk per la tua azienda? Offriamo soluzioni su misura
+                Stai valutando l&apos;adozione di Autodesk per la tua azienda? Offriamo soluzioni su misura
                 per team di progettazione, studi tecnici e grandi organizzazioni — con prezzi dedicati,
-                licenze multi-seat e supporto all'onboarding.
+                licenze multi-seat e supporto all&apos;onboarding.
               </p>
             </div>
           </div>
@@ -326,6 +326,513 @@ const defaultReviews = [
   { name: 'Francesca Conti', date: '5 Maggio 2025', rating: 5, text: 'Ottimo servizio, prodotto originale come promesso. Lo consiglio a tutti.', verified: true },
   { name: 'Roberto Mancini', date: '28 Aprile 2025', rating: 4, text: 'Tutto funzionante, piccolo ritardo nell\'email ma risolto subito dal supporto.', verified: true },
 ];
+
+// ─── Template multipli per tipo prodotto ─────────────────────────────────────
+
+function ProductTemplate({ product }: { product: Product }) {
+  const name = product.nameIt?.toLowerCase() ?? '';
+  const cat = product.category?.toLowerCase() ?? '';
+  const brand = product.softwareBrand?.toLowerCase() ?? '';
+  const tags = (product.tags ?? []).join(' ').toLowerCase();
+
+  const isWindows = name.includes('windows');
+  const isOffice = name.includes('office') || name.includes('microsoft 365') || name.includes('microsoft365');
+  const isM365 = name.includes('365') || name.includes('microsoft 365');
+  const isAutodesk =
+    brand.includes('autodesk') ||
+    cat.includes('autodesk') ||
+    name.includes('autodesk') ||
+    name.includes('autocad') ||
+    name.includes('revit') ||
+    name.includes('fusion') ||
+    name.includes('inventor') ||
+    name.includes('maya') ||
+    name.includes('3ds max') ||
+    name.includes('collection') ||
+    name.includes('aec') ||
+    name.includes('pd&m') ||
+    name.includes('m&e');
+  const isAntivirus =
+    cat.includes('antivirus') ||
+    brand.includes('kaspersky') ||
+    name.includes('kaspersky') ||
+    tags.includes('antivirus');
+
+  // ── Template A: Windows ──────────────────────────────────────────────────
+  if (isWindows) {
+    const isWin11 = name.includes('11');
+    return (
+      <div className="space-y-6 mb-8">
+        {/* Hero badge */}
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">
+            <Icon name="ShieldCheckIcon" size={13} className="text-blue-500" />
+            Licenza Retail Perpetua · Chiave ESD · 1 PC
+          </span>
+          {isWin11 && (
+            <span className="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+              <Icon name="CheckBadgeIcon" size={13} className="text-emerald-500" />
+              Supporto Microsoft fino al 2031+
+            </span>
+          )}
+        </div>
+
+        {/* Feature highlights */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">Funzionalità Incluse</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { icon: 'ShieldCheckIcon', label: 'BitLocker & Sicurezza Avanzata', color: 'bg-blue-50 border-blue-200 text-blue-700', iconColor: 'text-blue-500' },
+              { icon: 'ServerIcon', label: 'Hyper-V & Virtualizzazione', color: 'bg-purple-50 border-purple-200 text-purple-700', iconColor: 'text-purple-500' },
+              { icon: 'ComputerDesktopIcon', label: 'Remote Desktop Pro', color: 'bg-teal-50 border-teal-200 text-teal-700', iconColor: 'text-teal-500' },
+              { icon: 'CalendarIcon', label: 'Supporto fino al 2031+', color: 'bg-emerald-50 border-emerald-200 text-emerald-700', iconColor: 'text-emerald-500' },
+            ].map((f) => (
+              <div key={f.label} className={`flex flex-col items-center gap-2 rounded-xl border p-3 text-center ${f.color}`}>
+                <div className={`w-9 h-9 rounded-lg bg-white/70 flex items-center justify-center`}>
+                  <Icon name={f.icon as Parameters<typeof Icon>[0]['name']} size={20} className={f.iconColor} />
+                </div>
+                <span className="text-xs font-semibold leading-tight">{f.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Requisiti di sistema */}
+        <div className="bg-muted/40 border border-border rounded-xl p-5">
+          <h2 className="text-sm font-bold text-foreground mb-3 flex items-center gap-2">
+            <Icon name="CpuChipIcon" size={15} className="text-primary" />
+            Requisiti di Sistema
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-2 text-xs text-muted-foreground">
+            {[
+              { label: 'CPU', value: '1 GHz dual-core 64-bit' },
+              { label: 'RAM', value: '4 GB (8 GB consigliati)' },
+              { label: 'Storage', value: '64 GB disponibili' },
+              { label: 'TPM', value: 'Versione 2.0' },
+              { label: 'Grafica', value: 'DirectX 12 / WDDM 2.0' },
+              { label: 'UEFI', value: 'Secure Boot abilitato' },
+            ].map((r) => (
+              <div key={r.label} className="flex items-start gap-1.5">
+                <Icon name="CheckCircleIcon" size={13} className="text-emerald-500 shrink-0 mt-0.5" />
+                <span><strong className="text-foreground">{r.label}:</strong> {r.value}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Step attivazione visivi */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Windows</h2>
+          <div className="grid sm:grid-cols-4 gap-3">
+            {[
+              { emoji: '🛒', step: '01', title: 'Completa il Pagamento', desc: 'Checkout sicuro con Shopify' },
+              { emoji: '📧', step: '02', title: 'Ricevi la Chiave', desc: 'Via email in meno di 30 secondi' },
+              { emoji: '⚙️', step: '03', title: 'Vai ad Attivazione', desc: 'Impostazioni › Sistema › Attivazione' },
+              { emoji: '✅', step: '04', title: 'Inserisci la Chiave', desc: 'Windows si attiva automaticamente' },
+            ].map((s) => (
+              <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
+                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
+                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-xs text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Comparison Windows */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">Confronto Versioni Windows</h2>
+          <div className="rounded-xl border border-border overflow-hidden text-xs">
+            <div className="grid grid-cols-4 bg-muted/60 font-bold text-foreground">
+              <div className="p-3 border-r border-border">Funzionalità</div>
+              <div className="p-3 border-r border-border text-center">Win 10 Home</div>
+              <div className="p-3 border-r border-border text-center bg-primary/5 text-primary">Win 11 Pro ⭐</div>
+              <div className="p-3 text-center">Win 11 Home</div>
+            </div>
+            {[
+              { feature: 'BitLocker Encryption', w10h: false, w11p: true, w11h: false },
+              { feature: 'Hyper-V', w10h: false, w11p: true, w11h: false },
+              { feature: 'Remote Desktop (host)', w10h: false, w11p: true, w11h: false },
+              { feature: 'Windows Sandbox', w10h: false, w11p: true, w11h: false },
+              { feature: 'Supporto fino al 2031+', w10h: false, w11p: true, w11h: true },
+              { feature: 'Interfaccia moderna', w10h: false, w11p: true, w11h: true },
+            ].map((row, i) => (
+              <div key={row.feature} className={`grid grid-cols-4 ${i % 2 === 0 ? 'bg-white' : 'bg-muted/20'} border-t border-border`}>
+                <div className="p-3 border-r border-border text-muted-foreground">{row.feature}</div>
+                <div className="p-3 border-r border-border text-center">{row.w10h ? '✅' : '❌'}</div>
+                <div className="p-3 border-r border-border text-center bg-primary/5">{row.w11p ? '✅' : '❌'}</div>
+                <div className="p-3 text-center">{row.w11h ? '✅' : '❌'}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Template B: Office / Microsoft 365 ──────────────────────────────────
+  if (isOffice) {
+    const is365 = isM365;
+    const baseApps = ['Word', 'Excel', 'PowerPoint', 'Outlook', 'OneNote'];
+    const apps365Extra = ['Teams', '1TB OneDrive', 'Publisher', 'Access'];
+    const apps = is365 ? [...baseApps, ...apps365Extra] : baseApps;
+    const appColors: Record<string, string> = {
+      Word: 'bg-blue-600',
+      Excel: 'bg-green-600',
+      PowerPoint: 'bg-orange-500',
+      Outlook: 'bg-blue-500',
+      OneNote: 'bg-purple-600',
+      Teams: 'bg-indigo-600',
+      '1TB OneDrive': 'bg-sky-500',
+      Publisher: 'bg-teal-600',
+      Access: 'bg-red-600',
+    };
+    return (
+      <div className="space-y-6 mb-8">
+        {/* Hero badge */}
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="inline-flex items-center gap-1.5 bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-full">
+            <Icon name="DocumentTextIcon" size={13} className="text-blue-500" />
+            {is365 ? 'Abbonamento Annuale · Multi-Dispositivo' : 'Licenza Perpetua · 1 PC/Mac'}
+          </span>
+          {is365 && (
+            <span className="inline-flex items-center gap-1.5 bg-sky-50 border border-sky-200 text-sky-700 text-xs font-semibold px-3 py-1.5 rounded-full">
+              <Icon name="CloudIcon" size={13} className="text-sky-500" />
+              1 TB OneDrive incluso
+            </span>
+          )}
+        </div>
+
+        {/* App incluse */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">App Incluse nel Pacchetto</h2>
+          <div className="flex flex-wrap gap-2">
+            {apps.map((app) => (
+              <span
+                key={app}
+                className={`${appColors[app] ?? 'bg-slate-600'} text-white text-xs font-bold px-3 py-1.5 rounded-lg`}
+              >
+                {app}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Feature highlights */}
+        <div className="grid sm:grid-cols-3 gap-3">
+          {[
+            {
+              icon: is365 ? 'ArrowPathIcon' : 'LockClosedIcon',
+              label: is365 ? 'Aggiornamenti Automatici' : 'Licenza a Vita',
+              desc: is365 ? 'Sempre le ultime versioni delle app Office' : 'Nessun rinnovo, paghi una volta sola',
+              color: 'bg-blue-50 border-blue-200 text-blue-700',
+              iconColor: 'text-blue-500',
+            },
+            {
+              icon: 'ComputerDesktopIcon',
+              label: 'PC & Mac Compatibile',
+              desc: 'Funziona su Windows 10/11 e macOS',
+              color: 'bg-slate-50 border-slate-200 text-slate-700',
+              iconColor: 'text-slate-500',
+            },
+            {
+              icon: 'GlobeAltIcon',
+              label: 'Attivazione su office.com',
+              desc: 'Semplice e immediata in pochi clic',
+              color: 'bg-emerald-50 border-emerald-200 text-emerald-700',
+              iconColor: 'text-emerald-500',
+            },
+          ].map((f) => (
+            <div key={f.label} className={`flex gap-3 rounded-xl border p-4 ${f.color}`}>
+              <div className="w-9 h-9 rounded-lg bg-white/70 flex items-center justify-center shrink-0">
+                <Icon name={f.icon as Parameters<typeof Icon>[0]['name']} size={20} className={f.iconColor} />
+              </div>
+              <div>
+                <p className="text-sm font-bold mb-0.5">{f.label}</p>
+                <p className="text-xs opacity-80">{f.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Step attivazione */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Office</h2>
+          <div className="grid sm:grid-cols-4 gap-3">
+            {[
+              { emoji: '🛒', step: '01', title: 'Acquista', desc: 'Ricevi la chiave via email in 30 secondi' },
+              { emoji: '🌐', step: '02', title: 'Vai su office.com/setup', desc: 'Accedi con il tuo account Microsoft' },
+              { emoji: '🔑', step: '03', title: 'Inserisci la Chiave', desc: 'Codice a 25 caratteri dalla tua email' },
+              { emoji: '⬇️', step: '04', title: 'Scarica & Installa', desc: 'Le app Office si installano in pochi minuti' },
+            ].map((s) => (
+              <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
+                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
+                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-xs text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Comparison Office vs M365 */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div className={`rounded-xl border-2 p-5 ${!is365 ? 'border-primary bg-primary/5' : 'border-border bg-muted/30'}`}>
+            <div className="flex items-center gap-2 mb-3">
+              <Icon name="LockClosedIcon" size={18} className="text-blue-600" />
+              <h3 className="font-bold text-foreground">Office 2021 Perpetuo</h3>
+              {!is365 && <span className="ml-auto text-xs bg-primary text-white font-bold px-2 py-0.5 rounded-full">Questo prodotto</span>}
+            </div>
+            <ul className="space-y-1.5 text-xs text-muted-foreground">
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Pagamento una tantum</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Word, Excel, PowerPoint, Outlook</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />1 PC o Mac</li>
+              <li className="flex items-center gap-1.5"><Icon name="XMarkIcon" size={13} className="text-red-400" />Aggiornamenti funzionalità esclusi</li>
+              <li className="flex items-center gap-1.5"><Icon name="XMarkIcon" size={13} className="text-red-400" />OneDrive non incluso</li>
+            </ul>
+          </div>
+          <div className={`rounded-xl border-2 p-5 ${is365 ? 'border-primary bg-primary/5' : 'border-border bg-muted/30'}`}>
+            <div className="flex items-center gap-2 mb-3">
+              <Icon name="ArrowPathIcon" size={18} className="text-indigo-600" />
+              <h3 className="font-bold text-foreground">Microsoft 365</h3>
+              {is365 && <span className="ml-auto text-xs bg-primary text-white font-bold px-2 py-0.5 rounded-full">Questo prodotto</span>}
+            </div>
+            <ul className="space-y-1.5 text-xs text-muted-foreground">
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Abbonamento annuale</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Tutte le app + Teams</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Multi-dispositivo</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />1 TB OneDrive incluso</li>
+              <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />Aggiornamenti automatici</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Template C: Autodesk ─────────────────────────────────────────────────
+  if (isAutodesk) {
+    const isAEC = name.includes('aec') || name.includes('architecture') || name.includes('civil');
+    const isPDM = name.includes('pd&m') || name.includes('product design') || name.includes('inventor') || name.includes('fusion');
+    const isME = name.includes('m&e') || name.includes('media') || name.includes('maya') || name.includes('3ds max');
+
+    const softwareList: string[] = isAEC
+      ? ['AutoCAD', 'Revit', 'Civil 3D', 'Navisworks', 'BIM Collaborate Pro', 'ReCap Pro', 'Insight', 'FormIt']
+      : isPDM
+      ? ['Fusion 360', 'Inventor', 'AutoCAD', 'AutoCAD Electrical', 'Vault', 'Nastran', 'HSMWorks']
+      : isME
+      ? ['Maya', '3ds Max', 'Arnold', 'MotionBuilder', 'Mudbox', 'Flame']
+      : name.includes('autocad')
+      ? ['AutoCAD', 'AutoCAD LT', 'AutoCAD Architecture', 'AutoCAD Electrical', 'AutoCAD Mechanical', 'AutoCAD Plant 3D']
+      : name.includes('revit')
+      ? ['Revit', 'Revit LT', 'BIM 360', 'ReCap Pro']
+      : [product.nameIt ?? 'Software Autodesk'];
+
+    return (
+      <div className="space-y-6 mb-8">
+        {/* Hero badge */}
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-700 text-xs font-bold px-3 py-1.5 rounded-full">
+            <Icon name="StarIcon" size={13} className="text-amber-500" />
+            Abbonamento Ufficiale · Assegnazione Diretta · Uso Commerciale
+          </span>
+        </div>
+
+        {/* Software inclusi */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">
+            {isAEC ? 'AEC Collection — Software Inclusi' :
+             isPDM ? 'PD&M Collection — Software Inclusi' :
+             isME ? 'M&E Collection — Software Inclusi' :
+             'Software Incluso'}
+          </h2>
+          <div className="flex flex-wrap gap-2">
+            {softwareList.map((sw) => (
+              <span
+                key={sw}
+                className="bg-amber-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg flex items-center gap-1.5"
+              >
+                <Icon name="CubeIcon" size={11} />
+                {sw}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Come funziona l'assegnazione */}
+        <div className="rounded-xl border-2 border-teal-200 bg-teal-50 overflow-hidden">
+          <div className="bg-teal-600 px-5 py-3 flex items-center gap-2">
+            <Icon name="InformationCircleIcon" size={18} className="text-white" />
+            <h2 className="text-sm font-bold text-white">Come Funziona l&apos;Assegnazione</h2>
+          </div>
+          <div className="p-5 grid sm:grid-cols-3 gap-4">
+            {[
+              { step: '01', emoji: '✉️', title: 'Email al Checkout', desc: 'Usa l\'email del tuo account Autodesk durante l\'acquisto — sarà l\'indirizzo di assegnazione' },
+              { step: '02', emoji: '⚡', title: 'Assegnazione in 10–15 min', desc: 'Il nostro team assegna l\'abbonamento direttamente al tuo account Autodesk' },
+              { step: '03', emoji: '✅', title: 'Conferma da Autodesk', desc: 'Ricevi notifica ufficiale da Autodesk e scarichi il software dal portale ufficiale' },
+            ].map((s) => (
+              <div key={s.step} className="flex flex-col items-center text-center gap-2">
+                <div className="w-10 h-10 rounded-full bg-teal-600 text-white font-extrabold text-sm flex items-center justify-center">{s.step}</div>
+                <div className="text-xl">{s.emoji}</div>
+                <p className="text-sm font-bold text-teal-800">{s.title}</p>
+                <p className="text-xs text-teal-700">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Piani — Mensile vs Triennale */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">Scegli il Tuo Piano</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="rounded-xl border-2 border-border bg-white p-5">
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-foreground">Piano Mensile</h3>
+                <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-medium">Flessibile</span>
+              </div>
+              <p className="text-2xl font-extrabold text-foreground mb-1">€14,99<span className="text-sm font-normal text-muted-foreground">/mese</span></p>
+              <p className="text-xs text-muted-foreground mb-3">Rinnovo automatico mensile · Disdici quando vuoi</p>
+              <ul className="space-y-1 text-xs text-muted-foreground">
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Accesso completo al software</li>
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Aggiornamenti automatici</li>
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Cancellabile ogni mese</li>
+              </ul>
+            </div>
+            <div className="rounded-xl border-2 border-emerald-400 bg-emerald-50 p-5 relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                <span className="bg-emerald-600 text-white text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wide">Miglior Risparmio</span>
+              </div>
+              <div className="flex items-center justify-between mb-3">
+                <h3 className="font-bold text-foreground">Piano Triennale</h3>
+                <span className="text-xs bg-emerald-100 text-emerald-700 border border-emerald-300 px-2 py-0.5 rounded-full font-bold">-80%</span>
+              </div>
+              <p className="text-2xl font-extrabold text-emerald-700 mb-0.5">€87,99<span className="text-sm font-normal text-emerald-600">/3 anni</span></p>
+              <p className="text-xs text-emerald-600 font-semibold mb-1">€449,64 → €87,99 — <strong>Risparmi €361,65</strong></p>
+              <p className="text-xs text-muted-foreground mb-3">Prezzo bloccato per 3 anni</p>
+              <ul className="space-y-1 text-xs text-emerald-700">
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Accesso completo al software</li>
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Aggiornamenti automatici</li>
+                <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Massimo risparmio garantito</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Template D: Antivirus / Kaspersky ────────────────────────────────────
+  if (isAntivirus) {
+    // Tenta di rilevare il numero di dispositivi dal nome
+    const devMatch = name.match(/(\d+)\s*(dispositiv|device|pc)/i);
+    const devCount = devMatch ? devMatch[1] : product.devicesSupported ?? '3';
+    const isTotal = name.includes('total');
+    const isPlus = name.includes('plus') || name.includes('+');
+    const isStandard = !isTotal && !isPlus;
+
+    return (
+      <div className="space-y-6 mb-8">
+        {/* Hero badge */}
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="inline-flex items-center gap-1.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold px-3 py-1.5 rounded-full">
+            <Icon name="ShieldCheckIcon" size={13} className="text-red-500" />
+            Protezione Real-Time · {devCount} Dispositivi · 1 Anno
+          </span>
+        </div>
+
+        {/* Feature protection */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">Protezione Completa</h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            {[
+              { icon: 'ShieldCheckIcon', label: 'Antivirus & Anti-Malware', color: 'bg-red-50 border-red-200 text-red-700', iconColor: 'text-red-500' },
+              { icon: 'GlobeAltIcon', label: 'VPN Inclusa', color: 'bg-blue-50 border-blue-200 text-blue-700', iconColor: 'text-blue-500' },
+              { icon: 'KeyIcon', label: 'Gestore Password', color: 'bg-yellow-50 border-yellow-200 text-yellow-700', iconColor: 'text-yellow-500' },
+              { icon: 'UserGroupIcon', label: 'Controllo Parentale', color: 'bg-emerald-50 border-emerald-200 text-emerald-700', iconColor: 'text-emerald-500' },
+            ].map((f) => (
+              <div key={f.label} className={`flex flex-col items-center gap-2 rounded-xl border p-3 text-center ${f.color}`}>
+                <div className="w-9 h-9 rounded-lg bg-white/70 flex items-center justify-center">
+                  <Icon name={f.icon as Parameters<typeof Icon>[0]['name']} size={20} className={f.iconColor} />
+                </div>
+                <span className="text-xs font-semibold leading-tight">{f.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dispositivi compatibili */}
+        <div className="bg-muted/30 border border-border rounded-xl p-4">
+          <h2 className="text-sm font-bold text-foreground mb-3">Dispositivi Compatibili</h2>
+          <div className="flex flex-wrap gap-4">
+            {[
+              { icon: '🖥️', label: 'Windows PC' },
+              { icon: '🍎', label: 'Mac' },
+              { icon: '🤖', label: 'Android' },
+              { icon: '📱', label: 'iOS / iPhone' },
+            ].map((d) => (
+              <div key={d.label} className="flex items-center gap-2 text-sm font-medium text-foreground">
+                <span className="text-xl">{d.icon}</span>
+                {d.label}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Step attivazione */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-4">Come Attivare la Protezione</h2>
+          <div className="grid sm:grid-cols-4 gap-3">
+            {[
+              { emoji: '📧', step: '01', title: 'Ricevi il Codice', desc: 'Via email in soli 2 minuti dal pagamento' },
+              { emoji: '⬇️', step: '02', title: 'Scarica Kaspersky', desc: 'Da kaspersky.com — versione ufficiale' },
+              { emoji: '⚙️', step: '03', title: 'Installa & Avvia', desc: 'Guida rapida inclusa nell\'email' },
+              { emoji: '🛡️', step: '04', title: 'Protezione Attiva!', desc: 'Inserisci il codice — sei protetto' },
+            ].map((s) => (
+              <div key={s.step} className="glass-card rounded-xl p-4 border border-border text-center">
+                <div className="text-2xl mb-2">{s.emoji}</div>
+                <div className="text-xs font-bold text-primary mb-1">STEP {s.step}</div>
+                <p className="text-sm font-semibold text-foreground mb-1">{s.title}</p>
+                <p className="text-xs text-muted-foreground">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Comparison Kaspersky */}
+        <div>
+          <h2 className="text-base font-bold text-foreground mb-3">Confronto Piani Kaspersky</h2>
+          <div className="rounded-xl border border-border overflow-hidden text-xs">
+            <div className="grid grid-cols-4 bg-muted/60 font-bold text-foreground">
+              <div className="p-3 border-r border-border">Funzionalità</div>
+              <div className={`p-3 border-r border-border text-center ${isStandard ? 'bg-primary/5 text-primary' : ''}`}>Standard {isStandard && '⭐'}</div>
+              <div className={`p-3 border-r border-border text-center ${isPlus ? 'bg-primary/5 text-primary' : ''}`}>Plus {isPlus && '⭐'}</div>
+              <div className={`p-3 text-center ${isTotal ? 'bg-primary/5 text-primary' : ''}`}>Total {isTotal && '⭐'}</div>
+            </div>
+            {[
+              { feature: 'Antivirus & Anti-Malware', std: true, plus: true, total: true },
+              { feature: 'Firewall & Anti-Hacker', std: true, plus: true, total: true },
+              { feature: 'VPN illimitata', std: false, plus: true, total: true },
+              { feature: 'Gestore Password', std: false, plus: true, total: true },
+              { feature: 'Controllo Parentale', std: false, plus: false, total: true },
+              { feature: 'Protezione Identity', std: false, plus: false, total: true },
+            ].map((row, i) => (
+              <div key={row.feature} className={`grid grid-cols-4 ${i % 2 === 0 ? 'bg-white' : 'bg-muted/20'} border-t border-border`}>
+                <div className="p-3 border-r border-border text-muted-foreground">{row.feature}</div>
+                <div className={`p-3 border-r border-border text-center ${isStandard ? 'bg-primary/5' : ''}`}>{row.std ? '✅' : '❌'}</div>
+                <div className={`p-3 border-r border-border text-center ${isPlus ? 'bg-primary/5' : ''}`}>{row.plus ? '✅' : '❌'}</div>
+                <div className={`p-3 text-center ${isTotal ? 'bg-primary/5' : ''}`}>{row.total ? '✅' : '❌'}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // ── Template E: Generico (fallback) ─────────────────────────────────────
+  return null;
+}
 
 // ─── Componente principale ────────────────────────────────────────────────────
 
@@ -706,6 +1213,9 @@ export default function ProductDetailClient() {
             </div>
           </div>
         </div>
+
+        {/* ── TEMPLATE SPECIFICO PER TIPO PRODOTTO ── */}
+        <ProductTemplate product={product} />
 
         {/* ── TAB CONTENUTO ── */}
         <div className="mb-5">
