@@ -7,8 +7,8 @@ const footerLinks = {
   prodotti: [
     { label: 'Windows & Office', href: '/product-catalog?cat=windows-office' },
     { label: 'Antivirus', href: '/product-catalog?cat=antivirus' },
-    { label: 'Gaming Keys', href: '/product-catalog?cat=gaming' },
-    { label: 'VPN & Privacy', href: '/product-catalog?cat=vpn' },
+    { label: 'Autodesk', href: '/autodesk-collections' },
+    
   ],
   supporto: [
     { label: 'Centro Assistenza', href: '/help-center' },
@@ -37,7 +37,7 @@ export default function Footer() {
               <span className="font-bold text-lg text-foreground">Licenvo</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Il marketplace italiano per licenze software originali e gaming keys ai prezzi più bassi.
+              Il marketplace italiano per licenze software originali ai prezzi più bassi.
             </p>
             <div className="flex gap-3">
               {(['Twitter', 'Instagram', 'Facebook'] as const).map((s) => (

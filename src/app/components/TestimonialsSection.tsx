@@ -18,7 +18,7 @@ const testimonials = [
   avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_1731e6860-1769021595481.png",
   rating: 5,
   text: 'Scettica all\'inizio, ma l\'abbonamento Adobe Photoshop ha funzionato perfettamente. La chiave arrivata via email in 30 secondi. Servizio clienti super disponibile. Acquisterò ancora!',
-  product: 'Adobe Photoshop 2025',
+  product: 'Autodesk AutoCAD',
   date: '3 Maggio 2025'
 },
 {

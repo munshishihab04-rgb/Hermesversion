@@ -7,7 +7,7 @@ const steps = [
     number: '01',
     icon: 'MagnifyingGlassIcon',
     title: 'Scegli il prodotto',
-    desc: 'Naviga il catalogo e trova la licenza che fa per te — Windows, Office, antivirus, gaming e molto altro.',
+    desc: 'Naviga il catalogo e trova la licenza che fa per te — Windows, Office, Autodesk, antivirus e molto altro.',
     color: 'text-blue-400',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/20',

@@ -41,7 +41,7 @@ export default function NewsletterSection() {
                   <span className="block gradient-text-purple">Solo per Te</span>
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Iscriviti e ricevi le migliori offerte su licenze software e gaming keys prima di tutti. Niente spam, solo sconti veri.
+                  Iscriviti e ricevi le migliori offerte su licenze software prima di tutti. Niente spam, solo sconti veri.
                 </p>
               </div>
 

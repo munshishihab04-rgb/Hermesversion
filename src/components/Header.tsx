@@ -7,11 +7,8 @@ import { useWishlist } from '@/context/WishlistContext';
 
 const navCategories = [
   { label: 'Windows & Office', href: '/product-catalog?cat=windows-office', icon: 'WindowIcon' },
-  { label: 'Abbonamenti', href: '/product-catalog?cat=abbonamenti', icon: 'CreditCardIcon' },
+  { label: 'Autodesk', href: '/autodesk-collections', icon: 'CubeIcon' },
   { label: 'Antivirus', href: '/product-catalog?cat=antivirus', icon: 'ShieldCheckIcon' },
-  { label: 'Gaming Keys', href: '/product-catalog?cat=gaming', icon: 'PuzzlePieceIcon' },
-  { label: 'VPN', href: '/product-catalog?cat=vpn', icon: 'LockClosedIcon' },
-  { label: 'Adobe', href: '/product-catalog?cat=adobe', icon: 'SparklesIcon' },
 ];
 
 const announcementMessages = [

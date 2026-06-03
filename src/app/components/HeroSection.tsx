@@ -104,7 +104,7 @@ export default function HeroSection() {
                 <span className="block text-foreground/60 font-light">al Miglior Prezzo</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                Windows, Office, Adobe, antivirus e gaming keys originali. Risparmia fino al{' '}
+                Windows, Office, Autodesk, antivirus e licenze originali. Risparmia fino al{' '}
                 <span className="text-primary font-bold">92%</span> con consegna istantanea via email.
               </p>
             </div>
@@ -193,7 +193,7 @@ export default function HeroSection() {
         <div className="section-container py-4">
           <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
             <span className="text-[10px] uppercase tracking-widest text-muted-foreground shrink-0">Brand</span>
-            {['Windows', 'Office', 'Kaspersky', 'Steam', 'Xbox', 'PlayStation', 'Adobe', 'NordVPN'].map((brand) => (
+            {['Windows', 'Office', 'Autodesk', 'Kaspersky', 'AutoCAD', 'Revit', '3ds Max', 'Maya'].map((brand) => (
               <span key={brand} className="text-sm font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors cursor-default whitespace-nowrap">
                 {brand}
               </span>
