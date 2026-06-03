@@ -4,31 +4,31 @@ import AppImage from '@/components/ui/AppImage';
 
 const testimonials = [
 {
-  name: 'Marco Bianchi',
-  role: 'Sviluppatore Software, Milano',
-  avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_1ecbeb962-1773804716277.png",
+  name: 'Mario',
+  role: 'Cliente verificato, Italia',
+  avatar: `https://ui-avatars.com/api/?name=Mario&background=7c3aed&color=fff&size=96`,
   rating: 5,
-  text: 'Ho acquistato Windows 11 Pro e Office 2021 insieme. Entrambe le chiavi hanno funzionato immediatamente. Risparmio enorme rispetto ai prezzi ufficiali Microsoft. Consiglio vivamente!',
-  product: 'Windows 11 Pro + Office 2021',
-  date: '12 Aprile 2025'
+  text: `AFFIDABILITA e SERIETA MASSIMA. Ho contattato Licenvo per un problema, sono stato assistito telefonicamente da Davide con massima cortesia. SUPERCONSIGLIATO!!!`,
+  product: 'Office 2019 Retail',
+  date: '19 Maggio 2026'
 },
 {
-  name: 'Giulia Ferrara',
-  role: 'Graphic Designer, Roma',
-  avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_1731e6860-1769021595481.png",
+  name: 'Cristian Schifone',
+  role: 'Cliente verificato, Italia',
+  avatar: `https://ui-avatars.com/api/?name=CS&background=0891b2&color=fff&size=96`,
   rating: 5,
-  text: 'Scettica all\'inizio, ma l\'abbonamento Adobe Photoshop ha funzionato perfettamente. La chiave arrivata via email in 30 secondi. Servizio clienti super disponibile. Acquisterò ancora!',
-  product: 'Autodesk AutoCAD',
-  date: '3 Maggio 2025'
+  text: `Ho scritto al supporto di sabato mattina aspettandomi risposta lunedi, invece mi hanno risposto dopo 5 minuti e mi hanno risolto il problema.`,
+  product: 'Licenza Software',
+  date: '16 Maggio 2026'
 },
 {
-  name: 'Luca Esposito',
-  role: 'Gamer, Napoli',
-  avatar: "https://img.rocket.new/generatedImages/rocket_gen_img_183a6e6e2-1772576293000.png",
+  name: 'Luca',
+  role: 'Cliente verificato, Italia',
+  avatar: `https://ui-avatars.com/api/?name=Luca&background=059669&color=fff&size=96`,
   rating: 5,
-  text: 'Xbox Game Pass Ultimate a meno di 30 euro per 3 mesi? Incredibile. Ho attivato il codice immediatamente sull\'account Xbox senza problemi. Il miglior sito per gaming keys in Italia.',
-  product: 'Xbox Game Pass Ultimate 3 Mesi',
-  date: '28 Aprile 2025'
+  text: `Ottima esperienza, sono anni che acquisto licenze su questo sito. L'assistenza risponde immediatamente ed e' cordiale.`,
+  product: 'Licenze Software',
+  date: '18 Aprile 2026'
 }];
 
 
@@ -50,7 +50,7 @@ export default function TestimonialsSection() {
       <div className="section-container">
         <div className="text-center mb-5">
           <h2 className="section-title mb-3">Cosa Dicono i Nostri Clienti</h2>
-          <p className="section-subtitle text-sm">Oltre 50.000 clienti soddisfatti in tutta Italia</p>
+          <p className="section-subtitle text-sm">Recensioni reali dei nostri clienti verificati</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">

@@ -19,6 +19,7 @@ const RefundPage = React.lazy(() => import('@/pages/RefundPage'));
 const CookiePolicyPage = React.lazy(() => import('@/pages/CookiePolicyPage'));
 const LegalNotesPage = React.lazy(() => import('@/pages/LegalNotesPage'));
 const AutodeskCollectionsPage = React.lazy(() => import('@/pages/AutodeskCollectionsPage'));
+const AutodeskCollectionDetailPage = React.lazy(() => import('@/pages/AutodeskCollectionDetailPage'));
 const NotFound = React.lazy(() => import('@/app/not-found'));
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
@@ -74,6 +75,7 @@ function Router() {
         <Route path="/cookie-policy">{() => <PageWrapper><CookiePolicyPage /></PageWrapper>}</Route>
         <Route path="/legal">{() => <PageWrapper><LegalNotesPage /></PageWrapper>}</Route>
         <Route path="/autodesk-collections">{() => <PageWrapper><AutodeskCollectionsPage /></PageWrapper>}</Route>
+        <Route path="/autodesk-collections/:id">{() => <PageWrapper><AutodeskCollectionDetailPage /></PageWrapper>}</Route>
         <Route>{() => <PageWrapper><NotFound /></PageWrapper>}</Route>
       </Switch>
     </Suspense>

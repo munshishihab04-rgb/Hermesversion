@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'wouter';
-import { getProductsByVendorAndType } from '@/lib/shopify';
+import { fetchProductByHandle } from '@/lib/shopify';
 import type { ShopifyProduct } from '@/lib/shopify';
 
-// Dati delle 3 Collection Autodesk
+const CDN = 'https://cdn.shopify.com/s/files/1/1049/6268/7317/files';
+
+// Dati delle 3 Collection Autodesk con icone badge
 const COLLECTIONS = [
   {
     id: 'aec',
@@ -13,15 +15,15 @@ const COLLECTIONS = [
     subtitle: 'Architecture, Engineering & Construction',
     description: 'La suite completa per progettisti, ingegneri e costruttori. Oltre 15 software Autodesk in un unico abbonamento: AutoCAD, Revit, Civil 3D, Navisworks e molto altro.',
     color: '#0052CC',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
-        <rect x="4" y="28" width="40" height="16" rx="2" fill="#0052CC" opacity="0.15"/>
-        <polygon points="24,6 44,28 4,28" fill="#0052CC" opacity="0.3"/>
-        <polygon points="24,10 40,28 8,28" fill="#0052CC"/>
-        <rect x="18" y="28" width="12" height="16" fill="#0052CC"/>
-      </svg>
-    ),
-    software: ['AutoCAD', 'Revit', 'Civil 3D', 'Navisworks Manage', 'InfraWorks', 'FormIt Pro', 'AutoCAD Architecture', 'AutoCAD MEP'],
+    software: [
+      { name: 'AutoCAD', image: `${CDN}/autocad-2023-simplified-badge-75x75.png` },
+      { name: 'Revit', image: `${CDN}/revit-2023-simplified-badge-75x75.png` },
+      { name: 'Civil 3D', image: `${CDN}/civil-3d-2023-simplified-badge-75x75.png` },
+      { name: 'Navisworks', image: `${CDN}/navisworks-simulate-2023-simplified-badge-75x75.png` },
+      { name: 'Advance Steel', image: `${CDN}/adsk-icon-badge-75x75.png` },
+      { name: 'InfraWorks', image: `${CDN}/adsk-icon-badge-75x75.png` },
+      { name: 'ReCap Pro', image: `${CDN}/recap-pro-2023-simplified-badge-75x75.png` },
+    ],
     idealFor: ['Studi di architettura', 'Ingegneria civile', 'Costruzioni e cantieri', 'Pianificazione urbana'],
   },
   {
@@ -32,18 +34,14 @@ const COLLECTIONS = [
     subtitle: 'Product Design & Manufacturing',
     description: 'La suite completa per progettisti meccanici e produzione industriale. Inventor, Fusion 360, AutoCAD Mechanical, Vault e strumenti CAM avanzati.',
     color: '#FF6B35',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
-        <circle cx="24" cy="24" r="14" stroke="#FF6B35" strokeWidth="3" fill="none" opacity="0.3"/>
-        <circle cx="24" cy="24" r="8" fill="#FF6B35" opacity="0.4"/>
-        <circle cx="24" cy="24" r="4" fill="#FF6B35"/>
-        <rect x="22" y="4" width="4" height="8" rx="2" fill="#FF6B35"/>
-        <rect x="22" y="36" width="4" height="8" rx="2" fill="#FF6B35"/>
-        <rect x="4" y="22" width="8" height="4" rx="2" fill="#FF6B35"/>
-        <rect x="36" y="22" width="8" height="4" rx="2" fill="#FF6B35"/>
-      </svg>
-    ),
-    software: ['Inventor Professional', 'Fusion 360', 'AutoCAD Mechanical', 'AutoCAD Electrical', 'Vault Professional', 'HSMWorks', 'Nastran In-CAD'],
+    software: [
+      { name: 'Inventor', image: `${CDN}/inventor-professional-2023-simplified-badge-75x75.png` },
+      { name: 'Fusion 360', image: `${CDN}/fusion-360-2023-simplified-badge-75x75.png` },
+      { name: 'AutoCAD', image: `${CDN}/autocad-2023-simplified-badge-75x75.png` },
+      { name: 'AutoCAD Electrical', image: `${CDN}/adsk-icon-badge-75x75.png` },
+      { name: 'ReCap Pro', image: `${CDN}/recap-pro-2023-simplified-badge-75x75.png` },
+      { name: 'Navisworks', image: `${CDN}/navisworks-simulate-2023-simplified-badge-75x75.png` },
+    ],
     idealFor: ['Progettazione meccanica', 'Industria manifatturiera', 'Automotive', 'Elettronica industriale'],
   },
   {
@@ -52,17 +50,16 @@ const COLLECTIONS = [
     title: 'M&E Collection',
     fullTitle: 'Autodesk Media & Entertainment Collection',
     subtitle: 'Media & Entertainment',
-    description: 'La suite per animatori, artisti 3D e professionisti VFX. Maya, 3ds Max, Arnold renderer e tutti gli strumenti del cinema e dell\'intrattenimento digitale.',
+    description: "La suite per animatori, artisti 3D e professionisti VFX. Maya, 3ds Max, Arnold renderer e tutti gli strumenti del cinema e dell'intrattenimento digitale.",
     color: '#6554C0',
-    icon: (
-      <svg viewBox="0 0 48 48" fill="none" className="w-12 h-12">
-        <rect x="4" y="10" width="40" height="28" rx="4" fill="#6554C0" opacity="0.2"/>
-        <polygon points="20,16 34,24 20,32" fill="#6554C0"/>
-        <circle cx="38" cy="12" r="4" fill="#6554C0" opacity="0.5"/>
-        <circle cx="38" cy="12" r="2" fill="#6554C0"/>
-      </svg>
-    ),
-    software: ['Maya', '3ds Max', 'Arnold Renderer', 'MotionBuilder', 'Mudbox', 'Flame'],
+    software: [
+      { name: 'Maya', image: `${CDN}/maya-2023-simplified-badge-75x75.png` },
+      { name: '3ds Max', image: `${CDN}/3ds-max-2023-simplified-badge-75x75.png` },
+      { name: 'Arnold', image: `${CDN}/arnold-2023-simplified-badge-75x75.png` },
+      { name: 'MotionBuilder', image: `${CDN}/adsk-icon-badge-75x75.png` },
+      { name: 'Mudbox', image: `${CDN}/mudbox-2023-simplified-badge-75x75.png` },
+      { name: 'Flame', image: `${CDN}/flame-2023-simplified-badge-75x75.png` },
+    ],
     idealFor: ['Animazione 3D', 'Effetti visivi (VFX)', 'Sviluppo videogiochi', 'Cinema e broadcast'],
   },
 ];
@@ -81,7 +78,13 @@ function CollectionCard({ collection, product }: CollectionCardProps) {
       {/* Header colorato */}
       <div className="p-6 border-b border-gray-100" style={{ background: `${collection.color}08` }}>
         <div className="flex items-start gap-4">
-          <div className="flex-shrink-0">{collection.icon}</div>
+          <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${collection.color}15` }}>
+            <img
+              src={collection.software[0].image}
+              alt={collection.title}
+              className="w-8 h-8 object-contain"
+            />
+          </div>
           <div>
             <div className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: collection.color }}>
               Autodesk Collection
@@ -96,14 +99,24 @@ function CollectionCard({ collection, product }: CollectionCardProps) {
         {/* Descrizione */}
         <p className="text-gray-600 text-sm leading-relaxed">{collection.description}</p>
 
-        {/* Software inclusi */}
+        {/* Software inclusi con icone */}
         <div>
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Software inclusi</p>
-          <div className="flex flex-wrap gap-1.5">
+          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Software inclusi</p>
+          <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-4 gap-2">
             {collection.software.map(sw => (
-              <span key={sw} className="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 font-medium">
-                {sw}
-              </span>
+              <div key={sw.name} className="flex flex-col items-center gap-1" title={sw.name}>
+                <div className="w-10 h-10 rounded-lg bg-gray-50 border border-gray-100 flex items-center justify-center p-1">
+                  <img
+                    src={sw.image}
+                    alt={sw.name}
+                    className="w-7 h-7 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <span className="text-[9px] text-gray-500 text-center leading-tight truncate w-full">
+                  {sw.name}
+                </span>
+              </div>
             ))}
           </div>
         </div>
@@ -161,19 +174,12 @@ export default function AutodeskCollectionsPage() {
   useEffect(() => {
     async function load() {
       try {
-        // Carica i prodotti Collection da Shopify
-        const handles = [
-          'autodesk-aec-collection',
-          'autodesk-pdm-collection',
-          'autodesk-me-collection',
-        ];
         const map: Record<string, ShopifyProduct | null> = {};
-        for (const h of handles) {
+        for (const coll of COLLECTIONS) {
           try {
-            const { fetchProductByHandle } = await import('@/lib/shopify');
-            map[h] = await fetchProductByHandle(h);
+            map[coll.handle] = await fetchProductByHandle(coll.handle);
           } catch {
-            map[h] = null;
+            map[coll.handle] = null;
           }
         }
         setProducts(map);
@@ -191,11 +197,13 @@ export default function AutodeskCollectionsPage() {
       {/* Hero */}
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 py-14 text-center">
-          {/* Autodesk logo badge */}
+          {/* Autodesk badge */}
           <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 rounded-full px-4 py-1.5 mb-6">
-            <svg viewBox="0 0 20 20" className="w-4 h-4 text-[#0052CC]" fill="currentColor">
-              <path d="M10 2L2 7v6l8 5 8-5V7L10 2z"/>
-            </svg>
+            <img
+              src={`${CDN}/adsk-icon-badge-75x75.png`}
+              alt="Autodesk"
+              className="w-5 h-5 object-contain"
+            />
             <span className="text-sm font-semibold text-[#0052CC]">Autodesk Partner Ufficiale</span>
           </div>
           <h1 className="text-4xl font-black text-gray-900 mb-4">
@@ -240,39 +248,37 @@ export default function AutodeskCollectionsPage() {
           </div>
         )}
 
-        {/* Confronto Collection */}
+        {/* Confronto */}
         <div className="mt-14">
           <h2 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Confronto Collection
           </h2>
-          <div className="overflow-x-auto -mx-4 sm:mx-0"><div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden" style={{minWidth:"480px"}}>
-            {/* Header */}
-            <div className="grid grid-cols-4 min-w-[500px] bg-gray-50 border-b border-gray-100">
-              <div className="p-4 text-sm font-semibold text-gray-500">Caratteristica</div>
-              {COLLECTIONS.map(c => (
-                <div key={c.id} className="p-4 text-center">
-                  <div className="text-sm font-bold text-gray-900">{c.title}</div>
-                  <div className="text-xs text-gray-400 mt-0.5">{c.subtitle}</div>
+          <div className="overflow-x-auto -mx-4 sm:mx-0">
+            <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden min-w-[480px]">
+              <div className="grid grid-cols-4 bg-gray-50 border-b border-gray-100">
+                <div className="p-4 text-sm font-semibold text-gray-500">Caratteristica</div>
+                {COLLECTIONS.map(c => (
+                  <div key={c.id} className="p-4 text-center">
+                    <div className="text-sm font-bold text-gray-900">{c.title}</div>
+                  </div>
+                ))}
+              </div>
+              {[
+                { label: 'Settore', values: ['Edilizia & Infrastrutture', 'Meccanica & Manifattura', 'Cinema & Animazione'] },
+                { label: 'Software principali', values: ['AutoCAD, Revit, Civil 3D', 'Inventor, Fusion 360', 'Maya, 3ds Max, Arnold'] },
+                { label: 'N° software inclusi', values: ['15+', '10+', '6+'] },
+                { label: 'Prezzo mensile', values: ['da €14,99', 'da €14,99', 'da €14,99'] },
+                { label: 'Prezzo triennale', values: ['da €87,99', 'da €87,99', 'da €87,99'] },
+              ].map((row, i) => (
+                <div key={row.label} className={`grid grid-cols-4 border-b border-gray-50 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
+                  <div className="p-4 text-sm font-medium text-gray-600">{row.label}</div>
+                  {row.values.map((v, j) => (
+                    <div key={j} className="p-4 text-center text-sm text-gray-700">{v}</div>
+                  ))}
                 </div>
               ))}
             </div>
-            {/* Rows */}
-            {[
-              { label: 'Settore', values: ['Edilizia & Infrastrutture', 'Meccanica & Manifattura', 'Cinema & Animazione'] },
-              { label: 'Software principali', values: ['AutoCAD, Revit, Civil 3D', 'Inventor, Fusion 360, AutoCAD', 'Maya, 3ds Max, Arnold'] },
-              { label: 'N° software inclusi', values: ['15+', '10+', '6+'] },
-              { label: 'Prezzo mensile', values: ['€14,99', '€14,99', '€14,99'] },
-              { label: 'Prezzo triennale', values: ['€87,99', '€87,99', '€87,99'] },
-            ].map((row, i) => (
-              <div key={row.label} className={`grid grid-cols-4 border-b border-gray-50 ${i % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
-                <div className="p-4 text-sm font-medium text-gray-600">{row.label}</div>
-                {row.values.map((v, j) => (
-                  <div key={j} className="p-4 text-center text-sm text-gray-700">{v}</div>
-                ))}
-              </div>
-            ))}
           </div>
-        </div>
         </div>
 
         {/* FAQ */}
@@ -281,20 +287,20 @@ export default function AutodeskCollectionsPage() {
           <div className="space-y-4">
             {[
               {
-                q: 'Qual è la differenza tra una Collection e un singolo prodotto Autodesk?',
-                a: 'Le Collection includono una suite completa di software per il tuo settore a un prezzo vantaggioso. Acquistando la Collection hai accesso a tutti i software inclusi con un unico abbonamento.'
+                q: "Qual è la differenza tra una Collection e un singolo prodotto Autodesk?",
+                a: "Le Collection includono una suite completa di software per il tuo settore a un prezzo vantaggioso. Acquistando la Collection hai accesso a tutti i software inclusi con un unico abbonamento."
               },
               {
-                q: 'Come ricevo la licenza dopo l\'acquisto?',
-                a: 'Ricevi le istruzioni di attivazione via email entro 24 ore dall\'acquisto. La licenza viene attivata direttamente sul tuo account Autodesk.'
+                q: "Come ricevo la licenza dopo l'acquisto?",
+                a: "Ricevi le istruzioni di attivazione via email entro 24 ore dall'acquisto. La licenza viene attivata direttamente sul tuo account Autodesk."
               },
               {
-                q: 'Posso usare la Collection su più computer?',
-                a: 'Sì, l\'abbonamento Autodesk permette l\'installazione su più dispositivi. Puoi usare il software su 3 dispositivi contemporaneamente con lo stesso account.'
+                q: "Posso usare la Collection su più computer?",
+                a: "Sì, l'abbonamento Autodesk permette l'installazione su più dispositivi. Puoi usare il software su 3 dispositivi contemporaneamente con lo stesso account."
               },
               {
-                q: 'Cosa include l\'aggiornamento?',
-                a: 'L\'abbonamento include sempre la versione più recente del software e tutti gli aggiornamenti rilasciati durante il periodo di abbonamento.'
+                q: "Cosa include l'aggiornamento?",
+                a: "L'abbonamento include sempre la versione più recente del software e tutti gli aggiornamenti rilasciati durante il periodo di abbonamento."
               },
             ].map((faq, i) => (
               <details key={i} className="bg-white rounded-xl border border-gray-100 p-5 group">
