@@ -7,7 +7,7 @@ import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
 import { getProductById } from '@/data/products';
-import { fetchProductById, shopifyProductToProduct, createCart } from '@/lib/shopify';
+import { fetchProductById, fetchProductByHandle, shopifyProductToProduct, createCart } from '@/lib/shopify';
 import HoppyTrustBadges, { HoppyPaymentIcons } from '@/components/HoppyTrustBadges';
 import type { ShopifyProduct } from '@/lib/shopify';
 import { useShopifyProducts } from '@/hooks/useShopifyProducts';
@@ -333,6 +333,7 @@ export default function ProductDetailClient() {
   const searchStr = useSearch();
   const urlParams = new URLSearchParams(searchStr);
   const productId = urlParams.get('id') || '1';
+  const productHandle = urlParams.get('handle') || '';
 
   const { products: shopifyProducts } = useShopifyProducts();
   const [product, setProduct] = useState<(Product & { variantId?: string }) | null>(null);
@@ -391,11 +392,13 @@ export default function ProductDetailClient() {
   useEffect(() => {
     setLoadingProduct(true);
     setActiveImage(0);
-    fetchProductById(productId)
+    const fetchFn = productHandle
+      ? fetchProductByHandle(productHandle)
+      : fetchProductById(productId);
+    fetchFn
       .then((sp) => {
         if (sp) {
           setProduct(shopifyProductToProduct(sp));
-          // Carica tutte le varianti con ID, titolo, prezzo
           const variants = sp.variants.nodes.map(v => ({
             id: v.id,
             title: v.title,
@@ -403,14 +406,13 @@ export default function ProductDetailClient() {
             available: v.availableForSale,
           }));
           setShopifyVariants(variants);
-          // Seleziona di default la variante "Mensile" se esiste, altrimenti la prima
           const mensile = variants.find(v => v.title.toLowerCase().includes('mensile'));
           setSelectedVariantId(mensile?.id ?? variants[0]?.id ?? '');
         } else { const fb = getProductById(productId); if (fb) setProduct(fb); }
       })
       .catch(() => { const fb = getProductById(productId); if (fb) setProduct(fb); })
       .finally(() => setLoadingProduct(false));
-  }, [productId]);
+  }, [productId, productHandle]);
 
   if (loadingProduct || !product) {
     return (
