@@ -29,9 +29,9 @@ const supportCategories = [
     icon: 'DocumentTextIcon',
     title: 'Fatturazione',
     desc: 'Richiesta fattura, P.IVA, split payment e documentazione fiscale.',
-    color: 'text-purple-600',
-    bg: 'bg-purple-50',
-    border: 'border-purple-200',
+    color: 'text-teal-600',
+    bg: 'bg-teal-50',
+    border: 'border-teal-200',
     link: '/faq#fatturazione',
     tag: null,
     tagColor: '',
@@ -256,7 +256,7 @@ export default function HelpCenterPage() {
                 rel="noopener noreferrer"
                 className="text-emerald-600 font-semibold text-sm hover:underline"
               >
-                +39 351 479 4187
+                +39 393 684 1051
               </a>
               <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Icon name="ClockIcon" size={13} />
@@ -265,12 +265,12 @@ export default function HelpCenterPage() {
             </div>
 
             {/* Orari */}
-            <div className="glass-card rounded-2xl p-6 border border-purple-200 bg-purple-50/50">
-              <div className="w-11 h-11 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-4">
+            <div className="glass-card rounded-2xl p-6 border border-teal-200 bg-teal-50/50">
+              <div className="w-11 h-11 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600 mb-4">
                 <Icon name="CalendarDaysIcon" size={22} />
               </div>
               <h3 className="font-bold text-foreground text-sm mb-1">Orari Supporto</h3>
-              <p className="text-purple-600 font-semibold text-sm">Lun–Sab 8:00–20:00</p>
+              <p className="text-teal-600 font-semibold text-sm">Lun–Sab 8:00–20:00</p>
               <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
                 <Icon name="CheckCircleIcon" size={13} className="text-emerald-500" />
                 Anche il sabato mattina

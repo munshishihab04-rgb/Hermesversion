@@ -104,7 +104,7 @@ export default function ContactClient() {
                 Scrivici su WhatsApp
               </a>
               <p className="text-center text-xs text-emerald-700 mt-2 font-medium">
-                +39 351 479 4187 · Lun–Ven 9:00–18:00
+                +39 393 684 1051 · Lun–Ven 9:00–18:00
               </p>
             </div>
 
@@ -129,9 +129,9 @@ export default function ContactClient() {
             </div>
 
             {/* PEC */}
-            <div className="glass-card rounded-2xl p-5 border border-purple-200 bg-purple-50/40">
+            <div className="glass-card rounded-2xl p-5 border border-teal-200 bg-teal-50/40">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600">
+                <div className="w-10 h-10 rounded-xl bg-teal-100 flex items-center justify-center text-teal-600">
                   <Icon name="DocumentTextIcon" size={20} />
                 </div>
                 <div>
@@ -139,7 +139,7 @@ export default function ContactClient() {
                   <p className="text-xs text-muted-foreground">Comunicazioni ufficiali</p>
                 </div>
               </div>
-              <a href="mailto:munshishihab@legalmail.it" className="text-purple-600 font-semibold text-sm hover:underline">
+              <a href="mailto:munshishihab@legalmail.it" className="text-teal-600 font-semibold text-sm hover:underline">
                 munshishihab@legalmail.it
               </a>
             </div>

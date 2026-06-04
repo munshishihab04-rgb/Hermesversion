@@ -69,7 +69,7 @@ const faqSections: FaqSection[] = [
           <p>
             Gli ordini di licenze digitali vengono elaborati immediatamente. Se non hai ancora ricevuto o attivato la licenza,
             contattaci subito a <a href="mailto:assistenza@licenvo.com" className="text-primary hover:underline">assistenza@licenvo.com</a>{' '}
-            o su WhatsApp (+39 351 479 4187) e valuteremo insieme la situazione. Una volta attivata, la licenza non è annullabile.
+            o su WhatsApp (+39 393 684 1051) e valuteremo insieme la situazione. Una volta attivata, la licenza non è annullabile.
           </p>
         ),
       },
@@ -293,7 +293,7 @@ const faqSections: FaqSection[] = [
         a: (
           <p>
             Contattaci immediatamente a <a href="mailto:assistenza@licenvo.com" className="text-primary hover:underline">assistenza@licenvo.com</a>{' '}
-            oppure su WhatsApp (+39 351 479 4187). Il nostro team verificherà la chiave e, se il problema è confermato,
+            oppure su WhatsApp (+39 393 684 1051). Il nostro team verificherà la chiave e, se il problema è confermato,
             ti invieremo una chiave sostitutiva o procederemo al rimborso completo senza costi aggiuntivi.
             Questo servizio è coperto dalla nostra garanzia.
           </p>
@@ -317,7 +317,7 @@ const faqSections: FaqSection[] = [
     id: 'fatturazione',
     title: 'Fatturazione e Note Legali',
     icon: 'DocumentTextIcon',
-    color: 'text-purple-600',
+    color: 'text-teal-600',
     items: [
       {
         q: 'Come posso richiedere la fattura?',

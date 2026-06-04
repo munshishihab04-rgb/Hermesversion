@@ -4,7 +4,7 @@
 // P.IVA: 04358941203 | REA: BO-588058
 // PEC: munshishihab@legalmail.it
 // Sito: licenvo.com | Email: assistenza@licenvo.com
-// Tel/WhatsApp: +39 351 479 4187
+// Tel/WhatsApp: +39 393 684 1051
 
 export const privacyContent = `
 <h2>1. Titolare del Trattamento</h2>
@@ -16,7 +16,7 @@ export const privacyContent = `
   <li><strong>Numero REA:</strong> BO-588058</li>
   <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
   <li><strong>Email:</strong> assistenza@licenvo.com</li>
-  <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+  <li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 </ul>
 <p>Per qualsiasi questione relativa alla privacy, puoi contattarci a: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a></p>
 
@@ -113,7 +113,7 @@ export const termsContent = `
   <li><strong>Numero REA:</strong> BO-588058</li>
   <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
   <li><strong>Email supporto:</strong> assistenza@licenvo.com</li>
-  <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+  <li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 </ul>
 
 <p>Effettuando un ordine sul Sito, il Cliente dichiara di aver letto, compreso e accettato integralmente le presenti CGV. I Consumatori (persone fisiche che acquistano per scopi estranei all'attività professionale) beneficiano di tutte le tutele previste dal D.lgs. 206/2005 ("Codice del Consumo") e da ogni altra norma inderogabile applicabile.</p>
@@ -159,7 +159,7 @@ export const termsContent = `
 <p>Tuttavia, il Titolare offre volontariamente una <strong>garanzia commerciale di 30 giorni</strong>: in caso di prodotto non funzionante o non conforme, il Cliente ha diritto a sostituzione gratuita o rimborso completo. Consulta la <a href="/refund">Politica di Rimborso</a>.</p>
 
 <h2>7. Garanzia e Assistenza</h2>
-<p>Tutte le licenze vendute su licenvo.com sono originali e attivabili sui server ufficiali del produttore. In caso di problemi tecnici contattaci entro 30 giorni dall'acquisto a: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp +39 351 479 4187.</p>
+<p>Tutte le licenze vendute su licenvo.com sono originali e attivabili sui server ufficiali del produttore. In caso di problemi tecnici contattaci entro 30 giorni dall'acquisto a: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp +39 393 684 1051.</p>
 
 <h2>8. Limitazione di Responsabilità</h2>
 <p>Il Titolare non è responsabile per:</p>
@@ -180,7 +180,7 @@ export const termsContent = `
 <h2>11. Contatti</h2>
 <p>Per qualsiasi informazione, reclamo o richiesta:<br>
 Email: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a><br>
-WhatsApp: <a href="https://wa.me/393936841051">+39 351 479 4187</a><br>
+WhatsApp: <a href="https://wa.me/393936841051">+39 393 684 1051</a><br>
 Orario: Lunedì–Venerdì 08:00–17:00</p>
 `;
 
@@ -218,7 +218,7 @@ export const refundContent = `
 
 <h2>3. Come Richiedere un Rimborso o Sostituzione</h2>
 <ol>
-  <li>Contattaci entro 30 giorni dall'acquisto a <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp <a href="https://wa.me/393936841051">+39 351 479 4187</a></li>
+  <li>Contattaci entro 30 giorni dall'acquisto a <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp <a href="https://wa.me/393936841051">+39 393 684 1051</a></li>
   <li>Indica: numero ordine, prodotto acquistato, descrizione del problema</li>
   <li>Allega eventuali screenshot dell'errore</li>
   <li>Il nostro team risponde entro <strong>24 ore lavorative</strong> (Lun–Ven 08:00–17:00)</li>
@@ -232,7 +232,7 @@ export const refundContent = `
 <h2>5. Contatti</h2>
 <p>
   Email: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a><br>
-  WhatsApp: <a href="https://wa.me/393936841051">+39 351 479 4187</a><br>
+  WhatsApp: <a href="https://wa.me/393936841051">+39 393 684 1051</a><br>
   PEC: munshishihab@legalmail.it<br>
   Orario: Lunedì–Venerdì 08:00–17:00
 </p>

@@ -17,9 +17,9 @@ const steps = [
     icon: 'ShoppingCartIcon',
     title: 'Aggiungilo al carrello',
     desc: 'Clicca su "Aggiungi al carrello" oppure usa "Acquista ora" per andare direttamente al checkout.',
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/20',
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/10',
+    border: 'border-teal-500/20',
   },
   {
     number: '03',
@@ -106,7 +106,7 @@ export default function HowToBuySection() {
           </div>
           <Link
             href="/product-catalog"
-            className="btn-primary flex items-center gap-2 text-sm font-bold px-8 py-3 neon-glow-purple shrink-0"
+            className="btn-primary flex items-center gap-2 text-sm font-bold px-8 py-3 neon-glow-teal shrink-0"
           >
             <Icon name="BoltIcon" size={15} variant="solid" />
             Vai al Catalogo

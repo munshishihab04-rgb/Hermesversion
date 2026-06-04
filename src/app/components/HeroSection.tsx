@@ -10,9 +10,6 @@ const floatingCards = [
     name: 'Windows 11 Pro',
     sub: 'Licenza Originale Retail',
     price: '€19,90',
-    compare: '€259,00',
-    badge: '-92%',
-    badgeColor: 'discount-badge',
     glow: true,
     style: { top: '0%', right: '8px' },
     parallax: { x: -8, y: -6 },
@@ -24,8 +21,6 @@ const floatingCards = [
     name: 'AutoCAD',
     sub: 'Abbonamento 1 Anno',
     price: '€14,99/mese',
-    badge: '-65%',
-    badgeColor: 'bg-amber-500/20 text-amber-400',
     style: { top: '38%', left: '0px' },
     parallax: { x: 6, y: 8 },
   },
@@ -36,8 +31,6 @@ const floatingCards = [
     name: 'Autodesk AEC Collection',
     sub: 'Abbonamento Mensile',
     price: '€87,99',
-    badge: '-72%',
-    badgeColor: 'bg-emerald-500/20 text-emerald-400',
     style: { bottom: '8%', right: '16px' },
     parallax: { x: -5, y: 10 },
   },
@@ -62,7 +55,7 @@ export default function HeroSection() {
       {/* Background */}
       <div className="absolute inset-0 mesh-bg" />
       <div
-        className="absolute w-[600px] h-[600px] blob-purple opacity-60 pointer-events-none"
+        className="absolute w-[600px] h-[600px] blob-teal opacity-60 pointer-events-none"
         style={{
           top: '10%', left: '5%',
           transform: `translate(${mousePos.x * 20}px, ${mousePos.y * 15}px)`,
@@ -100,7 +93,7 @@ export default function HeroSection() {
             <div className="space-y-3">
               <h1 className="text-hero-xl font-extrabold text-foreground leading-[1.0]">
                 Licenze
-                <span className="block gradient-text-purple">Software</span>
+                <span className="block gradient-text-teal">Software</span>
                 <span className="block text-foreground/60 font-light">al Miglior Prezzo</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
@@ -111,7 +104,7 @@ export default function HeroSection() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
-              <Link href="/product-catalog" className="btn-primary flex items-center gap-2 text-sm font-bold px-8 py-3.5 neon-glow-purple">
+              <Link href="/product-catalog" className="btn-primary flex items-center gap-2 text-sm font-bold px-8 py-3.5 neon-glow-teal">
                 <Icon name="BoltIcon" size={16} variant="solid" />
                 Sfoglia Catalogo
               </Link>
@@ -141,7 +134,7 @@ export default function HeroSection() {
             {floatingCards.map((card, i) => (
               <div
                 key={card.name}
-                className={`absolute ${card.glow ? 'glass-card neon-glow-purple' : 'glass-card-light border border-border'} rounded-2xl p-${card.glow ? '5' : '4'} ${card.glow ? 'w-72' : 'w-64'}`}
+                className={`absolute ${card.glow ? 'glass-card neon-glow-teal' : 'glass-card-light border border-border'} rounded-2xl p-${card.glow ? '5' : '4'} ${card.glow ? 'w-72' : 'w-64'}`}
                 style={{
                   ...card.style,
                   transform: `translate(${mousePos.x * card.parallax.x}px, ${mousePos.y * card.parallax.y}px)`,
@@ -151,14 +144,12 @@ export default function HeroSection() {
                 {card.glow ? (
                   <>
                     <div className="flex items-start justify-between mb-4">
-                      <span className="discount-badge text-[10px] font-bold px-2 py-0.5 rounded-full">{card.badge}</span>
                       <span className="instant-badge text-[10px] px-2 py-0.5 rounded-full font-medium">⚡ Istantaneo</span>
                     </div>
                     <h3 className="font-bold text-foreground mb-1">{card.name}</h3>
                     <p className="text-xs text-muted-foreground mb-3">{card.sub}</p>
                     <div className="flex items-baseline gap-2">
                       <span className="price-mono text-2xl font-extrabold text-primary">{card.price}</span>
-                      {card.compare && <span className="price-mono text-sm text-muted-foreground line-through">{card.compare}</span>}
                     </div>
                   </>
                 ) : (
@@ -174,7 +165,6 @@ export default function HeroSection() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="price-mono font-bold text-primary">{card.price}</span>
-                      <span className={`text-[10px] ${card.badgeColor} px-2 py-0.5 rounded-full font-medium`}>{card.badge}</span>
                     </div>
                   </div>
                 )}

@@ -33,10 +33,10 @@ const trustItems = [
     icon: 'LockClosedIcon',
     title: 'Checkout Protetto Shopify',
     desc: 'Pagamento SSL con Visa, Mastercard, Apple Pay. Checkout gestito da Shopify — lo stesso di milioni di e-commerce.',
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/25',
-    glow: 'shadow-purple-500/10',
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/10',
+    border: 'border-teal-500/25',
+    glow: 'shadow-teal-500/10',
   },
 ];
 

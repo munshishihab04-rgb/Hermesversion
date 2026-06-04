@@ -41,7 +41,7 @@ Non è possibile procedere con il rimborso nei seguenti casi:
 ## 4. Come Richiedere un Rimborso
 
 1. **Contattaci entro 30 giorni** dall'acquisto tramite:
-   - Email: rimborsi@licenvo.it
+   - Email: assistenza@licenvo.com
    - Chat sul sito
    - Modulo di contatto
 
@@ -78,7 +78,7 @@ I rimborsi vengono elaborati tramite:
 
 ## 8. Contatti per Rimborsi
 
-Email dedicata: rimborsi@licenvo.it
+Email dedicata: assistenza@licenvo.com
 Chat: disponibile 24/7 sul sito
 Telefono: non disponibile (solo supporto scritto)
 

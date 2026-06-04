@@ -87,7 +87,7 @@ function getFaqItems(product: Product) {
       },
       {
         q: 'Qual è la differenza tra piano mensile e piano triennale?',
-        a: 'Il piano mensile (€14,99/mese) si rinnova automaticamente ogni mese e può essere disdetto in qualsiasi momento. Il piano triennale (€87,99) copre 3 anni a prezzo bloccato e offre un risparmio significativo rispetto al mensile. Entrambi includono gli stessi strumenti e aggiornamenti.'
+        a: 'Il piano mensile si rinnova automaticamente ogni mese al prezzo mensile indicato nella pagina prodotto e può essere disdetto in qualsiasi momento. Il piano triennale copre 3 anni al prezzo triennale indicato nella pagina prodotto, con un risparmio significativo rispetto al totale dei singoli mesi. Entrambi includono gli stessi strumenti e aggiornamenti.'
       },
       {
         q: 'Posso usare l\'abbonamento per uso commerciale?',
@@ -298,8 +298,8 @@ function VariantSelector({
 
   // Etichette descrittive per piano
   const META: Record<string, { sub: string; badge?: string; badgeColor?: string }> = {
-    mensile:    { sub: '€14,99/mese · Rinnovo mensile' },
-    triennale:  { sub: '€87,99 · Prezzo bloccato 3 anni', badge: 'Miglior Valore', badgeColor: 'bg-emerald-600' },
+    mensile:    { sub: 'Rinnovo mensile · Disdici quando vuoi' },
+    triennale:  { sub: 'Prezzo bloccato 3 anni', badge: 'Miglior Valore', badgeColor: 'bg-emerald-600' },
   };
 
   return (
@@ -472,7 +472,7 @@ function CollectionUpsellBanner({ product }: { product: Product }) {
           <div className="bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 mb-4 flex items-start gap-2">
             <ArrowTrendingUpIcon className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
             <p className="text-xs text-emerald-700 font-semibold">
-              Stesso prezzo mensile (€14,99/mese) · {upsell.collectionTitle} include tutto questo e molto di più
+              Stesso prezzo mensile · {upsell.collectionTitle} include tutto questo e molto di più
             </p>
           </div>
 
@@ -555,7 +555,7 @@ function ProductTemplate({ product }: { product: Product }) {
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { icon: 'ShieldCheckIcon', label: 'BitLocker & Sicurezza Avanzata', color: 'bg-blue-50 border-blue-200 text-blue-700', iconColor: 'text-blue-500' },
-              { icon: 'ServerIcon', label: 'Hyper-V & Virtualizzazione', color: 'bg-purple-50 border-purple-200 text-purple-700', iconColor: 'text-purple-500' },
+              { icon: 'ServerIcon', label: 'Hyper-V & Virtualizzazione', color: 'bg-teal-50 border-teal-200 text-teal-700', iconColor: 'text-teal-500' },
               { icon: 'ComputerDesktopIcon', label: 'Remote Desktop Pro', color: 'bg-teal-50 border-teal-200 text-teal-700', iconColor: 'text-teal-500' },
               { icon: 'CalendarIcon', label: 'Supporto fino al 2031+', color: 'bg-emerald-50 border-emerald-200 text-emerald-700', iconColor: 'text-emerald-500' },
             ].map((f) => (
@@ -1046,9 +1046,9 @@ function ProductTemplate({ product }: { product: Product }) {
         return {
           icon: `${CDN}/maya-2023-simplified-badge-75x75.png`,
           accentColor: '#6554C0',
-          accentBg: 'bg-violet-50',
-          accentBorder: 'border-violet-200',
-          accentText: 'text-violet-700',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
           category: 'Animazione 3D · VFX · Videogiochi',
           tagline: 'Lo standard dell\'industria per animazione 3D, rigging, VFX e cinema',
           mainUse: 'Animazione character, VFX cinematografici, modellazione per film, serie TV e videogiochi',
@@ -1071,9 +1071,9 @@ function ProductTemplate({ product }: { product: Product }) {
         return {
           icon: `${CDN}/3ds-max-2023-simplified-badge-75x75.png`,
           accentColor: '#6554C0',
-          accentBg: 'bg-violet-50',
-          accentBorder: 'border-violet-200',
-          accentText: 'text-violet-700',
+          accentBg: 'bg-sky-50',
+          accentBorder: 'border-sky-200',
+          accentText: 'text-sky-700',
           category: 'Visualizzazione 3D · Architettura · VFX',
           tagline: 'Il leader per rendering architetturale, visualizzazione prodotto e animazione',
           mainUse: 'Rendering architetturale, animazione prodotto, VFX, visualizzazione interior design',
@@ -1423,7 +1423,7 @@ function ProductTemplate({ product }: { product: Product }) {
                 <h3 className="font-bold text-foreground">Piano Mensile</h3>
                 <span className="text-xs bg-muted text-muted-foreground px-2 py-0.5 rounded-full font-medium">Flessibile</span>
               </div>
-              <p className="text-2xl font-extrabold text-foreground mb-1">€14,99<span className="text-sm font-normal text-muted-foreground">/mese</span></p>
+              <p className="text-2xl font-extrabold text-foreground mb-1">Mensile</p>
               <p className="text-xs text-muted-foreground mb-3">Rinnovo automatico mensile · Disdici quando vuoi</p>
               <ul className="space-y-1 text-xs text-muted-foreground">
                 <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Accesso completo al software</li>
@@ -1439,8 +1439,8 @@ function ProductTemplate({ product }: { product: Product }) {
                 <h3 className="font-bold text-foreground">Piano Triennale</h3>
                 <span className="text-xs bg-emerald-100 text-emerald-700 border border-emerald-300 px-2 py-0.5 rounded-full font-bold">-80%</span>
               </div>
-              <p className="text-2xl font-extrabold text-emerald-700 mb-0.5">€87,99<span className="text-sm font-normal text-emerald-600">/3 anni</span></p>
-              <p className="text-xs text-emerald-600 font-semibold mb-1">€449,64 → €87,99 — <strong>Risparmi €361,65</strong></p>
+              <p className="text-2xl font-extrabold text-emerald-700 mb-0.5">Triennale<span className="text-sm font-normal text-emerald-600"> / 3 anni</span></p>
+              <p className="text-xs text-emerald-600 font-semibold mb-1">Un risparmio significativo rispetto al totale dei singoli mesi</p>
               <p className="text-xs text-muted-foreground mb-3">Prezzo bloccato per 3 anni</p>
               <ul className="space-y-1 text-xs text-emerald-700">
                 <li className="flex items-center gap-1.5"><Icon name="CheckCircleIcon" size={12} className="text-emerald-500" />Accesso completo al software</li>

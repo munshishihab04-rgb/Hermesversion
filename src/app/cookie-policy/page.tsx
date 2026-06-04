@@ -75,7 +75,7 @@ Questa Cookie Policy può essere aggiornata periodicamente. Ti consigliamo di co
 
 ## 8. Contatti
 
-Per domande sui cookie: privacy@licenvo.it
+Per domande sui cookie: assistenza@licenvo.com
 
 *Ultimo aggiornamento: 15 Maggio 2025*
 `;

@@ -147,9 +147,9 @@ const COLLECTIONS_DATA: Record<string, CollectionData> = {
     description:
       "La suite per artisti 3D, animatori e professionisti VFX. Maya per l'animazione character, 3ds Max per la visualizzazione architetturale, Arnold per il rendering fotorealistico — tutto in un abbonamento.",
     accentColor: '#6554C0',
-    accentLight: 'bg-violet-50',
-    accentText: 'text-violet-700',
-    accentBorder: 'border-violet-200',
+    accentLight: 'bg-sky-50',
+    accentText: 'text-sky-700',
+    accentBorder: 'border-sky-200',
     Icon: FilmIcon,
     toolCount: '10+',
     software: [

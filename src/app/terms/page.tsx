@@ -18,7 +18,7 @@ const htmlContent = `
 <li><strong>Numero REA:</strong> BO-588058</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Email supporto:</strong> supporto@licenvo.com</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 </ul>
 <p>Effettuando un ordine sul Sito, il Cliente dichiara di aver letto, compreso e accettato integralmente le presenti CGV. Le disposizioni che fanno riferimento ai Consumatori (come definiti alla Sezione 1) si applicano esclusivamente ai soggetti che rientrano in tale definizione. I Consumatori beneficiano di tutte le tutele previste dal Titolo III, Sezione II, del D.lgs. 6 settembre 2005, n. 206 ("Codice del Consumo") e da ogni altra norma inderogabile applicabile.</p>
 <p>Il Servizio Clienti di Licenvo è a disposizione per informazioni, chiarimenti, reclami e contestazioni ai recapiti sopra indicati, dal Lunedì al Venerdì dalle ore 08:00 alle ore 17:00. Il Titolare si rende disponibile — anche telefonicamente — ad offrire ai Clienti qualsiasi chiarimento riguardo al contenuto delle CGV, del Contratto e alla relativa disciplina, nonché in relazione a qualsiasi reclamo. Qualora il Cliente decida di non avvalersi del servizio telefonico, restano in ogni caso salvi e impregiudicati tutti i diritti e le facoltà riconosciuti dalla legge.</p>
@@ -117,7 +117,7 @@ const htmlContent = `
 <p>In caso di problemi con la licenza ricevuta (codice non funzionante, difficoltà di installazione o attivazione), il Cliente può contattare il Servizio Clienti tramite la pagina <a href="/contact">Contatti</a> oppure ai seguenti recapiti:</p>
 <ul>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 </ul>
 <p>Il Titolare si impegna a risolvere ogni problematica nel minor tempo possibile, fornendo — ove necessario — una chiave sostitutiva, assistenza tecnica o un rimborso completo.</p>
 <h3>4.4 Conferma di ricezione</h3>
@@ -142,7 +142,7 @@ const htmlContent = `
 Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia<br>
 Email: supporto@licenvo.com<br>
 PEC: munshishihab@legalmail.it<br>
-Telefono / WhatsApp: +39 351 479 4187</p>
+Telefono / WhatsApp: +39 393 684 1051</p>
 <p>della sua decisione di recedere dal presente contratto tramite una dichiarazione esplicita (ad esempio lettera inviata per posta, email o PEC). A tal fine può utilizzare il modulo tipo di recesso riportato alla Sezione 5.9, ma non è obbligatorio.</p>
 <p>Per rispettare il termine di recesso, è sufficiente che il Consumatore invii la comunicazione relativa all'esercizio del diritto di recesso <strong>prima della scadenza del periodo di recesso</strong>.</p>
 <p>Il diritto di recesso si applica a condizione che:</p>
@@ -179,7 +179,7 @@ Telefono / WhatsApp: +39 351 479 4187</p>
 <ul>
 <li>Inviare un'email a <strong>supporto@licenvo.com</strong></li>
 <li>Inviare una PEC a <strong>munshishihab@legalmail.it</strong></li>
-<li>Contattare il Servizio Clienti via <strong>WhatsApp al +39 351 479 4187</strong></li>
+<li>Contattare il Servizio Clienti via <strong>WhatsApp al +39 393 684 1051</strong></li>
 <li>Compilare e inviare il modulo tipo di recesso riportato alla Sezione 5.9</li>
 <li>Compilare il modulo di recesso disponibile nella pagina <a href="/refund">Politica di Reso e Rimborso</a> del Sito</li>
 </ul>
@@ -357,7 +357,7 @@ PEC: munshishihab@legalmail.it</p>
 <ul>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
 </ul>
 <p>Il Servizio Clienti è operativo dal Lunedì al Venerdì, dalle ore 08:00 alle ore 17:00.</p>

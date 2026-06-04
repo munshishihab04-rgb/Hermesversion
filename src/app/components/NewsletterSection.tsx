@@ -44,7 +44,7 @@ export default function NewsletterSection() {
         <div className="relative rounded-3xl overflow-hidden border border-primary/20">
           {/* Background */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-accent/5" />
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-40 blob-purple opacity-25 pointer-events-none" />
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-40 blob-teal opacity-25 pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-48 h-48 blob-cyan opacity-15 pointer-events-none" />
 
           <div className="relative z-10 grid lg:grid-cols-2 gap-8 p-8 md:p-12 items-center">
@@ -57,7 +57,7 @@ export default function NewsletterSection() {
               <div>
                 <h2 className="text-display font-extrabold text-foreground mb-2">
                   Offerte Esclusive
-                  <span className="block gradient-text-purple">Solo per Te</span>
+                  <span className="block gradient-text-teal">Solo per Te</span>
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   Iscriviti e ricevi le migliori offerte su licenze software prima di tutti. Niente spam, solo sconti veri.
@@ -110,7 +110,7 @@ export default function NewsletterSection() {
                   <button
                     type="submit"
                     disabled={sending}
-                    className="w-full btn-primary flex items-center justify-center gap-2 text-sm font-bold py-3.5 neon-glow-purple disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full btn-primary flex items-center justify-center gap-2 text-sm font-bold py-3.5 neon-glow-teal disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <Icon name="PaperAirplaneIcon" size={15} />
                     {sending ? 'Iscrizione…' : 'Iscriviti Gratis'}

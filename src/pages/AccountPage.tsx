@@ -35,7 +35,7 @@ function FinancialBadge({ status }: { status: string }) {
     PAID: { label: 'Pagato', classes: 'bg-green-50 text-green-700 border border-green-200' },
     PENDING: { label: 'In attesa', classes: 'bg-yellow-50 text-yellow-700 border border-yellow-200' },
     REFUNDED: { label: 'Rimborsato', classes: 'bg-blue-50 text-blue-700 border border-blue-200' },
-    PARTIALLY_REFUNDED: { label: 'Rimborso parziale', classes: 'bg-purple-50 text-purple-700 border border-purple-200' },
+    PARTIALLY_REFUNDED: { label: 'Rimborso parziale', classes: 'bg-teal-50 text-teal-700 border border-teal-200' },
     VOIDED: { label: 'Annullato', classes: 'bg-gray-100 text-gray-600 border border-gray-200' },
   };
   const s = map[status] ?? { label: status, classes: 'bg-gray-100 text-gray-600 border border-gray-200' };

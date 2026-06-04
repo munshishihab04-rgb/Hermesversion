@@ -25,7 +25,7 @@
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-neon-blue: var(--neon-blue);
-  --color-neon-purple: var(--neon-purple);
+  --color-neon-teal: var(--neon-teal);
   --color-neon-cyan: var(--neon-cyan);
   --color-neon-green: var(--neon-green);
   --color-neon-pink: var(--neon-pink);
@@ -82,7 +82,7 @@
 
   /* Extended palette */
   --neon-blue: #0052CC;
-  --neon-purple: #5243AA;
+  --neon-teal: #0D9488;
   --neon-cyan: #00B8D9;
   --neon-green: #00875A;
   --neon-pink: #FF5630;
@@ -162,7 +162,7 @@
     box-shadow: 0 4px 16px rgba(0, 82, 204, 0.28), 0 1px 3px rgba(0,0,0,0.1);
   }
 
-  .neon-glow-purple {
+  .neon-glow-teal {
     box-shadow: 0 4px 16px rgba(0, 82, 204, 0.28), 0 1px 3px rgba(0,0,0,0.1);
   }
 
@@ -182,7 +182,7 @@
     background-clip: text;
   }
 
-  .gradient-text-purple {
+  .gradient-text-teal {
     background: linear-gradient(135deg, #0052CC 0%, #2684FF 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -224,7 +224,7 @@
       #F8FAFF;
   }
 
-  .blob-purple {
+  .blob-teal {
     background: radial-gradient(circle, rgba(0, 82, 204, 0.08) 0%, transparent 70%);
     filter: blur(60px);
     border-radius: 9999px;

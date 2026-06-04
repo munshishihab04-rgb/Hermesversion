@@ -6,6 +6,7 @@ import { WishlistProvider } from '@/context/WishlistContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
+import CookieBanner from '@/components/CookieBanner';
 
 // Lazy-loaded page components for code splitting
 const HomePage = React.lazy(() => import('@/pages/HomePage'));
@@ -19,6 +20,9 @@ const TermsPage = React.lazy(() => import('@/pages/TermsPage'));
 const RefundPage = React.lazy(() => import('@/pages/RefundPage'));
 const CookiePolicyPage = React.lazy(() => import('@/pages/CookiePolicyPage'));
 const LegalNotesPage = React.lazy(() => import('@/pages/LegalNotesPage'));
+const ShippingPage = React.lazy(() => import("@/pages/ShippingPage"));
+const AboutPage = React.lazy(() => import("@/pages/AboutPage"));
+const FatturazionePage = React.lazy(() => import("@/pages/FatturaziPage"));
 const AutodeskCollectionsPage = React.lazy(() => import('@/pages/AutodeskCollectionsPage'));
 const AutodeskCollectionDetailPage = React.lazy(() => import('@/pages/AutodeskCollectionDetailPage'));
 const NotFound = React.lazy(() => import('@/app/not-found'));
@@ -32,6 +36,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen bg-background">
           <Header />
           <CartDrawer />
+          <CookieBanner />
           <main className="pt-0">
             {children}
           </main>
@@ -78,6 +83,9 @@ function Router() {
         <Route path="/refund">{() => <PageWrapper><RefundPage /></PageWrapper>}</Route>
         <Route path="/cookie-policy">{() => <PageWrapper><CookiePolicyPage /></PageWrapper>}</Route>
         <Route path="/legal">{() => <PageWrapper><LegalNotesPage /></PageWrapper>}</Route>
+        <Route path="/shipping">{() => <PageWrapper><ShippingPage /></PageWrapper>}</Route>
+        <Route path="/about">{() => <PageWrapper><AboutPage /></PageWrapper>}</Route>
+        <Route path="/fatturazione">{() => <PageWrapper><FatturazionePage /></PageWrapper>}</Route>
         <Route path="/autodesk-collections">{() => <PageWrapper><AutodeskCollectionsPage /></PageWrapper>}</Route>
         <Route path="/autodesk-collections/:id">{() => <PageWrapper><AutodeskCollectionDetailPage /></PageWrapper>}</Route>
         <Route path="/account">{() => <PageWrapper><AccountPage /></PageWrapper>}</Route>

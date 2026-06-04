@@ -14,9 +14,9 @@ export const metadata = {
 const content = `
 ## 1. Titolare del Trattamento
 
-Licenvo S.r.l., con sede legale in Via Roma 42, 20121 Milano MI, P.IVA IT04358941203 (di seguito "Licenvo", "noi" o "ci"), è il Titolare del Trattamento dei dati personali raccolti tramite il sito web licenvo.it.
+DIGITALSOFT DI MUNSHI SHIHAB, con sede legale in Via Aldo Pio Manuzio 24, 40132 Bologna (BO), P.IVA IT04358941203 (di seguito "Licenvo", "noi" o "ci"), è il Titolare del Trattamento dei dati personali raccolti tramite il sito web licenvo.com.
 
-Per qualsiasi questione relativa alla privacy, puoi contattarci a: privacy@licenvo.it
+Per qualsiasi questione relativa alla privacy, puoi contattarci a: assistenza@licenvo.com
 
 ## 2. Dati Raccolti
 
@@ -78,7 +78,7 @@ Ai sensi del GDPR, hai il diritto di:
 - **Opposizione**: opporti al trattamento per marketing
 - **Limitazione**: limitare il trattamento in certi casi
 
-Per esercitare questi diritti: privacy@licenvo.it
+Per esercitare questi diritti: assistenza@licenvo.com
 
 ## 8. Cookie
 

@@ -60,7 +60,7 @@ const faqSections = [
       },
       {
         q: 'La chiave che ho ricevuto non funziona, cosa faccio?',
-        a: 'Contatta immediatamente il nostro supporto via email a supporto@licenvo.it o tramite chat. Ti forniremo una chiave sostitutiva o un rimborso completo entro 24 ore.',
+        a: 'Contatta immediatamente il nostro supporto via email a assistenza@licenvo.com o tramite chat. Ti forniremo una chiave sostitutiva o un rimborso completo entro 24 ore.',
       },
       {
         q: 'Le licenze sono originali?',
@@ -71,7 +71,7 @@ const faqSections = [
   {
     category: 'Account e Preferenze',
     icon: 'UserCircleIcon',
-    color: 'text-purple-400',
+    color: 'text-teal-400',
     items: [
       {
         q: 'Devo creare un account per acquistare?',
@@ -83,7 +83,7 @@ const faqSections = [
       },
       {
         q: 'Posso cancellare il mio account?',
-        a: 'Sì, puoi richiedere la cancellazione dell\'account contattandoci a privacy@licenvo.it. Conserveremo i dati fiscali per gli obblighi di legge (10 anni) ma cancelleremo tutti gli altri dati entro 30 giorni.',
+        a: 'Sì, puoi richiedere la cancellazione dell\'account contattandoci a assistenza@licenvo.com. Conserveremo i dati fiscali per gli obblighi di legge (10 anni) ma cancelleremo tutti gli altri dati entro 30 giorni.',
       },
     ],
   },

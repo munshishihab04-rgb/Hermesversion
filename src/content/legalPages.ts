@@ -24,7 +24,7 @@ export const faturazioneHTML = `<p>La presente pagina descrive le modalità di f
 <ol>
 <li>Completa il tuo acquisto su <strong>licenvo.com</strong> e annota il <strong>numero d&rsquo;ordine</strong> ricevuto via email.</li>
 <li>Raccogli i dati necessari: per privati servono nome, cognome, codice fiscale e indirizzo; per aziende servono ragione sociale, P.IVA, codice SDI o PEC.</li>
-<li>Invia una richiesta via email a <strong>supporto@licenvo.com</strong> oppure tramite <strong>WhatsApp al +39 351 479 4187</strong>, indicando il numero d&rsquo;ordine e i dati di fatturazione.</li>
+<li>Invia una richiesta via email a <strong>supporto@licenvo.com</strong> oppure tramite <strong>WhatsApp al +39 393 684 1051</strong>, indicando il numero d&rsquo;ordine e i dati di fatturazione.</li>
 <li>In alternativa, puoi comunicare i dati direttamente durante il checkout, compilando i campi di fatturazione appositi.</li>
 <li>Riceverai la fattura elettronica tramite SDI entro <strong>12 giorni</strong> dalla data dell&rsquo;operazione, con copia di cortesia PDF via email.</li>
 </ol>
@@ -91,7 +91,7 @@ export const faturazioneHTML = `<p>La presente pagina descrive le modalità di f
 <ul>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
 </ul>
 <p>Servizio Clienti operativo Luned&igrave;&ndash;Venerd&igrave;, ore 08:00&ndash;17:00.</p>`;
@@ -176,14 +176,14 @@ export const shippingHTML = `<p>DIGITALSOFT DI MUNSHI SHIHAB vende esclusivament
 <li><strong>La chiave di licenza non funziona:</strong> contattaci immediatamente con uno screenshot dell&rsquo;errore. Provvederemo alla sostituzione della chiave entro 1 ora lavorativa o al rimborso completo.</li>
 <li><strong>Ho ricevuto un prodotto diverso:</strong> contattaci indicando l&rsquo;ordine e il prodotto ricevuto. Provvederemo alla correzione immediata o al rimborso integrale.</li>
 <li><strong>Assistenza per l&rsquo;installazione:</strong> il nostro team &egrave; disponibile per guidarti passo dopo passo nell&rsquo;installazione e attivazione del software tramite email o WhatsApp.</li>
-<li><strong>Ordine Autodesk in ritardo:</strong> se sono trascorsi pi&ugrave; di 30 minuti durante l&rsquo;orario lavorativo senza ricevere la licenza, contattaci urgentemente via WhatsApp al <strong>+39 351 479 4187</strong>.</li>
+<li><strong>Ordine Autodesk in ritardo:</strong> se sono trascorsi pi&ugrave; di 30 minuti durante l&rsquo;orario lavorativo senza ricevere la licenza, contattaci urgentemente via WhatsApp al <strong>+39 393 684 1051</strong>.</li>
 </ul>
 <p>Per maggiori dettagli su resi e rimborsi, consulta la <a href="/refund">Politica di Reso e Rimborso</a>.</p>
 
 <hr/>
 <h2>7. Contatti per Urgenze</h2>
 <ul>
-<li><strong>WhatsApp (urgenze):</strong> +39 351 479 4187</li>
+<li><strong>WhatsApp (urgenze):</strong> +39 393 684 1051</li>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
@@ -315,7 +315,7 @@ export const legalNotesHTML = `<p>La presente pagina contiene le informazioni le
 <li><strong>Partita IVA:</strong> IT04358941203 | <strong>REA:</strong> BO-588058</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 </ul>
 <p>Il Titolare &egrave; iscritto al Registro delle Imprese della Camera di Commercio di Bologna.</p>
 
@@ -420,7 +420,7 @@ export const legalNotesHTML = `<p>La presente pagina contiene le informazioni le
 <ul>
 <li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
+<li><strong>Telefono / WhatsApp:</strong> +39 393 684 1051</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>
 </ul>
 <p>Servizio Clienti operativo Luned&igrave;&ndash;Venerd&igrave;, ore 08:00&ndash;17:00.</p>

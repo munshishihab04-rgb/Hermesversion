@@ -1,7 +1,7 @@
 
 
 export default function robots():  {
-  const base = import.meta.env.VITE_SITE_URL ?? 'https://licenvo.it' || 'http://localhost:3000';
+  const base = import.meta.env.VITE_SITE_URL ?? 'https://licenvo.com' || 'http://localhost:3000';
   return {
     rules: [
       {

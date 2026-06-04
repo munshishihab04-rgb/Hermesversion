@@ -87,7 +87,7 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-muted-foreground">
-            © {new Date().getFullYear()} Licenvo S.r.l. — P.IVA IT04358941203 — Tutti i diritti riservati
+            © {new Date().getFullYear()} DIGITALSOFT DI MUNSHI SHIHAB — P.IVA IT04358941203 — Tutti i diritti riservati
           </p>
           <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />

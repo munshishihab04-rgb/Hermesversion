@@ -45,9 +45,9 @@ const helpTopics = [
   {
     icon: 'ArrowPathIcon',
     title: 'Rimborsi e Resi',
-    color: 'text-purple-400',
-    bg: 'bg-purple-500/10',
-    border: 'border-purple-500/20',
+    color: 'text-teal-400',
+    bg: 'bg-teal-500/10',
+    border: 'border-teal-500/20',
     articles: [
       'Politica di rimborso Licenvo',
       'Come richiedere un rimborso',
@@ -121,10 +121,10 @@ export default function HelpCenterClient() {
             <ul className="space-y-2">
               {topic.articles.map((article) => (
                 <li key={article}>
-                  <a href="#" className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-2 transition-colors group">
+                  <span className="text-sm text-muted-foreground flex items-center gap-2 cursor-default">
                     <Icon name="DocumentTextIcon" size={13} className="shrink-0 opacity-40 group-hover:opacity-100 transition-opacity" />
                     {article}
-                  </a>
+                  </span>
                 </li>
               ))}
             </ul>

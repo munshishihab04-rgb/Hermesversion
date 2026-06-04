@@ -89,10 +89,10 @@ const COLLECTIONS = [
     description:
       "La suite per artisti 3D, animatori e professionisti VFX: Maya, 3ds Max, Arnold renderer e tutti gli strumenti per cinema, broadcast e gaming.",
     accentColor: '#6554C0',
-    accentLight: 'bg-violet-50',
-    accentText: 'text-violet-700',
-    accentBorder: 'border-violet-200',
-    tagColor: 'bg-violet-600',
+    accentLight: 'bg-sky-50',
+    accentText: 'text-sky-700',
+    accentBorder: 'border-sky-200',
+    tagColor: 'bg-sky-600',
     Icon: FilmIcon,
     software: [
       { name: 'Maya', icon: `${CDN}/maya-2023-simplified-badge-75x75.png` },
@@ -311,8 +311,8 @@ function ValuePropsSection() {
       Icon: CalendarDaysIcon,
       title: 'Aggiornamenti Inclusi',
       desc: 'Sempre all\'ultima versione disponibile per tutta la durata dell\'abbonamento, senza costi extra.',
-      color: 'text-violet-600',
-      bg: 'bg-violet-50',
+      color: 'text-sky-600',
+      bg: 'bg-sky-50',
     },
   ];
   return (
@@ -430,7 +430,7 @@ function FaqSection() {
     },
     {
       q: 'Qual è la differenza tra piano mensile e piano triennale?',
-      a: 'Il piano mensile (€14,99/mese) è flessibile e si può disdire in qualsiasi momento. Il piano triennale (€87,99) copre 3 anni a prezzo bloccato — un risparmio di oltre €360 rispetto al mensile. Entrambi includono tutti i software e gli aggiornamenti automatici.',
+      a: 'Il piano mensile è flessibile e si può disdire in qualsiasi momento al prezzo mensile indicato nella pagina prodotto. Il piano triennale copre 3 anni al prezzo triennale indicato nella pagina prodotto, con un risparmio significativo rispetto al totale dei singoli mesi. Entrambi includono tutti i software e gli aggiornamenti automatici.',
     },
     {
       q: 'Posso usare la Collection per uso commerciale?',

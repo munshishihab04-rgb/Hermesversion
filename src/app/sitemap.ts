@@ -1,7 +1,7 @@
 
 
 export default function sitemap():  {
-  const base = import.meta.env.VITE_SITE_URL ?? 'https://licenvo.it' || 'http://localhost:3000';
+  const base = import.meta.env.VITE_SITE_URL ?? 'https://licenvo.com' || 'http://localhost:3000';
   return [
     { url: base, lastModified: new Date(), priority: 1.0 },
     { url: `${base}/product-catalog`, lastModified: new Date(), priority: 0.9 },
