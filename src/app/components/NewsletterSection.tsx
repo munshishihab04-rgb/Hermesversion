@@ -10,12 +10,31 @@ const perks = [
 export default function NewsletterSection() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
-      setSubmitted(true);
-      setEmail('');
+    if (!email.trim()) return;
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSubmitted(true);
+        setEmail('');
+      } else {
+        setError(data.error || 'Errore. Riprova tra poco.');
+      }
+    } catch {
+      setError('Errore di rete. Riprova.');
+    } finally {
+      setSending(false);
     }
   };
 
@@ -85,12 +104,16 @@ export default function NewsletterSection() {
                       className="w-full input-dark text-sm py-3"
                     />
                   </div>
+                  {error && (
+                    <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full btn-primary flex items-center justify-center gap-2 text-sm font-bold py-3.5 neon-glow-purple"
+                    disabled={sending}
+                    className="w-full btn-primary flex items-center justify-center gap-2 text-sm font-bold py-3.5 neon-glow-purple disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <Icon name="PaperAirplaneIcon" size={15} />
-                    Iscriviti Gratis
+                    {sending ? 'Iscrizione…' : 'Iscriviti Gratis'}
                   </button>
                   <p className="text-[11px] text-muted-foreground text-center">
                     Nessuno spam. Cancellati quando vuoi. ·{' '}

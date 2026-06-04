@@ -11,10 +11,30 @@ export default function ContactClient() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSending(true);
+    setError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setSubmitted(true);
+      } else {
+        setError(data.error || "Errore durante l'invio. Riprova o contattaci su WhatsApp.");
+      }
+    } catch {
+      setError('Errore di rete. Controlla la connessione e riprova.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const requestTypes = [
@@ -287,12 +307,16 @@ export default function ContactClient() {
                     </p>
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-3">{error}</p>
+                  )}
                   <button
                     type="submit"
-                    className="w-full btn-primary py-3.5 font-bold flex items-center justify-center gap-2 rounded-lg"
+                    disabled={sending}
+                    className="w-full btn-primary py-3.5 font-bold flex items-center justify-center gap-2 rounded-lg disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     <Icon name="PaperAirplaneIcon" size={16} />
-                    Invia Richiesta
+                    {sending ? 'Invio in corso…' : 'Invia Richiesta'}
                   </button>
                   <p className="text-center text-[11px] text-muted-foreground">
                     Inviando accetti la nostra{' '}
