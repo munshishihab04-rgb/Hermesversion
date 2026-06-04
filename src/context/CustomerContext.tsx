@@ -74,11 +74,17 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
     loadCustomer();
   }, [loadCustomer]);
 
-  /** Avvia il flusso OAuth PKCE → redirect a Shopify */
+  /** Avvia il flusso OAuth PKCE → redirect a Shopify Customer Account */
   const login = useCallback(async () => {
-    const state = crypto.randomUUID();
-    const url = await buildAuthorizationUrl(state);
-    window.location.href = url;
+    // Prova prima il flusso OAuth PKCE headless; fallback al portale Shopify nativo
+    try {
+      const state = crypto.randomUUID();
+      const url = await buildAuthorizationUrl(state);
+      window.location.href = url;
+    } catch {
+      // Fallback: porta al portale account nativo Shopify (già brandizzato account.licenvo.com)
+      window.location.href = 'https://account.licenvo.com/account/login';
+    }
   }, []);
 
   /** Revoca token e pulisce lo stato */
