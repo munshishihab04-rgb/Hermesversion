@@ -216,13 +216,29 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem(CART_ID_KEY);
   }, []);
 
-  const applyCoupon = useCallback((code: string) => {
+  const applyCoupon = useCallback(async (code: string) => {
     setCouponState(code);
-    const upper = code.toUpperCase();
+    const upper = code.toUpperCase().trim();
+    if (!upper) { setDiscount(0); return; }
+    // Aggiorna discount codes su Shopify cart se esiste
+    if (shopifyCart?.id) {
+      try {
+        const updated = await cartDiscountCodesUpdate(shopifyCart.id, [upper]);
+        const applied = updated?.discountCodes ?? [];
+        const isValid = applied.some((d: { code: string; applicable: boolean }) => d.applicable);
+        setDiscount(isValid ? 0 : 0); // Shopify applica lo sconto nel checkout
+        if (!isValid) {
+          setCouponState(''); // codice non valido — resetta
+        }
+      } catch (e) {
+        console.error('Coupon error', e);
+      }
+    }
+    // Fallback locale (per anteprima nel cart): mantieni per UX
     if (upper === 'LICENVO10') setDiscount(10);
     else if (upper === 'SAVE20') setDiscount(20);
-    else setDiscount(0);
-  }, []);
+    // Se non è un codice noto localmente, discount rimane 0 ma Shopify lo applica nel checkout
+  }, [shopifyCart]);
 
   const proceedToCheckout = useCallback(async () => {
     if (shopifyCart?.checkoutUrl) {
@@ -241,7 +257,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         setCheckoutLoading(false);
         return;
       }
-      const cart = await createCart(lines);
+      const cart = await createCart(lines, coupon ? [coupon.toUpperCase()] : []);
       localStorage.setItem(CART_ID_KEY, cart.id);
       setShopifyCart(cart);
       window.location.href = cart.checkoutUrl;

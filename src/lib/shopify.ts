@@ -146,6 +146,7 @@ export async function fetchProductById(id: string): Promise<ShopifyProduct | nul
 export interface ShopifyCart {
   id: string;
   checkoutUrl: string;
+  discountCodes?: Array<{ code: string; applicable: boolean }>;
   totalQuantity: number;
   cost: {
     totalAmount: { amount: string; currencyCode: string };
@@ -193,16 +194,28 @@ const CART_FRAGMENT = `
   }
 `;
 
-export async function createCart(lines: Array<{ merchandiseId: string; quantity: number }>): Promise<ShopifyCart> {
+export async function createCart(lines: Array<{ merchandiseId: string; quantity: number }>, discountCodes: string[] = []): Promise<ShopifyCart> {
   const data = await shopifyFetch<{ cartCreate: { cart: ShopifyCart } }>(`
     ${CART_FRAGMENT}
-    mutation CartCreate($lines: [CartLineInput!]!) {
-      cartCreate(input: { lines: $lines }) {
+    mutation CartCreate($lines: [CartLineInput!]!, $discountCodes: [String!]) {
+      cartCreate(input: { lines: $lines, discountCodes: $discountCodes }) {
         cart { ...CartFields }
       }
     }
-  `, { lines });
+  `, { lines, discountCodes: discountCodes.length > 0 ? discountCodes : undefined });
   return data.cartCreate.cart;
+}
+
+export async function cartDiscountCodesUpdate(cartId: string, discountCodes: string[]): Promise<ShopifyCart> {
+  const data = await shopifyFetch<{ cartDiscountCodesUpdate: { cart: ShopifyCart } }>(`
+    ${CART_FRAGMENT}
+    mutation CartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!]!) {
+      cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
+        cart { ...CartFields }
+      }
+    }
+  `, { cartId, discountCodes });
+  return data.cartDiscountCodesUpdate.cart;
 }
 
 export async function addCartLines(cartId: string, lines: Array<{ merchandiseId: string; quantity: number }>): Promise<ShopifyCart> {
