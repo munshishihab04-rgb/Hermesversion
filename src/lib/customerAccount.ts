@@ -169,7 +169,7 @@ export async function revokeToken(token: string): Promise<void> {
     client_id: CLIENT_ID,
   });
 
-  await fetch(`${AUTH_URL}/revoke`, {
+  await fetch(`${AUTH_URL.replace("/oauth", "")}/logout`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
     body: body.toString(),

@@ -99,7 +99,10 @@ export function CustomerProvider({ children }: { children: React.ReactNode }) {
     }
     clearTokens();
     setCustomer(null);
-    window.location.href = '/';
+    // Redirect al logout Shopify con post_logout_redirect_uri
+    const postLogoutUri = encodeURIComponent(import.meta.env.VITE_SITE_URL || 'https://licenvo.com');
+    const shopId = import.meta.env.VITE_SHOPIFY_SHOP_ID;
+    window.location.href = `https://shopify.com/authentication/${shopId}/logout?post_logout_redirect_uri=${postLogoutUri}`;
   }, []);
 
   /** Ricarica i dati cliente dall'API */
