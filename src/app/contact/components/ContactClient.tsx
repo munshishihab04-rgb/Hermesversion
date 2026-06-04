@@ -75,7 +75,7 @@ export default function ContactClient() {
                 </div>
               </div>
               <a
-                href="https://wa.me/393514794187?text=Ciao%2C%20ho%20bisogno%20di%20assistenza%20per%20un%20ordine%20su%20Licenvo."
+                href="https://wa.me/393936841051?text=Ciao%2C%20ho%20bisogno%20di%20assistenza%20per%20un%20ordine%20su%20Licenvo."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] text-white font-bold py-3.5 px-5 rounded-xl transition-all duration-200 shadow-sm shadow-emerald-200 text-sm"
@@ -283,7 +283,7 @@ export default function ContactClient() {
                     <Icon name="ClockIcon" size={18} className="text-emerald-600 flex-shrink-0" />
                     <p className="text-xs text-emerald-800 font-medium">
                       Tempo di risposta stimato: <strong>&lt; 2 ore</strong> nei giorni lavorativi (Lun–Sab 8:00–20:00).
-                      Per urgenze, usa <a href="https://wa.me/393514794187" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp</a>.
+                      Per urgenze, usa <a href="https://wa.me/393936841051" target="_blank" rel="noopener noreferrer" className="underline">WhatsApp</a>.
                     </p>
                   </div>
 

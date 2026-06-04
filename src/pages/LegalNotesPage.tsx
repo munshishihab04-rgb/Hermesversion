@@ -5,7 +5,7 @@ export default function LegalNotesPage() {
   return (
     <LegalPageLayout
       title="Note Legali"
-      subtitle="Informazioni legali obbligatorie relative a locenvo.com"
+      subtitle="Informazioni legali obbligatorie relative a licenvo.com"
       lastUpdated="Maggio 2026"
       htmlContent={legalNotesHTML}
       breadcrumb="Note Legali"

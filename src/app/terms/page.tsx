@@ -9,7 +9,7 @@ const htmlContent = `
 <h1>Condizioni Generali di Vendita</h1>
 <p><strong>Ultimo aggiornamento:</strong> Maggio 2026</p>
 <h2>Premessa</h2>
-<p>Le presenti Condizioni Generali di Vendita ("CGV") regolano tutti gli acquisti di prodotti software, licenze digitali e soluzioni per ufficio effettuati tramite il sito web <strong><a href="https://www.locenvo.com">locenvo.com</a></strong> ("Sito"), di proprietà di <strong>DIGITALSOFT DI MUNSHI SHIHAB</strong> ("Titolare").</p>
+<p>Le presenti Condizioni Generali di Vendita ("CGV") regolano tutti gli acquisti di prodotti software, licenze digitali e soluzioni per ufficio effettuati tramite il sito web <strong><a href="https://www.licenvo.com">licenvo.com</a></strong> ("Sito"), di proprietà di <strong>DIGITALSOFT DI MUNSHI SHIHAB</strong> ("Titolare").</p>
 <h3>Dati aziendali</h3>
 <ul>
 <li><strong>Ragione Sociale:</strong> DIGITALSOFT DI MUNSHI SHIHAB</li>
@@ -17,7 +17,7 @@ const htmlContent = `
 <li><strong>Partita IVA:</strong> 04358941203</li>
 <li><strong>Numero REA:</strong> BO-588058</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
-<li><strong>Email supporto:</strong> supporto@locenvo.com</li>
+<li><strong>Email supporto:</strong> supporto@licenvo.com</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 </ul>
 <p>Effettuando un ordine sul Sito, il Cliente dichiara di aver letto, compreso e accettato integralmente le presenti CGV. Le disposizioni che fanno riferimento ai Consumatori (come definiti alla Sezione 1) si applicano esclusivamente ai soggetti che rientrano in tale definizione. I Consumatori beneficiano di tutte le tutele previste dal Titolo III, Sezione II, del D.lgs. 6 settembre 2005, n. 206 ("Codice del Consumo") e da ogni altra norma inderogabile applicabile.</p>
@@ -116,7 +116,7 @@ const htmlContent = `
 <h3>4.3 Assistenza post-consegna</h3>
 <p>In caso di problemi con la licenza ricevuta (codice non funzionante, difficoltà di installazione o attivazione), il Cliente può contattare il Servizio Clienti tramite la pagina <a href="/contact">Contatti</a> oppure ai seguenti recapiti:</p>
 <ul>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 </ul>
 <p>Il Titolare si impegna a risolvere ogni problematica nel minor tempo possibile, fornendo — ove necessario — una chiave sostitutiva, assistenza tecnica o un rimborso completo.</p>
@@ -140,7 +140,7 @@ const htmlContent = `
 <p>Per esercitare il diritto di recesso, il Consumatore è tenuto a informare:</p>
 <p><strong>DIGITALSOFT DI MUNSHI SHIHAB</strong><br>
 Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia<br>
-Email: supporto@locenvo.com<br>
+Email: supporto@licenvo.com<br>
 PEC: munshishihab@legalmail.it<br>
 Telefono / WhatsApp: +39 351 479 4187</p>
 <p>della sua decisione di recedere dal presente contratto tramite una dichiarazione esplicita (ad esempio lettera inviata per posta, email o PEC). A tal fine può utilizzare il modulo tipo di recesso riportato alla Sezione 5.9, ma non è obbligatorio.</p>
@@ -177,7 +177,7 @@ Telefono / WhatsApp: +39 351 479 4187</p>
 <h3>5.6 Come esercitare il recesso</h3>
 <p>Per esercitare il diritto di recesso, il Consumatore può:</p>
 <ul>
-<li>Inviare un'email a <strong>supporto@locenvo.com</strong></li>
+<li>Inviare un'email a <strong>supporto@licenvo.com</strong></li>
 <li>Inviare una PEC a <strong>munshishihab@legalmail.it</strong></li>
 <li>Contattare il Servizio Clienti via <strong>WhatsApp al +39 351 479 4187</strong></li>
 <li>Compilare e inviare il modulo tipo di recesso riportato alla Sezione 5.9</li>
@@ -206,7 +206,7 @@ Telefono / WhatsApp: +39 351 479 4187</p>
 <p>Destinatario:<br>
 <strong>DIGITALSOFT DI MUNSHI SHIHAB</strong><br>
 Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia<br>
-Email: supporto@locenvo.com<br>
+Email: supporto@licenvo.com<br>
 PEC: munshishihab@legalmail.it</p>
 <p>Con la presente il/la sottoscritto/a notifica il recesso dal contratto di vendita dei seguenti beni/servizi:</p>
 <p>___________</p>
@@ -304,7 +304,7 @@ PEC: munshishihab@legalmail.it</p>
 <h3>9.4 Condivisione dei dati</h3>
 <p>I dati personali non sono venduti a terzi. Possono essere condivisi con fornitori di servizi strettamente necessari (gateway di pagamento, servizi di posta elettronica) e con autorità pubbliche ove richiesto dalla legge.</p>
 <h3>9.5 Diritti dell'interessato</h3>
-<p>Il Cliente ha diritto di accesso, rettifica, cancellazione, limitazione del trattamento, portabilità e opposizione al trattamento dei propri dati personali, nonché il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali. Per l'esercizio dei propri diritti, il Cliente può scrivere a <strong>supporto@locenvo.com</strong>.</p>
+<p>Il Cliente ha diritto di accesso, rettifica, cancellazione, limitazione del trattamento, portabilità e opposizione al trattamento dei propri dati personali, nonché il diritto di proporre reclamo al Garante per la Protezione dei Dati Personali. Per l'esercizio dei propri diritti, il Cliente può scrivere a <strong>supporto@licenvo.com</strong>.</p>
 <p>Per maggiori dettagli, il Cliente è invitato a consultare la <a href="/privacy">Privacy Policy</a> e la <a href="/cookie-policy">Cookie Policy</a> disponibili nelle apposite sezioni del Sito.</p>
 <hr>
 <h2>10. Limitazione di Responsabilità</h2>
@@ -355,7 +355,7 @@ PEC: munshishihab@legalmail.it</p>
 <h2>15. Contatti</h2>
 <p>Per qualsiasi domanda, chiarimento o reclamo relativo alle presenti CGV o agli ordini effettuati sul Sito, il Cliente può contattare il Titolare tramite la pagina <a href="/contact">Contatti</a> o ai seguenti recapiti:</p>
 <ul>
-<li><strong>Email:</strong> supporto@locenvo.com</li>
+<li><strong>Email:</strong> supporto@licenvo.com</li>
 <li><strong>PEC:</strong> munshishihab@legalmail.it</li>
 <li><strong>Telefono / WhatsApp:</strong> +39 351 479 4187</li>
 <li><strong>Indirizzo:</strong> Via Aldo Pio Manuzio 24, 40132 Bologna (BO), Italia</li>

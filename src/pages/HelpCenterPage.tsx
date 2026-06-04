@@ -251,7 +251,7 @@ export default function HelpCenterPage() {
               </div>
               <h3 className="font-bold text-foreground text-sm mb-1">WhatsApp</h3>
               <a
-                href="https://wa.me/393514794187"
+                href="https://wa.me/393936841051"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-emerald-600 font-semibold text-sm hover:underline"

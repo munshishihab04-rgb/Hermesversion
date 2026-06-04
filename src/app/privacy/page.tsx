@@ -14,7 +14,7 @@ export const metadata = {
 const content = `
 ## 1. Titolare del Trattamento
 
-Licenvo S.r.l., con sede legale in Via Roma 42, 20121 Milano MI, P.IVA IT12345678901 (di seguito "Licenvo", "noi" o "ci"), è il Titolare del Trattamento dei dati personali raccolti tramite il sito web licenvo.it.
+Licenvo S.r.l., con sede legale in Via Roma 42, 20121 Milano MI, P.IVA IT04358941203 (di seguito "Licenvo", "noi" o "ci"), è il Titolare del Trattamento dei dati personali raccolti tramite il sito web licenvo.it.
 
 Per qualsiasi questione relativa alla privacy, puoi contattarci a: privacy@licenvo.it
 

@@ -702,7 +702,7 @@ export default function AutodeskCollectionsPage() {
                 Richiedi Preventivo Gratuito
               </a>
               <a
-                href="https://wa.me/393514794187?text=Ciao%2C%20sono%20interessato%20a%20licenze%20Autodesk%20aziendali"
+                href="https://wa.me/393936841051?text=Ciao%2C%20sono%20interessato%20a%20licenze%20Autodesk%20aziendali"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-sm font-semibold text-foreground hover:bg-muted/40 transition-colors"

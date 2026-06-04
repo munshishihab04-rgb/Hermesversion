@@ -180,7 +180,7 @@ export const termsContent = `
 <h2>11. Contatti</h2>
 <p>Per qualsiasi informazione, reclamo o richiesta:<br>
 Email: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a><br>
-WhatsApp: <a href="https://wa.me/393514794187">+39 351 479 4187</a><br>
+WhatsApp: <a href="https://wa.me/393936841051">+39 351 479 4187</a><br>
 Orario: Lunedì–Venerdì 08:00–17:00</p>
 `;
 
@@ -218,7 +218,7 @@ export const refundContent = `
 
 <h2>3. Come Richiedere un Rimborso o Sostituzione</h2>
 <ol>
-  <li>Contattaci entro 30 giorni dall'acquisto a <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp <a href="https://wa.me/393514794187">+39 351 479 4187</a></li>
+  <li>Contattaci entro 30 giorni dall'acquisto a <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp <a href="https://wa.me/393936841051">+39 351 479 4187</a></li>
   <li>Indica: numero ordine, prodotto acquistato, descrizione del problema</li>
   <li>Allega eventuali screenshot dell'errore</li>
   <li>Il nostro team risponde entro <strong>24 ore lavorative</strong> (Lun–Ven 08:00–17:00)</li>
@@ -232,7 +232,7 @@ export const refundContent = `
 <h2>5. Contatti</h2>
 <p>
   Email: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a><br>
-  WhatsApp: <a href="https://wa.me/393514794187">+39 351 479 4187</a><br>
+  WhatsApp: <a href="https://wa.me/393936841051">+39 351 479 4187</a><br>
   PEC: munshishihab@legalmail.it<br>
   Orario: Lunedì–Venerdì 08:00–17:00
 </p>

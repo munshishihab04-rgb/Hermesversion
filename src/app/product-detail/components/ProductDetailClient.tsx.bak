@@ -256,7 +256,7 @@ function BusinessConsultingSection({ product }: { product: Product }) {
               Richiedi Preventivo Gratuito
             </a>
             <a
-              href="https://wa.me/393000000000?text=Ciao%2C%20sono%20interessato%20a%20una%20consulenza%20Autodesk%20per%20la%20mia%20azienda"
+              href="https://wa.me/393936841051?text=Ciao%2C%20sono%20interessato%20a%20una%20consulenza%20Autodesk%20per%20la%20mia%20azienda"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl border border-border bg-white hover:bg-muted/40 transition-colors text-foreground"

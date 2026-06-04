@@ -14,7 +14,7 @@ const footerLinks = {
     { label: 'Centro Assistenza', href: '/help-center' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Contattaci', href: '/contact' },
-    { label: 'Stato Ordini', href: '#' },
+    { label: 'Stato Ordini', href: '/help-center' },
   ],
   legale: [
     { label: 'Privacy Policy', href: '/privacy' },
@@ -39,18 +39,6 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground leading-relaxed">
               Il marketplace italiano per licenze software originali ai prezzi più bassi.
             </p>
-            <div className="flex gap-3">
-              {(['Twitter', 'Instagram', 'Facebook'] as const).map((s) => (
-                <a
-                  key={s}
-                  href="#"
-                  aria-label={s}
-                  className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:text-foreground hover:bg-primary/20 transition-all"
-                >
-                  <Icon name="GlobeAltIcon" size={14} />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Products */}
@@ -99,7 +87,7 @@ export default function Footer() {
         {/* Bottom Row */}
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-[11px] text-muted-foreground">
-            © {new Date().getFullYear()} Licenvo S.r.l. — P.IVA IT12345678901 — Tutti i diritti riservati
+            © {new Date().getFullYear()} Licenvo S.r.l. — P.IVA IT04358941203 — Tutti i diritti riservati
           </p>
           <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
