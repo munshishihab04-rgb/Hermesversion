@@ -101,10 +101,11 @@ export async function buildAuthorizationUrl(state: string): Promise<string> {
   localStorage.setItem(STORAGE_KEYS.OAUTH_STATE, state);
 
   const params = new URLSearchParams({
+    locale: 'it',
     client_id: CLIENT_ID,
     response_type: 'code',
     redirect_uri: REDIRECT_URI,
-    scope: 'openid email https://api.customers.com/auth/customer.graphql',
+    scope: 'openid email',
     state,
     code_challenge: challenge,
     code_challenge_method: 'S256',
