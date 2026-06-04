@@ -1,6 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { Switch, Route, Router as WouterRouter, useLocation } from 'wouter';
 import { CartProvider } from '@/context/CartContext';
+import { CustomerProvider } from '@/context/CustomerContext';
 import { WishlistProvider } from '@/context/WishlistContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -21,6 +22,8 @@ const LegalNotesPage = React.lazy(() => import('@/pages/LegalNotesPage'));
 const AutodeskCollectionsPage = React.lazy(() => import('@/pages/AutodeskCollectionsPage'));
 const AutodeskCollectionDetailPage = React.lazy(() => import('@/pages/AutodeskCollectionDetailPage'));
 const NotFound = React.lazy(() => import('@/app/not-found'));
+const AccountPage = React.lazy(() => import('@/pages/AccountPage'));
+const AccountCallbackPage = React.lazy(() => import('@/pages/AccountCallbackPage'));
 
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
@@ -77,6 +80,8 @@ function Router() {
         <Route path="/legal">{() => <PageWrapper><LegalNotesPage /></PageWrapper>}</Route>
         <Route path="/autodesk-collections">{() => <PageWrapper><AutodeskCollectionsPage /></PageWrapper>}</Route>
         <Route path="/autodesk-collections/:id">{() => <PageWrapper><AutodeskCollectionDetailPage /></PageWrapper>}</Route>
+        <Route path="/account">{() => <PageWrapper><AccountPage /></PageWrapper>}</Route>
+        <Route path="/account/callback">{() => <AccountCallbackPage />}</Route>
         <Route>{() => <PageWrapper><NotFound /></PageWrapper>}</Route>
       </Switch>
     </Suspense>
@@ -86,7 +91,9 @@ function Router() {
 function App() {
   return (
     <WouterRouter base={import.meta.env.BASE_URL?.replace(/\/$/, '') ?? ''}>
-      <Router />
+      <CustomerProvider>
+        <Router />
+      </CustomerProvider>
     </WouterRouter>
   );
 }

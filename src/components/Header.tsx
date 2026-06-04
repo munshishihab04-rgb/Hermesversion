@@ -4,6 +4,7 @@ import LogoIcon from '@/components/ui/LogoIcon';
 import Icon from '@/components/ui/AppIcon';
 import { useCart } from '@/context/CartContext';
 import { useWishlist } from '@/context/WishlistContext';
+import { useCustomer } from '@/context/CustomerContext';
 
 // ── MENU PRINCIPALE ──────────────────────────────────────────────────────────
 const navItems = [
@@ -54,6 +55,9 @@ export default function Header() {
   const { openCart, itemCount } = useCart();
   const { count: wishlistCount } = useWishlist();
   const [, navigate] = useLocation();
+  const { customer, isAuthenticated, login, logout } = useCustomer();
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
+  const accountRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -69,6 +73,7 @@ export default function Header() {
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) setActiveDropdown(null);
+      if (accountRef.current && !accountRef.current.contains(e.target as Node)) setAccountDropdownOpen(false);
     };
     document.addEventListener('mousedown', handler);
     return () => document.removeEventListener('mousedown', handler);
@@ -233,6 +238,49 @@ export default function Header() {
 
             {/* Right Actions */}
             <div className="flex items-center gap-1 ml-auto shrink-0">
+              {/* Pulsante Account */}
+              <div className="relative" ref={accountRef}>
+                {isAuthenticated ? (
+                  <>
+                    <button
+                      onClick={() => setAccountDropdownOpen(!accountDropdownOpen)}
+                      className="flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors text-foreground hover:text-primary hover:bg-muted/50"
+                    >
+                      <Icon name="UserCircleIcon" size={20} />
+                      <span className="max-w-[80px] truncate">{customer?.firstName}</span>
+                      <Icon name="ChevronDownIcon" size={12} className={`text-muted-foreground transition-transform ${accountDropdownOpen ? "rotate-180" : ""}`} />
+                    </button>
+                    {accountDropdownOpen && (
+                      <div className="absolute top-full right-0 mt-2 w-44 bg-white rounded-xl shadow-xl border border-border overflow-hidden z-50">
+                        <Link
+                          href="/account"
+                          onClick={() => setAccountDropdownOpen(false)}
+                          className="flex items-center gap-2 px-4 py-2.5 text-sm text-foreground hover:bg-muted/40 hover:text-primary transition-colors"
+                        >
+                          <Icon name="UserCircleIcon" size={15} className="text-primary" />
+                          Il mio account
+                        </Link>
+                        <button
+                          onClick={() => { setAccountDropdownOpen(false); logout(); }}
+                          className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-foreground hover:bg-muted/40 hover:text-destructive transition-colors"
+                        >
+                          <Icon name="ArrowRightStartOnRectangleIcon" size={15} className="text-muted-foreground" />
+                          Esci
+                        </button>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <button
+                    onClick={login}
+                    className="flex items-center gap-1.5 text-sm font-medium px-3 py-2 rounded-lg transition-colors text-foreground hover:text-primary hover:bg-muted/50"
+                  >
+                    <Icon name="UserCircleIcon" size={20} />
+                    Accedi
+                  </button>
+                )}
+              </div>
+
               <div className="w-px h-5 bg-border mx-1" />
 
               <button className="relative p-2 text-muted-foreground hover:text-primary transition-colors rounded-lg hover:bg-muted/50">
@@ -379,6 +427,20 @@ export default function Header() {
                   <span className="ml-auto bg-primary text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center">{itemCount}</span>
                 )}
               </button>
+
+              {isAuthenticated ? (
+                <Link href="/account" onClick={() => setMobileOpen(false)}
+                  className="flex items-center gap-3 px-3 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
+                  <Icon name="UserCircleIcon" size={17} className="text-primary/70" />
+                  Il mio account
+                </Link>
+              ) : (
+                <button onClick={() => { setMobileOpen(false); login(); }}
+                  className="w-full flex items-center gap-3 px-3 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
+                  <Icon name="UserCircleIcon" size={17} className="text-primary/70" />
+                  Accedi
+                </button>
+              )}
 
               <Link href="/assistenza" onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-3 px-3 py-3 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
