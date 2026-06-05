@@ -86,9 +86,9 @@ const ROUTE_META = {
     h1: "Condizioni Generali di Vendita",
   },
   "/refund": {
-    title: "Politica Rimborsi \u2014 Licenvo",
-    description: "Garanzia soddisfatti o rimborsati 30 giorni su tutte le licenze software acquistate su Licenvo.",
-    h1: "Politica Rimborsi",
+    title: "Politica di Rimborso e Reso | Licenvo",
+    description: "Garanzia soddisfatti o rimborsati entro 14 giorni. Sostituzione gratuita per chiavi non funzionanti. Assistenza dedicata in italiano.",
+    h1: "Politica di Rimborso e Reso",
   },
   "/cookie-policy": {
     title: "Cookie Policy \u2014 Licenvo",
@@ -96,9 +96,9 @@ const ROUTE_META = {
     h1: "Cookie Policy",
   },
   "/shipping": {
-    title: "Consegna Digitale \u2014 Licenvo",
-    description: "Informazioni sulla consegna digitale istantanea delle licenze software acquistate su Licenvo.",
-    h1: "Consegna e Spedizione",
+    title: "Spedizione e Consegna Digitale Gratuita | Licenvo",
+    description: "Consegna digitale istantanea via email. Ricevi la tua licenza software in pochi minuti. Spedizione gratuita su tutti i prodotti Licenvo.",
+    h1: "Spedizione e Consegna Digitale Gratuita",
   },
   "/legal": {
     title: "Note Legali \u2014 Licenvo",

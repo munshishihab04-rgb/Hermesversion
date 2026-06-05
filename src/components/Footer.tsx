@@ -21,6 +21,9 @@ const footerLinks = {
     { label: 'Termini di Servizio', href: '/terms' },
     { label: 'Politica Rimborsi', href: '/refund' },
     { label: 'Cookie Policy', href: '/cookie-policy' },
+    { label: 'Spedizione e Consegna', href: '/shipping' },
+    { label: 'Note Legali', href: '/legal' },
+    { label: 'Fatturazione', href: '/fatturazione' },
   ],
 };
 
