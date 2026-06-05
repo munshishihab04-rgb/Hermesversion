@@ -1958,24 +1958,6 @@ export default function ProductDetailClient() {
                 </div>
               )}
 
-
-              {/* Trust Badges - Garanzie */}
-              <div className="grid grid-cols-2 gap-2">
-                {[
-                  { icon: 'BoltIcon', text: 'Consegna Istantanea via Email' },
-                  { icon: 'ShieldCheckIcon', text: 'Licenza Originale Garantita' },
-                  { icon: 'WrenchScrewdriverIcon', text: 'Supporto Tecnico Gratuito' },
-                  { icon: 'ArrowPathIcon', text: 'Soddisfatti o Rimborsati' },
-                ].map((badge) => (
-                  <div key={badge.text} className="flex flex-col items-center text-center gap-1.5 bg-gray-50 border border-gray-200 rounded-xl p-2.5">
-                    <div className="w-7 h-7 rounded-full bg-teal-500/10 flex items-center justify-center">
-                      <Icon name={badge.icon as Parameters<typeof Icon>[0]['name']} size={14} className="text-teal-600" />
-                    </div>
-                    <span className="text-[10px] font-semibold text-gray-700 leading-tight">{badge.text}</span>
-                  </div>
-                ))}
-              </div>
-
               {/* Trust badges + metodi pagamento (Hoppy) */}
               <HoppyTrustBadges />
             </div>
@@ -2075,35 +2057,6 @@ export default function ProductDetailClient() {
                 ))}
               </div>
             )}
-          </div>
-        </div>
-
-
-        {/* ── COSA RICEVI CON IL TUO ACQUISTO ── */}
-        <div className="mb-5">
-          <div className="rounded-2xl border border-teal-500/30 bg-gray-900 p-6 sm:p-8">
-            <h2 className="text-xl font-bold text-white mb-5 flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-teal-500/15 flex items-center justify-center">
-                <Icon name="GiftIcon" size={20} className="text-teal-400" />
-              </div>
-              Cosa Ricevi con il tuo Acquisto
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {[
-                { text: 'Licenza digitale originale (Product Key)', icon: 'KeyIcon' },
-                { text: 'Link per il download diretto del software', icon: 'ArrowDownTrayIcon' },
-                { text: 'Guida dettagliata per installazione e attivazione', icon: 'BookOpenIcon' },
-                { text: 'Assistenza tecnica gratuita in italiano', icon: 'ChatBubbleLeftRightIcon' },
-                { text: 'Fattura elettronica italiana disponibile su richiesta', icon: 'DocumentTextIcon' },
-              ].map((item) => (
-                <div key={item.text} className="flex items-start gap-3 bg-gray-800/60 rounded-xl p-3 border border-gray-700/50">
-                  <div className="w-6 h-6 rounded-lg bg-teal-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                    <Icon name={item.icon as Parameters<typeof Icon>[0]['name']} size={14} className="text-teal-400" />
-                  </div>
-                  <span className="text-sm text-gray-200 leading-relaxed">{item.text}</span>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
 
