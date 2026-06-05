@@ -26,7 +26,7 @@ async function fetchProductByHandle(handle) {
         "X-Shopify-Storefront-Access-Token": SHOPIFY_TOKEN,
       },
       body: JSON.stringify({
-        query: "query($handle: String!) { productByHandle(handle: $handle) { title description productType vendor tags featuredImage { url altText } priceRange { minVariantPrice { amount currencyCode } } compareAtPriceRange { maxVariantPrice { amount currencyCode } } variants(first: 3) { nodes { title availableForSale price { amount currencyCode } compareAtPrice { amount currencyCode } } } } }",
+        query: "query($handle: String!) { productByHandle(handle: $handle) { title description productType vendor tags featuredImage { url altText } priceRange { minVariantPrice { amount currencyCode } } compareAtPriceRange { maxVariantPrice { amount currencyCode } } variants(first: 3) { nodes { title barcode availableForSale price { amount currencyCode } compareAtPrice { amount currencyCode } } } } }",
         variables: { handle },
       }),
     });
@@ -169,6 +169,7 @@ function buildHtml(url, meta, productData) {
       description: productData.description,
       brand: productData.vendor ? { "@type": "Brand", name: productData.vendor } : undefined,
       image: productData.featuredImage?.url,
+      gtin13: productData.variants?.nodes?.[0]?.barcode || undefined,
       category: "Software > Computer Software",
       offers: {
         "@type": "Offer",
