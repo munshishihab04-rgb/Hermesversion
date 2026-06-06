@@ -30,6 +30,24 @@ const NotFound = React.lazy(() => import('@/app/not-found'));
 const AccountPage = React.lazy(() => import('@/pages/AccountPage'));
 const AccountCallbackPage = React.lazy(() => import('@/pages/AccountCallbackPage'));
 
+
+// Wrapper che reindirizza /windows → /product-catalog?cat=windows ecc.
+// senza hard redirect — CatalogClient legge window.location.pathname direttamente
+function CategoryPage({ cat }: { cat: string }) {
+  // Aggiorna il titolo della pagina in base alla categoria
+  React.useEffect(() => {
+    const labels: Record<string, string> = {
+      windows: 'Windows — Licenvo',
+      office: 'Office — Licenvo',
+      antivirus: 'Antivirus — Licenvo',
+      bundle: 'Bundle — Licenvo',
+      'visio-project': 'Visio & Project — Licenvo',
+    };
+    document.title = labels[cat] ?? 'Catalogo — Licenvo';
+  }, [cat]);
+  return <ProductCatalogPage />;
+}
+
 function PageWrapper({ children }: { children: React.ReactNode }) {
   return (
     <CartProvider>
@@ -92,11 +110,11 @@ function Router() {
         <Route path="/autodesk-collections/:id">{() => <PageWrapper><AutodeskCollectionDetailPage /></PageWrapper>}</Route>
         <Route path="/account">{() => <PageWrapper><AccountPage /></PageWrapper>}</Route>
         <Route path="/account/callback">{() => <AccountCallbackPage />}</Route>
-        <Route path="/windows">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
-        <Route path="/office">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
-        <Route path="/antivirus">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
-        <Route path="/bundles">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
-        <Route path="/visio-project">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
+        <Route path="/windows">{() => <PageWrapper><CategoryPage cat="windows" /></PageWrapper>}</Route>
+        <Route path="/office">{() => <PageWrapper><CategoryPage cat="office" /></PageWrapper>}</Route>
+        <Route path="/antivirus">{() => <PageWrapper><CategoryPage cat="antivirus" /></PageWrapper>}</Route>
+        <Route path="/bundles">{() => <PageWrapper><CategoryPage cat="bundle" /></PageWrapper>}</Route>
+        <Route path="/visio-project">{() => <PageWrapper><CategoryPage cat="visio-project" /></PageWrapper>}</Route>
         <Route>{() => <PageWrapper><NotFound /></PageWrapper>}</Route>
       </Switch>
     </Suspense>

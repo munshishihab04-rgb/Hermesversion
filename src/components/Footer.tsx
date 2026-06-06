@@ -5,7 +5,9 @@ import Icon from '@/components/ui/AppIcon';
 
 const footerLinks = {
   prodotti: [
-    { label: 'Windows & Office', href: '/product-catalog?cat=windows-office' },
+    { label: 'Windows', href: '/product-catalog?cat=windows' },
+    { label: 'Office', href: '/product-catalog?cat=office' },
+    { label: 'Microsoft 365', href: '/product-catalog?cat=microsoft-365' },
     { label: 'Antivirus', href: '/product-catalog?cat=antivirus' },
     { label: 'Autodesk', href: '/autodesk-collections' },
     

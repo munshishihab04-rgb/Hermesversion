@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { Link, useSearch } from 'wouter';
+import { Link, useSearch, useLocation } from 'wouter';
 import ProductCard from '@/components/ProductCard';
 import Icon from '@/components/ui/AppIcon';
 import { categories } from '@/data/products';
@@ -67,6 +67,19 @@ type FilterKey = typeof filterTabs[number]['key'];
 export default function CatalogClient() {
   const { products, loading } = useShopifyProducts();
   const searchStr = useSearch();
+  const [location] = useLocation();
+
+  // Mappa pathname → filterKey (per route tipo /windows, /office, ecc.)
+  const pathnameFilter: FilterKey = useMemo(() => {
+    const map: Record<string, FilterKey> = {
+      '/windows': 'windows',
+      '/office': 'office',
+      '/antivirus': 'antivirus',
+      '/bundles': 'bundle',
+      '/visio-project': 'visio-project',
+    };
+    return map[location] ?? 'all';
+  }, [location]);
 
   const urlParams = useMemo(() => new URLSearchParams(searchStr), [searchStr]);
 
@@ -83,7 +96,12 @@ export default function CatalogClient() {
     if (catSlug === 'antivirus' || cat === 'antivirus') return 'antivirus';
     if (catSlug === 'bundle' || cat === 'bundle') return 'bundle';
     if (catSlug === 'visio-project' || cat === 'visio-project') return 'visio-project';
-    return 'all';
+    // Fallback: leggi il pathname direttamente
+    const pathMap: Record<string, FilterKey> = {
+      '/windows': 'windows', '/office': 'office', '/antivirus': 'antivirus',
+      '/bundles': 'bundle', '/visio-project': 'visio-project',
+    };
+    return pathMap[window.location.pathname] ?? 'all';
   });
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(300);
@@ -112,8 +130,9 @@ export default function CatalogClient() {
     else if (cat === 'antivirus' || category === 'antivirus') setFilterKey('antivirus');
     else if (cat === 'bundle' || category === 'bundle') setFilterKey('bundle');
     else if (cat === 'visio-project' || category === 'visio-project') setFilterKey('visio-project');
+    else if (pathnameFilter !== 'all') setFilterKey(pathnameFilter);
     else setFilterKey('all');
-  }, [urlParams]);
+  }, [urlParams, pathnameFilter]);
 
   const [filtersOpen, setFiltersOpen] = useState(false);
 
