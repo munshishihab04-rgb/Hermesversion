@@ -269,7 +269,7 @@ export default function LegalPageLayout({
               {htmlContent ? (
                 <div
                   className="legal-html-content"
-                  dangerouslySetInnerHTML={{ __html: processedHtml }}
+                  dangerouslySetInnerHTML={{ __html: processedHtml }} style={{ overflowX: "hidden", maxWidth: "100%", wordBreak: "break-word" }}
                 />
               ) : (
                 <div className="space-y-1">{renderMarkdown(content || '')}</div>

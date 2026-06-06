@@ -334,9 +334,9 @@ function ValuePropsSection() {
 
 function ComparisonTable({ products }: { products: Record<string, ShopifyProduct | null> }) {
   return (
-    <div className="rounded-2xl border border-border overflow-hidden bg-white">
+    <div className="rounded-2xl border border-border bg-white overflow-x-auto">
       {/* Header */}
-      <div className="grid grid-cols-4 bg-foreground text-white text-sm font-semibold">
+      <div className="grid grid-cols-4 min-w-[560px] bg-foreground text-white text-sm font-semibold">
         <div className="p-4 border-r border-white/10">Funzionalità</div>
         <div className="p-4 border-r border-white/10 text-center">
           <div className="font-extrabold">AEC</div>
@@ -355,7 +355,7 @@ function ComparisonTable({ products }: { products: Record<string, ShopifyProduct
       {COMPARISON_ROWS.map((row, i) => (
         <div
           key={row.feature}
-          className={`grid grid-cols-4 border-t border-border text-sm ${
+          className={`grid grid-cols-4 min-w-[560px] border-t border-border text-sm ${
             i % 2 === 0 ? 'bg-white' : 'bg-muted/20'
           }`}
         >
@@ -374,7 +374,7 @@ function ComparisonTable({ products }: { products: Record<string, ShopifyProduct
         </div>
       ))}
       {/* Footer prezzi */}
-      <div className="grid grid-cols-4 border-t border-border bg-muted/30">
+      <div className="grid grid-cols-4 min-w-[560px] border-t border-border bg-muted/30">
         <div className="p-4 border-r border-border">
           <p className="text-xs font-bold text-foreground">Prezzo da</p>
           <p className="text-[10px] text-muted-foreground">mensile o triennale</p>
@@ -663,7 +663,7 @@ export default function AutodeskCollectionsPage() {
 
         {/* ── CONSULENZA AZIENDALE CTA ── */}
         <section className="rounded-2xl overflow-hidden border border-primary/20">
-          <div className="bg-primary px-8 py-6 flex items-start gap-4">
+          <div className="bg-primary px-4 sm:px-8 py-6 flex items-start gap-4 flex-col sm:flex-row">
             <div className="w-12 h-12 rounded-xl bg-white/15 flex items-center justify-center shrink-0">
               <UserGroupIcon className="w-6 h-6 text-white" />
             </div>
@@ -676,7 +676,7 @@ export default function AutodeskCollectionsPage() {
             </div>
           </div>
           <div className="bg-white p-8">
-            <div className="grid md:grid-cols-3 gap-6 mb-6">
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-6">
               {[
                 { Icon: UserGroupIcon, title: 'Licenze Multi-Seat', desc: 'Gestisci abbonamenti per team da 2 a 500+ utenti con un unico account amministratore.' },
                 { Icon: DocumentTextIcon, title: 'Fatturazione B2B', desc: 'Fattura elettronica con P.IVA, split payment e condizioni di pagamento personalizzate.' },
@@ -742,7 +742,7 @@ export default function AutodeskCollectionsPage() {
                   ].map((row, i) => (
                     <tr key={i} className="border-t border-white/5">
                       <td className="p-4 font-semibold text-white">{row.name}</td>
-                      <td className="p-4 text-center text-gray-300">&euro;{row.monthly}<span className="text-xs text-gray-500">/mese</span></td>
+                      <td className="p-4 text-center text-gray-300 whitespace-nowrap">&euro;{row.monthly}<span className="text-xs text-gray-500">/mese</span></td>
                       <td className="p-4 text-center font-bold text-white" style={{background:"rgba(0,82,204,0.15)"}}>&euro;{row.tri}<span className="text-xs text-teal-400">/3 anni</span></td>
                     </tr>
                   ))}

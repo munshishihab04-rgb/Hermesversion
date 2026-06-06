@@ -478,7 +478,7 @@ export default function AutodeskCollectionDetailPage({ overrideCollectionId }: {
 
         {/* ── TABS DETTAGLIO ── */}
         <section>
-          <div className="flex gap-1 border-b border-border mb-8">
+          <div className="flex gap-1 border-b border-border mb-8 overflow-x-auto scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {([ 'software', 'benefici', 'ideale' ] as const).map((tab) => {
               const labels = { software: 'Software inclusi', benefici: 'Vantaggi chiave', ideale: 'Ideale per' };
               return (

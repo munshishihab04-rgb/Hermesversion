@@ -121,7 +121,7 @@ export const shippingHTML = `<p>DIGITALSOFT DI MUNSHI SHIHAB vende esclusivament
 <hr/>
 <h2>3. Tempi di Consegna per Prodotto</h2>
 <p>I tempi variano in base alla tipologia di Prodotto acquistato. La tabella seguente riepiloga le modalit&agrave; e i tempi previsti:</p>
-<table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.875rem;">
+<div style="overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch;"><table style="width:100%;min-width:480px;border-collapse:collapse;margin:1rem 0;font-size:0.875rem;">
 <thead>
 <tr style="background:rgba(99,102,241,0.15);">
 <th style="padding:0.6rem 1rem;text-align:left;border:1px solid var(--border);font-weight:700;color:var(--foreground);">Prodotto</th>

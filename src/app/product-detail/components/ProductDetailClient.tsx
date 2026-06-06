@@ -196,7 +196,7 @@ function BusinessConsultingSection({ product }: { product: Product }) {
 
         {/* Corpo */}
         <div className="bg-white p-8">
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mb-8">
             {[
               {
                 icon: 'UserGroupIcon',
@@ -307,7 +307,7 @@ function VariantSelector({
       <label className="text-xs text-muted-foreground uppercase tracking-widest font-semibold block mb-2">
         Piano di Abbonamento
       </label>
-      <div className={`grid gap-2.5 ${variants.length === 2 ? 'grid-cols-2' : 'grid-cols-3'}`}>
+      <div className={`grid gap-2.5 ${variants.length === 2 ? 'grid-cols-2' : 'grid-cols-1 sm:grid-cols-3'}`}>
         {variants.map((v) => {
           const key = v.title.toLowerCase();
           const meta = META[key] || { sub: v.title };
@@ -595,7 +595,7 @@ function ProductTemplate({ product }: { product: Product }) {
         {/* Step attivazione visivi */}
         <div>
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Windows</h2>
-          <div className="grid sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { IconEl: ShoppingCartIcon, step: '01', title: 'Completa il Pagamento', desc: 'Checkout sicuro con Shopify' },
               { IconEl: EnvelopeIcon, step: '02', title: 'Ricevi la Chiave', desc: 'Via email dopo la conferma del pagamento' },
@@ -617,7 +617,7 @@ function ProductTemplate({ product }: { product: Product }) {
         {/* Comparison Windows */}
         <div>
           <h2 className="text-base font-bold text-foreground mb-3">Confronto Versioni Windows</h2>
-          <div className="rounded-xl border border-border overflow-hidden text-xs">
+          <div className="rounded-xl border border-border text-xs overflow-x-auto"><div className="min-w-[480px]">
             <div className="grid grid-cols-4 bg-muted/60 font-bold text-foreground">
               <div className="p-3 border-r border-border">Funzionalità</div>
               <div className="p-3 border-r border-border text-center">Win 10 Home</div>
@@ -639,7 +639,7 @@ function ProductTemplate({ product }: { product: Product }) {
                 <div className="p-3 text-center">{row.w11h ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
               </div>
             ))}
-          </div>
+          </div></div>
         </div>
       </div>
     );
@@ -733,7 +733,7 @@ function ProductTemplate({ product }: { product: Product }) {
         {/* Step attivazione */}
         <div>
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare Office</h2>
-          <div className="grid sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { IconEl: ShoppingCartIcon, step: '01', title: 'Acquista', desc: 'Ricevi la chiave via email in 30 secondi' },
               { IconEl: GlobeOutline, step: '02', title: 'Vai su office.com/setup', desc: 'Accedi con il tuo account Microsoft' },
@@ -1538,7 +1538,7 @@ function ProductTemplate({ product }: { product: Product }) {
         {/* Step attivazione */}
         <div>
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare la Protezione</h2>
-          <div className="grid sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { IconEl: EnvelopeIcon, step: '01', title: 'Ricevi il Codice', desc: 'Via email dopo la conferma del pagamento' },
               { IconEl: ArrowDownCircleIcon, step: '02', title: 'Scarica Kaspersky', desc: 'Da kaspersky.com — versione ufficiale' },
@@ -1560,7 +1560,7 @@ function ProductTemplate({ product }: { product: Product }) {
         {/* Comparison Kaspersky */}
         <div>
           <h2 className="text-base font-bold text-foreground mb-3">Confronto Piani Kaspersky</h2>
-          <div className="rounded-xl border border-border overflow-hidden text-xs">
+          <div className="rounded-xl border border-border text-xs overflow-x-auto"><div className="min-w-[480px]">
             <div className="grid grid-cols-4 bg-muted/60 font-bold text-foreground">
               <div className="p-3 border-r border-border">Funzionalità</div>
               <div className={`p-3 border-r border-border text-center ${isStandard ? 'bg-primary/5 text-primary' : ''}`}>Standard {isStandard && '⭐'}</div>
@@ -1582,7 +1582,7 @@ function ProductTemplate({ product }: { product: Product }) {
                 <div className={`p-3 text-center ${isTotal ? 'bg-primary/5' : ''}`}>{row.total ? <Icon name="CheckCircleIcon" size={14} className="text-emerald-500 mx-auto" /> : <Icon name="XMarkIcon" size={14} className="text-muted-foreground/30 mx-auto" />}</div>
               </div>
             ))}
-          </div>
+          </div></div>
         </div>
       </div>
     );

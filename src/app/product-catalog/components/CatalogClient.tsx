@@ -450,7 +450,7 @@ export default function CatalogClient() {
       {filtersOpen && (
         <div className="fixed inset-0 z-[60] lg:hidden">
           <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setFiltersOpen(false)} />
-          <div className="absolute right-0 top-0 bottom-0 w-72 bg-card border-l border-border flex flex-col">
+          <div className="absolute right-0 top-0 bottom-0 w-[min(288px,85vw)] bg-card border-l border-border flex flex-col">
             <div className="flex items-center justify-between p-4 border-b border-border">
               <span className="font-bold text-foreground">Filtri</span>
               <button onClick={() => setFiltersOpen(false)} className="p-1.5 text-muted-foreground hover:text-foreground rounded-lg">

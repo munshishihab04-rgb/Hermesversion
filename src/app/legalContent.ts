@@ -270,7 +270,7 @@ export const cookieContent = `
 </ul>
 
 <h2>3. Cookie di Terze Parti</h2>
-<table style="width:100%; border-collapse:collapse; font-size:0.875rem;">
+<div style="overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch;"><table style="width:100%;min-width:520px;border-collapse:collapse;font-size:0.875rem;">
   <thead>
     <tr style="background:#f3f4f6;">
       <th style="padding:8px; border:1px solid #e5e7eb; text-align:left;">Cookie</th>

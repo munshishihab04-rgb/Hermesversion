@@ -179,7 +179,7 @@ export default function HelpCenterPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {guides.map((guide, idx) => (
               <div key={idx} className="glass-card rounded-2xl border border-border overflow-hidden">
                 <button
@@ -228,7 +228,7 @@ export default function HelpCenterPage() {
         {/* Direct Contacts */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold text-foreground mb-6">Contatti Rapidi</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/* Email */}
             <div className="glass-card rounded-2xl p-6 border border-blue-200 bg-blue-50/50">
               <div className="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center text-blue-600 mb-4">

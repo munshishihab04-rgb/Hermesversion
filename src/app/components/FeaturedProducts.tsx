@@ -88,7 +88,7 @@ export default function FeaturedProducts() {
         {loading ? (
           <div className="flex gap-4 overflow-hidden">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="rounded-2xl bg-muted/30 border border-border animate-pulse shrink-0 w-[240px] h-72" />
+              <div key={i} className="rounded-2xl bg-muted/30 border border-border animate-pulse shrink-0 w-[200px] sm:w-[240px] h-72" />
             ))}
           </div>
         ) : (
@@ -99,7 +99,7 @@ export default function FeaturedProducts() {
             {displayProducts.map((product, idx) => (
               <div
                 key={product.id}
-                className="snap-start shrink-0 w-[240px] sm:w-[260px]"
+                className="snap-start shrink-0 w-[200px] sm:w-[240px] lg:w-[260px]"
                 style={{ animationDelay: visible ? `${idx * 60}ms` : '0ms' }}
               >
                 <ProductCard product={product} />
