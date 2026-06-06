@@ -8,7 +8,7 @@ import ProductDetailClient from '@/app/product-detail/components/ProductDetailCl
 
 export const metadata = {
   title: 'Dettaglio Prodotto — Licenvo',
-  description: 'Acquista licenze software originali con consegna istantanea. Garanzia soddisfatti o rimborsati.',
+  description: 'Acquista licenze software digitali con consegna istantanea. Garanzia soddisfatti o rimborsati.',
 };
 
 export default function ProductDetailPage() {

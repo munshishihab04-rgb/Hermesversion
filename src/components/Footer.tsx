@@ -42,7 +42,7 @@ export default function Footer() {
               <span className="font-bold text-lg text-foreground">Licenvo</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed">
-              Il marketplace italiano per licenze software originali ai prezzi più bassi.
+              Il marketplace italiano per licenze software digitali a prezzi competitivi.
             </p>
           </div>
 

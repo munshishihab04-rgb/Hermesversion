@@ -68,7 +68,7 @@ export default function TrustSection() {
       <div className="section-container">
         <div className="text-center mb-8">
           <h2 className="section-title mb-2">Perché Scegliere Licenvo</h2>
-          <p className="section-subtitle text-sm">Il modo più semplice e sicuro per acquistare software originali</p>
+          <p className="section-subtitle text-sm">Il modo più semplice e sicuro per acquistare software digitale</p>
         </div>
 
         {/* Desktop: 4-column grid */}
