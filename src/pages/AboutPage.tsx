@@ -10,7 +10,7 @@ export default function AboutPage() {
             Chi Siamo
           </h1>
           <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
-            Dal 2020 forniamo licenze software originali a prezzi accessibili, con assistenza rapida e consegna digitale immediata.
+            Dal 2020 offriamo licenze software a prezzi accessibili, con assistenza rapida e consegna digitale immediata.
           </p>
         </div>
       </div>
@@ -23,7 +23,7 @@ export default function AboutPage() {
           <div className="bg-white border border-border rounded-2xl p-6 md:p-8 space-y-4 text-sm text-muted-foreground leading-relaxed">
             <p>
               <strong className="text-foreground">Licenvo</strong> è il brand commerciale di <strong className="text-foreground">DIGITALSOFT DI MUNSHI SHIHAB</strong>, azienda
-              italiana con sede a Bologna, attiva dal 2020 nella vendita online di licenze software originali.
+              italiana con sede a Bologna, attiva dal 2020 nella vendita online di licenze software.
             </p>
             <p>
               Siamo specializzati nella distribuzione di licenze <strong className="text-foreground">Microsoft</strong> (Windows, Office, Microsoft 365),
@@ -32,7 +32,7 @@ export default function AboutPage() {
             </p>
             <p>
               Il nostro obiettivo è rendere il software professionale accessibile a tutti — privati, liberi professionisti, studi tecnici
-              e aziende — offrendo prezzi competitivi senza compromessi sulla qualità e l'originalità dei prodotti.
+              e aziende — offrendo prezzi competitivi senza compromessi sulla qualità e l'affidabilità dei prodotti.
             </p>
           </div>
         </section>
@@ -64,7 +64,7 @@ export default function AboutPage() {
               },
               {
                 title: "Prezzi Accessibili",
-                desc: "Offriamo licenze originali a prezzi significativamente inferiori al listino ufficiale, rendendo il software professionale alla portata di tutti."
+                desc: "Offriamo licenze software a prezzi competitivi, rendendo il software professionale alla portata di tutti."
               },
               {
                 title: "Assistenza Rapida",
@@ -72,7 +72,7 @@ export default function AboutPage() {
               },
               {
                 title: "Consegna Digitale Immediata",
-                desc: "Le chiavi di attivazione e gli abbonamenti vengono consegnati via email in pochi secondi dal pagamento, 24 ore su 24, 7 giorni su 7."
+                desc: "Le chiavi di attivazione e gli abbonamenti vengono consegnati rapidamente via email. Per abbonamenti Autodesk, l'assegnazione avviene entro 24 ore."
               },
             ].map((v) => (
               <div key={v.title} className="bg-white border border-border rounded-xl p-5">

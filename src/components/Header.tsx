@@ -173,7 +173,7 @@ const mobileSections = [
 ];
 
 const announcements = [
-  '⚡ Consegna istantanea via email — licenze originali garantite al 100%',
+  '⚡ Consegna rapida via email — attivazione verificata sui server ufficiali',
   '🛡️ Pagamento sicuro SSL · Rimborso 30 giorni · Supporto in italiano',
   '🏆 Oltre 10.000 clienti soddisfatti — Recensioni verificate ★★★★★',
 ];
@@ -447,7 +447,7 @@ export default function Header() {
                 svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
               },
               {
-                text: 'Licenze Originali',
+                text: 'Attivazione Verificata',
                 svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               },
               {

@@ -303,7 +303,7 @@ function ValuePropsSection() {
     {
       Icon: ShieldCheckIcon,
       title: 'Licenza Commerciale Ufficiale',
-      desc: 'Abbonamento originale Autodesk, valido per uso professionale e aziendale, con supporto diretto.',
+      desc: 'Abbonamento Autodesk, valido per uso professionale e aziendale, con assistenza dedicata.',
       color: 'text-emerald-600',
       bg: 'bg-emerald-50',
     },

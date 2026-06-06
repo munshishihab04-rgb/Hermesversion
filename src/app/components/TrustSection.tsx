@@ -13,8 +13,8 @@ const trustItems = [
   },
   {
     icon: 'ShieldCheckIcon',
-    title: 'Licenze 100% Originali',
-    desc: 'Licenze genuine acquistate da distributori autorizzati. Attivazione diretta sui server Microsoft, Autodesk e Kaspersky.',
+    title: 'Attivazione Verificata',
+    desc: 'Chiavi di licenza attivabili direttamente sui server Microsoft, Autodesk e Kaspersky. Compatibilità verificata.',
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/25',
@@ -22,8 +22,8 @@ const trustItems = [
   },
   {
     icon: 'ArrowPathIcon',
-    title: 'Garanzia Soddisfatti o Rimborsati',
-    desc: 'Chiave non funzionante? Sostituzione immediata o rimborso completo entro 30 giorni. Nessuna domanda.',
+    title: 'Garanzia su Ogni Licenza',
+    desc: 'Chiave non funzionante o già attivata? Sostituzione o rimborso completo entro 30 giorni — vedi Politica Rimborsi per i dettagli.',
     color: 'text-blue-400',
     bg: 'bg-blue-500/10',
     border: 'border-blue-500/25',

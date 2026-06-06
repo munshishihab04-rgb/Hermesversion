@@ -85,8 +85,8 @@ export default function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 glass-card px-4 py-2 rounded-full text-sm">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-emerald-600 font-semibold text-xs">Consegna Istantanea 24/7</span>
-              <span className="text-muted-foreground text-xs">· Licenze Originali Garantite</span>
+              <span className="text-emerald-600 font-semibold text-xs">Consegna Rapida via Email</span>
+              <span className="text-muted-foreground text-xs">· Attivazione Verificata</span>
             </div>
 
             {/* Headline */}
@@ -97,8 +97,7 @@ export default function HeroSection() {
                 <span className="block text-foreground/60 font-light">al Miglior Prezzo</span>
               </h1>
               <p className="text-lg text-muted-foreground max-w-lg leading-relaxed">
-                Windows, Office, Autodesk, antivirus e licenze originali. Risparmia fino al{' '}
-                <span className="text-primary font-bold">92%</span> con consegna istantanea via email.
+                Windows, Office, Autodesk e antivirus — licenze con attivazione verificata. Prezzi a partire da €19,99.
               </p>
             </div>
 
@@ -118,8 +117,8 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-3 pt-2">
               {[
                 { icon: 'BoltIcon', text: 'Consegna immediata via email' },
-                { icon: 'ShieldCheckIcon', text: 'Licenze originali al 100%' },
-                { icon: 'ArrowPathIcon', text: 'Rimborso garantito 30gg' },
+                { icon: 'ShieldCheckIcon', text: 'Attivazione verificata' },
+                { icon: 'ArrowPathIcon', text: 'Sostituzione o rimborso entro 30gg' },
               ].map((pill) => (
                 <div key={pill.text} className="flex items-center gap-1.5 text-xs text-muted-foreground bg-muted/40 border border-border rounded-full px-3 py-1.5">
                   <Icon name={pill.icon as Parameters<typeof Icon>[0]['name']} size={11} className="text-primary shrink-0" />

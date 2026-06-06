@@ -33,7 +33,7 @@ const faqSections = [
     items: [
       {
         q: 'Quanto tempo ci vuole per ricevere la mia chiave?',
-        a: 'La consegna è istantanea. Dopo il pagamento confermato, riceverai la chiave di attivazione via email entro 30-60 secondi. In rari casi può richiedere fino a 5 minuti.',
+        a: 'Per prodotti Microsoft e Kaspersky, la chiave arriva via email entro pochi secondi dal pagamento. Per prodotti Autodesk, l'''assegnazione avviene entro 24 ore lavorative.',
       },
       {
         q: 'Non ho ricevuto la mia chiave, cosa faccio?',
@@ -64,7 +64,7 @@ const faqSections = [
       },
       {
         q: 'Le licenze sono originali?',
-        a: 'Assolutamente sì. Tutte le licenze vendute su Licenvo sono originali e legittime. Le chiavi vengono acquistate da distributori autorizzati e attivano i prodotti direttamente sui server ufficiali del produttore.',
+        a: 'Sì. Le chiavi che vendiamo attivano i prodotti direttamente sui server ufficiali Microsoft, Autodesk e Kaspersky. Vedi la nostra Politica di Rimborso per la garanzia di funzionamento.',
       },
     ],
   },

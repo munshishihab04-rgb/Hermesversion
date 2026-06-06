@@ -95,7 +95,7 @@ const COLLECTIONS_DATA: Record<string, CollectionData> = {
       { name: 'AutoCAD', handle: 'autodesk-autocad', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, price: '~€60/mese' },
       { name: 'Revit', handle: 'autodesk-revit', icon: `${CDN}/revit-2023-simplified-badge-75x75.png`, price: '~€330/mese' },
     ],
-    collectionSaving: 'Risparmi €600+/mese rispetto all\'acquisto separato di AutoCAD + Revit + Civil 3D',
+    collectionSaving: 'Includi tutti i software AEC in un unico abbonamento, invece di acquistarli separatamente',
   },
   pdm: {
     id: 'pdm',
@@ -136,7 +136,7 @@ const COLLECTIONS_DATA: Record<string, CollectionData> = {
       { name: 'Fusion 360', handle: 'autodesk-fusion-360', icon: `${CDN}/fusion-360-2023-simplified-badge-75x75.png`, price: '~€70/mese' },
       { name: 'AutoCAD', handle: 'autodesk-autocad', icon: `${CDN}/autocad-2023-simplified-badge-75x75.png`, price: '~€60/mese' },
     ],
-    collectionSaving: 'Risparmi €500+/mese rispetto all\'acquisto separato di Inventor + Fusion 360 + AutoCAD',
+    collectionSaving: 'Includi Inventor, Fusion 360, AutoCAD e altri strumenti in un unico abbonamento integrato',
   },
   me: {
     id: 'me',
@@ -261,7 +261,7 @@ export default function AutodeskCollectionDetailPage({ overrideCollectionId }: {
     },
     {
       q: 'Quale email devo usare al checkout?',
-      a: 'Devi inserire l\'email del tuo Autodesk ID. L\'abbonamento viene assegnato direttamente a quell\'indirizzo — non può essere modificato in seguito.',
+      a: 'Devi inserire l\'email del tuo Autodesk ID. L\'abbonamento viene assegnato all\'account Autodesk indicato al checkout — non può essere modificato in seguito.',
     },
   ];
 
@@ -457,7 +457,7 @@ export default function AutodeskCollectionDetailPage({ overrideCollectionId }: {
                   {/* Trust */}
                   <div className="grid grid-cols-3 gap-2 pt-1">
                     {[
-                      { Icon: ShieldCheckIcon, label: 'Licenza Ufficiale' },
+                      { Icon: ShieldCheckIcon, label: 'Attivazione diretta' },
                       { Icon: CheckBadgeIcon, label: 'Uso Commerciale' },
                       { Icon: ArrowTrendingUpIcon, label: 'Aggiornamenti inclusi' },
                     ].map((t) => (

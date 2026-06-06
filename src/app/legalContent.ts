@@ -159,7 +159,7 @@ export const termsContent = `
 <p>Tuttavia, il Titolare offre volontariamente una <strong>garanzia commerciale di 30 giorni</strong>: in caso di prodotto non funzionante o non conforme, il Cliente ha diritto a sostituzione gratuita o rimborso completo. Consulta la <a href="/refund">Politica di Rimborso</a>.</p>
 
 <h2>7. Garanzia e Assistenza</h2>
-<p>Tutte le licenze vendute su licenvo.com sono originali e attivabili sui server ufficiali del produttore. In caso di problemi tecnici contattaci entro 30 giorni dall'acquisto a: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp +39 393 684 1051.</p>
+<p>Tutte le licenze vendute su licenvo.com sono attivabili sui server ufficiali del produttore. In caso di problemi tecnici contattaci entro 30 giorni dall'acquisto a: <a href="mailto:assistenza@licenvo.com">assistenza@licenvo.com</a> o WhatsApp +39 393 684 1051.</p>
 
 <h2>8. Limitazione di Responsabilità</h2>
 <p>Il Titolare non è responsabile per:</p>

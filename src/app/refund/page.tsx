@@ -8,13 +8,13 @@ import LegalPageLayout from '@/app/components/LegalPageLayout';
 
 export const metadata = {
   title: 'Politica Rimborsi — Licenvo',
-  description: 'Politica di rimborso e sostituzione prodotti di Licenvo. Garanzia 30 giorni su tutte le licenze.',
+  description: 'Politica di rimborso e sostituzione licenze di Licenvo. Sostituzione o rimborso entro 30 giorni in caso di problemi.',
 };
 
 const content = `
 ## 1. La Nostra Garanzia
 
-Licenvo garantisce l'autenticità e il funzionamento di tutte le licenze vendute. Se riscontri un problema con un prodotto acquistato, siamo qui per aiutarti.
+Licenvo garantisce il funzionamento di tutte le licenze vendute. Se riscontri un problema con un prodotto acquistato, siamo qui per aiutarti.
 
 ## 2. Quando Hai Diritto al Rimborso
 
@@ -54,7 +54,7 @@ Non è possibile procedere con il rimborso nei seguenti casi:
 3. **Elaborazione:**
    - Risposta entro 2 ore lavorative
    - Sostituzione chiave: immediata
-   - Rimborso: 3-5 giorni lavorativi sul metodo di pagamento originale
+   - Rimborso: 5-10 giorni lavorativi sul metodo di pagamento utilizzato
 
 ## 5. Diritto di Recesso
 
@@ -71,7 +71,7 @@ Per gli abbonamenti (es. Microsoft 365, antivirus):
 ## 7. Metodi di Rimborso
 
 I rimborsi vengono elaborati tramite:
-- Carta di credito/debito: 3-5 giorni lavorativi
+- Carta di credito/debito: 5-10 giorni lavorativi
 - PayPal: 1-3 giorni lavorativi
 - Klarna: secondo le politiche Klarna
 - Credito Licenvo: immediato (alternativa al rimborso monetario)
@@ -79,7 +79,7 @@ I rimborsi vengono elaborati tramite:
 ## 8. Contatti per Rimborsi
 
 Email dedicata: assistenza@licenvo.com
-Chat: disponibile 24/7 sul sito
+Assistenza: disponibile via email e WhatsApp
 Telefono: non disponibile (solo supporto scritto)
 
 *Ultimo aggiornamento: 15 Maggio 2025*

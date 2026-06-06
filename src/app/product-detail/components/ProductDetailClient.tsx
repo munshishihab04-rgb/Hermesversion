@@ -75,7 +75,7 @@ function getFaqItems(product: Product) {
   const isCollection = product.nameIt?.toLowerCase().includes('collection') || product.nameIt?.toLowerCase().includes('aec') || product.nameIt?.toLowerCase().includes('pd&m') || product.nameIt?.toLowerCase().includes('m&e');
 
   if (isAutodesk || isCollection) {
-    const deliveryTime = product.deliveryTime || 'immediatamente';
+    const deliveryTime = product.deliveryTime || 'entro 24 ore';
     return [
       {
         q: 'Come funziona l\'assegnazione dell\'abbonamento Autodesk?',
@@ -137,7 +137,7 @@ function getFaqItems(product: Product) {
   // Default generico
   return [
     { q: 'Come ricevo il mio prodotto?', a: 'Dopo il pagamento riceverai la chiave di attivazione o le credenziali di accesso via email. I tempi di consegna sono indicati nella pagina prodotto.' },
-    { q: 'Il prodotto è originale e legale?', a: 'Sì, tutte le licenze vendute su Licenvo sono originali e legittime, acquistate da distributori autorizzati e attivabili sui server ufficiali del produttore.' },
+    { q: 'Il prodotto è originale e legale?', a: 'Sì, tutte le licenze vendute su Licenvo sono attivabili sui server ufficiali del produttore.' },
     { q: 'Cosa fare se il prodotto non funziona?', a: 'Contattaci subito via email o chat. Offriamo sostituzione gratuita o rimborso completo entro 30 giorni dall\'acquisto.' },
     { q: 'Posso avere fattura elettronica?', a: 'Sì. Al momento del checkout seleziona "Fattura elettronica" e inserisci i tuoi dati fiscali (Codice Fiscale/P.IVA e Codice SDI). La fattura verrà emessa e inviata automaticamente.' },
   ];
@@ -598,7 +598,7 @@ function ProductTemplate({ product }: { product: Product }) {
           <div className="grid sm:grid-cols-4 gap-3">
             {[
               { IconEl: ShoppingCartIcon, step: '01', title: 'Completa il Pagamento', desc: 'Checkout sicuro con Shopify' },
-              { IconEl: EnvelopeIcon, step: '02', title: 'Ricevi la Chiave', desc: 'Via email in meno di 30 secondi' },
+              { IconEl: EnvelopeIcon, step: '02', title: 'Ricevi la Chiave', desc: 'Via email dopo la conferma del pagamento' },
               { IconEl: Cog6ToothIcon, step: '03', title: 'Vai ad Attivazione', desc: 'Impostazioni › Sistema › Attivazione' },
               { IconEl: CheckCircleOutline, step: '04', title: 'Inserisci la Chiave', desc: 'Windows si attiva automaticamente' },
             ].map((s) => (
@@ -1247,7 +1247,7 @@ function ProductTemplate({ product }: { product: Product }) {
         tagline: 'Software Autodesk originale con assegnazione diretta al tuo account',
         mainUse: 'Progettazione professionale con gli strumenti standard del settore',
         keyFeatures: [
-          { title: 'Licenza ufficiale', desc: 'Abbonamento originale assegnato direttamente da Autodesk' },
+          { title: 'Attivazione diretta', desc: "Abbonamento assegnato all'account Autodesk indicato al checkout" },
           { title: 'Aggiornamenti inclusi', desc: 'Sempre aggiornato all\'ultima versione disponibile' },
           { title: 'Supporto tecnico', desc: 'Accesso al supporto ufficiale Autodesk' },
           { title: 'Uso commerciale', desc: 'Valido per uso professionale e aziendale' },
@@ -1540,7 +1540,7 @@ function ProductTemplate({ product }: { product: Product }) {
           <h2 className="text-base font-bold text-foreground mb-4">Come Attivare la Protezione</h2>
           <div className="grid sm:grid-cols-4 gap-3">
             {[
-              { IconEl: EnvelopeIcon, step: '01', title: 'Ricevi il Codice', desc: 'Via email in soli 2 minuti dal pagamento' },
+              { IconEl: EnvelopeIcon, step: '01', title: 'Ricevi il Codice', desc: 'Via email dopo la conferma del pagamento' },
               { IconEl: ArrowDownCircleIcon, step: '02', title: 'Scarica Kaspersky', desc: 'Da kaspersky.com — versione ufficiale' },
               { IconEl: Cog6ToothIcon, step: '03', title: 'Installa & Avvia', desc: 'Guida rapida inclusa nell\'email' },
               { IconEl: ShieldOutline, step: '04', title: 'Protezione Attiva', desc: 'Inserisci il codice — sei protetto' },
@@ -1720,7 +1720,7 @@ export default function ProductDetailClient() {
     ? product.softwareFeatures.split('\n').filter((f) => f.trim())
     : ['Licenza originale con attivazione garantita', 'Aggiornamenti inclusi per tutta la durata', 'Supporto tecnico in italiano', 'Consegna via email'];
 
-  const deliveryText = product.deliveryTime || 'Immediata';
+  const deliveryText = product.deliveryTime || 'entro 24 ore';
   const isCheckoutEmailRequired = product.checkoutEmailRequired?.toLowerCase().startsWith('sì');
 
   return (
@@ -1740,12 +1740,9 @@ export default function ProductDetailClient() {
               price: currentPrice,
               priceCurrency: 'EUR',
               availability: 'https://schema.org/InStock',
+              itemCondition: 'https://schema.org/NewCondition',
+              seller: { '@type': 'Organization', name: 'Licenvo', url: 'https://licenvo.com' },
             },
-            aggregateRating: product.reviewCount > 0 ? {
-              '@type': 'AggregateRating',
-              ratingValue: product.rating,
-              reviewCount: product.reviewCount,
-            } : undefined,
           }),
         }}
       />
@@ -1846,7 +1843,7 @@ export default function ProductDetailClient() {
             <div className="space-y-2">
               {(badges.length > 0 ? badges.map((b, i) => ({ icon: i === 0 ? 'BoltIcon' : i === 1 ? 'ShieldCheckIcon' : 'ArrowPathIcon', text: b, color: i === 0 ? 'text-amber-500' : i === 1 ? 'text-emerald-500' : 'text-blue-500' })) : [
                 { icon: 'BoltIcon', text: isAutodesk ? 'Assegnazione immediata' : `Consegna ${deliveryText.toLowerCase()}`, color: 'text-amber-500' },
-                { icon: 'ShieldCheckIcon', text: 'Licenza originale garantita al 100%', color: 'text-emerald-500' },
+                { icon: 'ShieldCheckIcon', text: 'Attivazione verificata sui server ufficiali', color: 'text-emerald-500' },
                 { icon: 'ArrowPathIcon', text: product.refundPolicyLabel || 'Garanzia rimborso 30 giorni', color: 'text-blue-500' },
               ]).map((g) => (
                 <div key={g.text} className="flex items-center gap-2.5 text-sm">
@@ -2054,7 +2051,7 @@ export default function ProductDetailClient() {
                   { step: '01', title: isAutodesk ? 'Completa il pagamento' : 'Completa il pagamento', desc: isAutodesk ? 'Procedi al checkout. Usa l\'email del tuo account Autodesk — verrà usata per l\'assegnazione.' : 'Procedi al checkout sicuro e completa il pagamento.' },
                   { step: '02', title: isAutodesk ? 'Conferma di assegnazione' : 'Ricevi la chiave', desc: isAutodesk ? `Riceverai una email da Autodesk che conferma l'assegnazione dell'abbonamento al tuo account.` : 'Ricevi la chiave di attivazione via email in pochi secondi.' },
                   { step: '03', title: isAutodesk ? 'Scarica il software' : 'Attiva il prodotto', desc: isAutodesk ? 'Accedi ad autodesk.com con il tuo account e scarica il software direttamente dal portale ufficiale.' : 'Segui le istruzioni nell\'email per attivare il prodotto.' },
-                  { step: '04', title: 'Inizia a lavorare', desc: isAutodesk ? 'Il software è attivato e pronto all\'uso. Hai accesso a tutti gli aggiornamenti durante il periodo di abbonamento.' : 'Inizia subito a utilizzare il tuo software con licenza originale.' },
+                  { step: '04', title: 'Inizia a lavorare', desc: isAutodesk ? 'Il software è attivato e pronto all\'uso. Hai accesso a tutti gli aggiornamenti durante il periodo di abbonamento.' : 'Inizia subito a utilizzare il tuo software con licenza attivata.' },
                 ]).map((s) => (
                   <div key={s.step} className="flex gap-4">
                     <div className="w-8 h-8 rounded-xl bg-primary/15 text-primary font-bold text-xs flex items-center justify-center shrink-0">{s.step}</div>
