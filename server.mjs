@@ -55,6 +55,21 @@ const ROUTE_META = {
     description: "Abbonamenti Autodesk AEC, PD&M e M&E Collection a prezzi competitivi. AutoCAD, Revit, Inventor e pi\u00f9.",
     h1: "Collezioni Autodesk",
   },
+  "/autodesk-collections/aec": {
+    title: "Autodesk AEC Collection 2025 — Architettura, Ingegneria & Costruzioni | Licenvo",
+    description: "Autodesk AEC Collection: AutoCAD, Revit, Civil 3D, Navisworks. Piano mensile da €49,99. Consegna digitale immediata.",
+    h1: "Autodesk AEC Collection",
+  },
+  "/autodesk-collections/pdm": {
+    title: "Autodesk PD&M Collection 2025 — Progettazione e Manifattura | Licenvo",
+    description: "Autodesk PD&M Collection: Inventor, Fusion, AutoCAD, Vault Professional. Piano mensile da €49,99.",
+    h1: "Autodesk PD&M Collection",
+  },
+  "/autodesk-collections/me": {
+    title: "Autodesk M&E Collection 2025 — Media & Entertainment | Licenvo",
+    description: "Autodesk M&E Collection: Maya, 3ds Max, Arnold, Mudbox. Piano mensile da €49,99. Animazione 3D e VFX.",
+    h1: "Autodesk M&E Collection",
+  },
   "/faq": {
     title: "Domande Frequenti (FAQ) \u2014 Licenvo",
     description: "Risposte alle domande pi\u00f9 frequenti su acquisto licenze, attivazione, pagamenti e assistenza Licenvo.",
@@ -126,8 +141,9 @@ function buildHtml(url, meta, productData) {
   const hasHandle = url.includes("?handle=");
   const canonical = "https://licenvo.com" + (hasHandle ? url : (qIdx > -1 ? url.substring(0, qIdx) : url));
 
-  // Determine og:type and og:image based on product data
-  const ogType = productData ? "product" : "website";
+  // Determine og:type based on product data or Autodesk collection detail pages
+  const isCollectionDetailPage = url.startsWith("/autodesk-collections/") && url.split("/").filter(Boolean).length === 2;
+  const ogType = (productData || isCollectionDetailPage) ? "product" : "website";
   const ogImage = productData && productData.featuredImage?.url ? productData.featuredImage.url : "https://licenvo.com/opengraph.jpg";
 
   // Build structured content for bots
@@ -187,6 +203,18 @@ function buildHtml(url, meta, productData) {
         },
       },
     }) + '</script>';
+
+    // BreadcrumbList JSON-LD
+    const breadcrumbLd = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://licenvo.com" },
+        { "@type": "ListItem", position: 2, name: "Catalogo", item: "https://licenvo.com/product-catalog" },
+        { "@type": "ListItem", position: 3, name: productData.title, item: "https://licenvo.com" + url },
+      ],
+    });
+    jsonLd += '<script type="application/ld+json">' + breadcrumbLd + '</script>';
   }
 
   // Organization JSON-LD for homepage
@@ -203,6 +231,20 @@ function buildHtml(url, meta, productData) {
       address: { "@type": "PostalAddress", streetAddress: "Via Aldo Pio Manuzio 24", addressLocality: "Bologna", postalCode: "40132", addressCountry: "IT" },
       vatID: "IT04358941203",
     }) + '</script>';
+
+    // WebSite schema with SearchAction
+    const websiteLd = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Licenvo",
+      url: "https://licenvo.com",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: { "@type": "EntryPoint", urlTemplate: "https://licenvo.com/product-catalog?q={search_term_string}" },
+        "query-input": "required name=search_term_string",
+      },
+    });
+    orgLd += '<script type="application/ld+json">' + websiteLd + '</script>';
   }
 
   // Replace head section with proper meta for this route

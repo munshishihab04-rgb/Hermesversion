@@ -1894,7 +1894,15 @@ export default function ProductDetailClient() {
                 {isAutodesk && selectedShopifyVariant?.title?.toLowerCase().includes('triennale') && (
                   <p className="text-xs text-emerald-600 font-semibold flex items-center gap-1">
                     <Icon name="CheckCircleIcon" size={12} />
-                    Risparmio di €{fmtEur(14.99 * 36 - 87.99)} rispetto al mensile
+                    {(() => {
+                      const mensV = product?.shopifyVariants?.find((v:any) => v.title?.toLowerCase().includes('mensile'));
+                      const triV = product?.shopifyVariants?.find((v:any) => v.title?.toLowerCase().includes('triennale'));
+                      if (mensV && triV) {
+                        const saving = parseFloat(mensV.price) * 36 - parseFloat(triV.price);
+                        return saving > 0 ? `Risparmio di €${fmtEur(saving)} rispetto al mensile` : "Prezzo bloccato per 3 anni";
+                      }
+                      return 'Prezzo bloccato per 3 anni';
+                    })()}
                   </p>
                 )}
               </div>

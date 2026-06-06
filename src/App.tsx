@@ -6,6 +6,7 @@ import { WishlistProvider } from '@/context/WishlistContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
+import WhatsAppButton from '@/components/WhatsAppButton';
 import CookieBanner from '@/components/CookieBanner';
 
 // Lazy-loaded page components for code splitting
@@ -36,6 +37,7 @@ function PageWrapper({ children }: { children: React.ReactNode }) {
         <div className="min-h-screen bg-background">
           <Header />
           <CartDrawer />
+          <WhatsAppButton />
           <CookieBanner />
           <main className="pt-0">
             {children}

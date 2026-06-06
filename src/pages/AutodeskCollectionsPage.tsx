@@ -716,6 +716,43 @@ export default function AutodeskCollectionsPage() {
           </div>
         </section>
 
+
+        {/* Pricing comparison table */}
+        <section className="py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-2" style={{fontFamily:"Inter",fontWeight:900}}>Confronto Piani</h2>
+            <p className="text-center text-gray-400 mb-10">Tutti i piani includono aggiornamenti automatici e accesso completo ai software</p>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="p-4 text-left text-gray-400 font-medium">Collection</th>
+                    <th className="p-4 text-center text-gray-400 font-medium">Mensile</th>
+                    <th className="p-4 text-center relative" style={{background:"linear-gradient(135deg,#0052CC,#00A896)",borderRadius:"8px 8px 0 0"}}>
+                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-amber-400 text-black text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Risparmio Massimo</span>
+                      <span className="text-white font-bold">Triennale</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {[
+                    {name:"AEC Collection", monthly:"49,99", tri:"349,99", path:"aec"},
+                    {name:"PD&M Collection", monthly:"49,99", tri:"349,99", path:"pdm"},
+                    {name:"M&E Collection", monthly:"49,99", tri:"349,99", path:"me"},
+                  ].map((row, i) => (
+                    <tr key={i} className="border-t border-white/5">
+                      <td className="p-4 font-semibold text-white">{row.name}</td>
+                      <td className="p-4 text-center text-gray-300">&euro;{row.monthly}<span className="text-xs text-gray-500">/mese</span></td>
+                      <td className="p-4 text-center font-bold text-white" style={{background:"rgba(0,82,204,0.15)"}}>&euro;{row.tri}<span className="text-xs text-teal-400">/3 anni</span></td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-center text-sm text-gray-500 mt-4">Prezzi IVA esclusa. Regime forfettario art.1 c.54-89 L.190/2014.</p>
+          </div>
+        </section>
+
         {/* ── FAQ ── */}
         <section>
           <div className="mb-8 text-center">

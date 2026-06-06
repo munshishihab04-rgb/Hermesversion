@@ -73,6 +73,22 @@ const faqSections: FaqSection[] = [
           </p>
         ),
       },
+      {
+        q: 'Le licenze sono originali e legali?',
+        a: (
+          <p>
+            S&igrave;, tutte le licenze vendute da Licenvo sono originali. Vendiamo licenze ESD Microsoft, abbonamenti Autodesk subscription ufficiali e licenze Kaspersky. Ogni prodotto include chiave di licenza autentica con supporto diretto del produttore.
+          </p>
+        ),
+      },
+      {
+        q: 'Posso usare la licenza su pi&ugrave; PC?',
+        a: (
+          <p>
+            Dipende dal prodotto. Windows e Office sono per 1 PC. Microsoft 365 Personal &egrave; per 1 dispositivo attivo, 365 Family per 6 utenti. Le licenze Autodesk Named User si installano su 3 dispositivi per lo stesso utente.
+          </p>
+        ),
+      },
     ],
   },
   {
@@ -258,6 +274,14 @@ const faqSections: FaqSection[] = [
           </p>
         ),
       },
+      {
+        q: 'Come funziona il rinnovo per Autodesk?',
+        a: (
+          <p>
+            I piani mensili si rinnovano automaticamente ogni mese. I piani triennali durano 3 anni senza rinnovo. Puoi disdire il mensile in qualsiasi momento dal portale Autodesk Account.
+          </p>
+        ),
+      },
     ],
   },
   {
@@ -311,6 +335,14 @@ const faqSections: FaqSection[] = [
           </p>
         ),
       },
+      {
+        q: 'Cosa succede se la chiave non funziona?',
+        a: (
+          <p>
+            Offriamo garanzia soddisfatti o rimborsati. Sostituiamo immediatamente la chiave o rimborsiamo integralmente entro 30 giorni. Contattaci su WhatsApp o via email con lo screenshot dell&apos;errore.
+          </p>
+        ),
+      },
     ],
   },
   {
@@ -360,6 +392,16 @@ const faqSections: FaqSection[] = [
             In conformità alla normativa fiscale italiana (D.P.R. 633/72 e D.P.R. 600/73), le fatture e i documenti fiscali
             vengono conservati per <strong>10 anni</strong>. Puoi richiedere copia di qualsiasi documento fiscale relativo ai tuoi
             acquisti contattandoci a <a href="mailto:assistenza@licenvo.com" className="text-primary hover:underline">assistenza@licenvo.com</a>.
+          </p>
+        ),
+      },
+      {
+        q: 'Posso avere la fattura elettronica?',
+        a: (
+          <p>
+            S&igrave;, emettiamo fattura elettronica per aziende e professionisti con P.IVA. Regime forfettario (art.1 c.54-89 L.190/2014): fattura senza IVA. Inserisci P.IVA e Codice SDI nel campo note al checkout oppure scrivici a{' '}
+            <a href="mailto:assistenza@licenvo.com" className="text-primary hover:underline">assistenza@licenvo.com</a>{' '}
+            dopo l&apos;acquisto.
           </p>
         ),
       },

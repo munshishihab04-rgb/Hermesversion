@@ -223,8 +223,8 @@ export default function AutodeskCollectionDetailPage({ overrideCollectionId }: {
   const triennale = product?.variants.nodes.find((v) => v.title.toLowerCase().includes('triennale'));
   const selectedVariant = product?.variants.nodes.find((v) => v.id === selectedVariantId);
 
-  const mensilePrice = mensile ? parseFloat(mensile.price.amount) : 14.99;
-  const triennalePrice = triennale ? parseFloat(triennale.price.amount) : 87.99;
+  const mensilePrice = mensile ? parseFloat(mensile.price.amount) : 49.99;
+  const triennalePrice = triennale ? parseFloat(triennale.price.amount) : 349.99;
   const saving = fmtEur(mensilePrice * 36 - triennalePrice);
 
   const handleCheckout = async () => {
