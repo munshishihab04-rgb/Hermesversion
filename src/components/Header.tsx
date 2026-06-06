@@ -11,9 +11,11 @@ const navItems = [
   {
     label: 'Microsoft',
     dropdown: [
-      { label: 'Windows',       href: '/product-catalog?category=windows',       icon: 'WindowIcon' },
-      { label: 'Office',        href: '/product-catalog?category=office',        icon: 'DocumentTextIcon' },
-      { label: 'Microsoft 365', href: '/product-catalog?category=microsoft-365', icon: 'CloudIcon' },
+      { label: 'Windows',           href: '/windows',        icon: 'WindowIcon' },
+      { label: 'Office',            href: '/office',         icon: 'DocumentTextIcon' },
+      { label: 'Microsoft 365',     href: '/product-catalog?category=microsoft-365', icon: 'CloudIcon' },
+      { label: 'Bundle Win+Office', href: '/bundles',        icon: 'RectangleGroupIcon' },
+      { label: 'Visio & Project',   href: '/visio-project',  icon: 'PresentationChartBarIcon' },
     ],
   },
   {
@@ -23,19 +25,21 @@ const navItems = [
       { label: 'Tutti i prodotti Autodesk', href: '/product-catalog?category=autodesk',      icon: 'Squares2X2Icon' },
     ],
   },
-  { label: 'Antivirus',  href: '/product-catalog?category=antivirus' },
+  { label: 'Antivirus',  href: '/antivirus' },
   { label: 'Catalogo',   href: '/product-catalog' },
   { label: 'Assistenza', href: '/assistenza' },
 ];
 
 // Mobile flat list (per il drawer mobile)
 const navCategories = [
-  { label: 'Windows',               href: '/product-catalog?category=windows',       icon: 'WindowIcon' },
-  { label: 'Office',                href: '/product-catalog?category=office',        icon: 'DocumentTextIcon' },
+  { label: 'Windows',               href: '/windows',                                icon: 'WindowIcon' },
+  { label: 'Office',                href: '/office',                                 icon: 'DocumentTextIcon' },
   { label: 'Microsoft 365',         href: '/product-catalog?category=microsoft-365', icon: 'CloudIcon' },
+  { label: 'Bundle Win+Office',     href: '/bundles',                                icon: 'RectangleGroupIcon' },
+  { label: 'Visio & Project',       href: '/visio-project',                          icon: 'PresentationChartBarIcon' },
   { label: 'Autodesk Collections',  href: '/autodesk-collections',                   icon: 'CubeIcon' },
   { label: 'Tutti i prodotti Autodesk', href: '/product-catalog?category=autodesk', icon: 'Squares2X2Icon' },
-  { label: 'Antivirus',             href: '/product-catalog?category=antivirus',     icon: 'ShieldCheckIcon' },
+  { label: 'Antivirus',             href: '/antivirus',                              icon: 'ShieldCheckIcon' },
 ];
 
 const announcementMessages = [
@@ -379,7 +383,7 @@ export default function Header() {
               <div className="pt-3 pb-1 px-2">
                 <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Microsoft</span>
               </div>
-              {navCategories.slice(0, 3).map((cat) => (
+              {navCategories.slice(0, 5).map((cat) => (
                 <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
                   <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
@@ -393,7 +397,7 @@ export default function Header() {
               <div className="pt-3 pb-1 px-2">
                 <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Autodesk</span>
               </div>
-              {navCategories.slice(3, 5).map((cat) => (
+              {navCategories.slice(5, 7).map((cat) => (
                 <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
                   <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">
@@ -407,7 +411,7 @@ export default function Header() {
               <div className="pt-3 pb-1 px-2">
                 <span className="text-[10px] uppercase tracking-widest text-muted-foreground font-semibold">Sicurezza</span>
               </div>
-              {navCategories.slice(5).map((cat) => (
+              {navCategories.slice(7).map((cat) => (
                 <Link key={cat.label} href={cat.href} onClick={() => setMobileOpen(false)}
                   className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 rounded-lg transition-colors">
                   <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center shrink-0">

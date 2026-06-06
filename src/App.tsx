@@ -92,6 +92,11 @@ function Router() {
         <Route path="/autodesk-collections/:id">{() => <PageWrapper><AutodeskCollectionDetailPage /></PageWrapper>}</Route>
         <Route path="/account">{() => <PageWrapper><AccountPage /></PageWrapper>}</Route>
         <Route path="/account/callback">{() => <AccountCallbackPage />}</Route>
+        <Route path="/windows">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
+        <Route path="/office">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
+        <Route path="/antivirus">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
+        <Route path="/bundles">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
+        <Route path="/visio-project">{() => <PageWrapper><ProductCatalogPage /></PageWrapper>}</Route>
         <Route>{() => <PageWrapper><NotFound /></PageWrapper>}</Route>
       </Switch>
     </Suspense>

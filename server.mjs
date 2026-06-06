@@ -130,6 +130,31 @@ const ROUTE_META = {
     description: "Informazioni sulla fatturazione elettronica per acquisti su Licenvo. Fattura disponibile per aziende e privati.",
     h1: "Fatturazione",
   },
+  "/windows": {
+    title: "Licenze Windows 10 e 11 al Miglior Prezzo | Licenvo",
+    description: "Licenze digitali Windows 10 Home, Windows 10 Pro, Windows 11 Home, Windows 11 Pro. Consegna istantanea. Da \u20ac29,99.",
+    h1: "Licenze Windows",
+  },
+  "/office": {
+    title: "Microsoft Office 2021, 2024 e Microsoft 365 | Licenvo",
+    description: "Licenze Office 2021, Office 2024, Microsoft 365 Personal e Family. ESD originali. Da \u20ac29,99.",
+    h1: "Microsoft Office",
+  },
+  "/bundles": {
+    title: "Bundle Windows + Office al Miglior Prezzo | Licenvo",
+    description: "Bundle conveniente Windows 11 Pro + Office 2021 o 2024. Licenze ESD originali. Da \u20ac84,99.",
+    h1: "Bundle Software",
+  },
+  "/visio-project": {
+    title: "Microsoft Visio e Project 2021 | Licenvo",
+    description: "Licenze Visio Professional, Visio Standard, Project Professional e Project Standard 2021. Da \u20ac164,99.",
+    h1: "Visio & Project",
+  },
+  "/antivirus": {
+    title: "Antivirus Kaspersky, ESET, Bitdefender | Licenvo",
+    description: "Kaspersky Standard, Plus, Premium. ESET NOD32, Internet Security. Da \u20ac9,99.",
+    h1: "Antivirus & Sicurezza",
+  },
 };
 
 function escHtml(s) {

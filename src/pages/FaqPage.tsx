@@ -236,7 +236,7 @@ const faqSections: FaqSection[] = [
         q: 'Qual è la differenza tra abbonamento mensile e triennale?',
         a: (
           <p>
-            <strong>Abbonamento mensile</strong>: €14,99/mese — massima flessibilità, puoi disdire quando vuoi.
+            <strong>Abbonamento mensile</strong>: €24,99/mese — massima flessibilità, puoi disdire quando vuoi.
             <br /><strong>Abbonamento triennale</strong>: €87,99 per 3 anni — risparmio significativo rispetto al mensile,
             ideale per professionisti e studi che usano il software costantemente.
           </p>

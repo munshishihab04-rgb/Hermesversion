@@ -16,22 +16,60 @@ const sortOptions: { value: SortOption; label: string }[] = [
   { value: 'bestseller', label: 'Più Venduti' },
 ];
 
-// Microsoft category: filters products whose category contains 'Windows' or 'Office'
+// Filter helpers
 function isMicrosoftCategory(category: string): boolean {
   const cat = category.toLowerCase();
   return cat.includes('windows') || cat.includes('office');
 }
 
+function isAutodeskCategory(category: string): boolean {
+  return category.toLowerCase().includes('autodesk');
+}
+
+function isAntivirusCategory(category: string): boolean {
+  return category.toLowerCase().includes('antivirus');
+}
+
+function isBundleCategory(category: string): boolean {
+  return category.toLowerCase().includes('bundle');
+}
+
+function isVisioProjectTitle(title: string): boolean {
+  const t = title.toLowerCase();
+  return t.includes('visio') || t.includes('project');
+}
+
+// Sidebar filter tabs
+const filterTabs = [
+  { key: 'all', label: 'Tutti' },
+  { key: 'microsoft', label: 'Microsoft', badge: 'W+O' },
+  { key: 'autodesk', label: 'Autodesk' },
+  { key: 'antivirus', label: 'Antivirus' },
+  { key: 'bundle', label: 'Bundle' },
+  { key: 'visio-project', label: 'Visio & Project' },
+] as const;
+
+type FilterKey = typeof filterTabs[number]['key'];
+
 export default function CatalogClient() {
   const { products, loading } = useShopifyProducts();
   const searchStr = useSearch();
 
-  // Parse URL params and sync into local state whenever the URL changes
   const urlParams = useMemo(() => new URLSearchParams(searchStr), [searchStr]);
 
   const [search, setSearch] = useState(() => urlParams.get('q') ?? '');
   const [selectedCat, setSelectedCat] = useState<string>(() => urlParams.get('cat') ?? 'all');
   const [categoryParam, setCategoryParam] = useState<string>(() => urlParams.get('category') ?? '');
+  const [filterKey, setFilterKey] = useState<FilterKey>(() => {
+    const cat = urlParams.get('category') ?? '';
+    const catSlug = urlParams.get('cat') ?? 'all';
+    if (cat === 'microsoft') return 'microsoft';
+    if (catSlug === 'autodesk') return 'autodesk';
+    if (catSlug === 'antivirus') return 'antivirus';
+    if (catSlug === 'bundle') return 'bundle';
+    if (catSlug === 'visio-project') return 'visio-project';
+    return 'all';
+  });
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(300);
   const [minRating, setMinRating] = useState(0);
@@ -42,7 +80,6 @@ export default function CatalogClient() {
     return 'default';
   });
 
-  // Sync when URL changes (e.g. user searches from header or clicks category link)
   useEffect(() => {
     const q = urlParams.get('q') ?? '';
     const cat = urlParams.get('cat') ?? 'all';
@@ -52,8 +89,28 @@ export default function CatalogClient() {
     setSelectedCat(cat);
     setCategoryParam(category);
     if (filter === 'bestseller') setSort('bestseller');
+    // Sync filterKey from URL
+    if (category === 'microsoft') setFilterKey('microsoft');
+    else if (cat === 'autodesk') setFilterKey('autodesk');
+    else if (cat === 'antivirus') setFilterKey('antivirus');
+    else if (cat === 'bundle') setFilterKey('bundle');
+    else if (cat === 'visio-project') setFilterKey('visio-project');
+    else setFilterKey('all');
   }, [urlParams]);
+
   const [filtersOpen, setFiltersOpen] = useState(false);
+
+  const applyFilterTab = (key: FilterKey) => {
+    setFilterKey(key);
+    // Reset category-related state
+    setSelectedCat('all');
+    setCategoryParam('');
+    if (key === 'microsoft') setCategoryParam('microsoft');
+    else if (key === 'autodesk') setSelectedCat('autodesk');
+    else if (key === 'antivirus') setSelectedCat('antivirus');
+    else if (key === 'bundle') setSelectedCat('bundle');
+    else if (key === 'visio-project') setSelectedCat('visio-project');
+  };
 
   const filtered = useMemo(() => {
     let list = [...products];
@@ -68,9 +125,17 @@ export default function CatalogClient() {
       );
     }
 
-    // Filter by ?category=microsoft param
-    if (categoryParam === 'microsoft') {
+    // Apply tab filter
+    if (filterKey === 'microsoft' || categoryParam === 'microsoft') {
       list = list.filter((p) => isMicrosoftCategory(p.category));
+    } else if (filterKey === 'autodesk' || selectedCat === 'autodesk') {
+      list = list.filter((p) => isAutodeskCategory(p.category));
+    } else if (filterKey === 'antivirus' || selectedCat === 'antivirus') {
+      list = list.filter((p) => isAntivirusCategory(p.category));
+    } else if (filterKey === 'bundle' || selectedCat === 'bundle') {
+      list = list.filter((p) => isBundleCategory(p.category));
+    } else if (filterKey === 'visio-project' || selectedCat === 'visio-project') {
+      list = list.filter((p) => isVisioProjectTitle(p.nameIt ?? p.name ?? ''));
     } else if (selectedCat !== 'all') {
       const cat = categories.find((c) => c.slug === selectedCat);
       if (cat) list = list.filter((p) => p.category === cat.name);
@@ -92,11 +157,11 @@ export default function CatalogClient() {
     }
 
     return list;
-  }, [products, search, selectedCat, categoryParam, minPrice, maxPrice, minRating, instantOnly, sort]);
+  }, [products, search, filterKey, selectedCat, categoryParam, minPrice, maxPrice, minRating, instantOnly, sort]);
 
+  const activeFilterLabel = filterTabs.find((t) => t.key === filterKey)?.label ?? '';
   const activeFilters = [
-    categoryParam === 'microsoft' && 'Microsoft',
-    categoryParam !== 'microsoft' && selectedCat !== 'all' && categories.find((c) => c.slug === selectedCat)?.nameIt,
+    filterKey !== 'all' && activeFilterLabel,
     instantOnly && 'Consegna Istantanea',
     minRating > 0 && `Min ${minRating}★`,
   ].filter(Boolean) as string[];
@@ -106,28 +171,20 @@ export default function CatalogClient() {
       <div>
         <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-3 font-semibold">Categoria</h3>
         <div className="space-y-1">
-          <button
-            onClick={() => { setSelectedCat('all'); setCategoryParam(''); }}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors ${selectedCat === 'all' && categoryParam === '' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
-          >
-            Tutte le categorie
-          </button>
-          {/* Microsoft shortcut */}
-          <button
-            onClick={() => { setCategoryParam('microsoft'); setSelectedCat('all'); }}
-            className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${categoryParam === 'microsoft' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
-          >
-            <span>Microsoft</span>
-            <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded-full">W+O</span>
-          </button>
-          {categories.map((cat) => (
+          {filterTabs.map((tab) => (
             <button
-              key={cat.id}
-              onClick={() => { setSelectedCat(cat.slug); setCategoryParam(''); }}
-              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${selectedCat === cat.slug && categoryParam === '' ? 'bg-primary/20 text-primary font-semibold' : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'}`}
+              key={tab.key}
+              onClick={() => applyFilterTab(tab.key)}
+              className={`w-full text-left px-3 py-2 rounded-lg text-sm transition-colors flex items-center justify-between ${
+                filterKey === tab.key
+                  ? 'bg-primary/20 text-primary font-semibold'
+                  : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
+              }`}
             >
-              <span>{cat.nameIt}</span>
-              <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded-full">{cat.count}</span>
+              <span>{tab.label}</span>
+              {'badge' in tab && tab.badge && (
+                <span className="text-[10px] bg-muted px-1.5 py-0.5 rounded-full">{tab.badge}</span>
+              )}
             </button>
           ))}
         </div>
@@ -203,8 +260,7 @@ export default function CatalogClient() {
 
       <button
         onClick={() => {
-          setSelectedCat('all');
-          setCategoryParam('');
+          applyFilterTab('all');
           setMinPrice(0);
           setMaxPrice(300);
           setMinRating(0);
@@ -238,6 +294,26 @@ export default function CatalogClient() {
             `${filtered.length} prodotti disponibili · Consegna istantanea su tutti gli articoli`
           )}
         </p>
+      </div>
+
+      {/* Filter tab bar */}
+      <div className="flex flex-wrap gap-2 mb-5 overflow-x-auto pb-1">
+        {filterTabs.map((tab) => (
+          <button
+            key={tab.key}
+            onClick={() => applyFilterTab(tab.key)}
+            className={`px-4 py-1.5 rounded-full text-sm font-medium border transition-all whitespace-nowrap ${
+              filterKey === tab.key
+                ? 'bg-primary text-white border-primary shadow-sm'
+                : 'bg-card text-muted-foreground border-border hover:text-foreground hover:border-primary/50'
+            }`}
+          >
+            {tab.label}
+            {'badge' in tab && tab.badge && (
+              <span className="ml-1.5 text-[10px] opacity-70">{tab.badge}</span>
+            )}
+          </button>
+        ))}
       </div>
 
       <div className="flex flex-col sm:flex-row gap-3 mb-6">
@@ -285,8 +361,7 @@ export default function CatalogClient() {
                 onClick={() => {
                   if (f === 'Consegna Istantanea') setInstantOnly(false);
                   else if (f.startsWith('Min')) setMinRating(0);
-                  else if (f === 'Microsoft') setCategoryParam('');
-                  else setSelectedCat('all');
+                  else applyFilterTab('all');
                 }}
                 className="hover:text-white transition-colors"
               >
@@ -321,7 +396,7 @@ export default function CatalogClient() {
               <h3 className="text-lg font-bold text-foreground mb-2">Nessun prodotto trovato</h3>
               <p className="text-muted-foreground text-sm mb-4">Prova a modificare i filtri o la ricerca</p>
               <button
-                onClick={() => { setSearch(''); setSelectedCat('all'); setCategoryParam(''); setInstantOnly(false); setMinRating(0); }}
+                onClick={() => { setSearch(''); applyFilterTab('all'); setInstantOnly(false); setMinRating(0); }}
                 className="btn-primary text-sm"
               >
                 Azzera Filtri
