@@ -1,5 +1,4 @@
 import express from "express";
-import helmet from "helmet";
 import { readFileSync } from "fs";
 import { resolve, join } from "path";
 import { fileURLToPath } from "url";
@@ -43,7 +42,7 @@ async function fetchProductByHandle(handle) {
 const ROUTE_META = {
   "/": {
     title: "Licenvo \u2014 Licenze Software Originali al Miglior Prezzo",
-    description: "Acquista licenze software digitali per Windows, Office, Autodesk e antivirus con consegna istantanea. Prezzi competitivi. Garanzia soddisfatti o rimborsati.",
+    description: "Acquista licenze software originali Windows, Office, Autodesk e antivirus con consegna istantanea. Risparmia fino al 92%. Garanzia soddisfatti o rimborsati.",
     h1: "Licenze Software Originali al Miglior Prezzo",
   },
   "/product-catalog": {
@@ -216,8 +215,7 @@ function buildHtml(url, meta, productData) {
       offers: {
         "@type": "Offer",
         url: "https://licenvo.com" + url,
-        price: typeof price === "string" ? price : price.toFixed(2),
-        priceValidUntil: new Date(Date.now() + 365*24*60*60*1000).toISOString().split("T")[0],
+        price: price,
         priceCurrency: "EUR",
         availability: available,
         itemCondition: "https://schema.org/NewCondition",
@@ -274,24 +272,6 @@ function buildHtml(url, meta, productData) {
     orgLd += '<script type="application/ld+json">' + websiteLd + '</script>';
   }
 
-
-  // FAQ JSON-LD for /faq page
-  let faqLd = "";
-  if (url.split("?")[0] === "/faq") {
-    const faqJsonLd = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        { "@type": "Question", name: "Come ricevo la licenza dopo il pagamento?", acceptedAnswer: { "@type": "Answer", text: "Dopo la conferma del pagamento ricevi la chiave di licenza via email entro pochi minuti per Microsoft e Kaspersky, entro 24 ore per Autodesk." } },
-        { "@type": "Question", name: "Le licenze sono compatibili con il mio PC?", acceptedAnswer: { "@type": "Answer", text: "Sì, le licenze digitali sono compatibili con PC Windows 10 e Windows 11. Le licenze Mac sono disponibili per prodotti specifici indicati nella descrizione." } },
-        { "@type": "Question", name: "Posso ottenere un rimborso?", acceptedAnswer: { "@type": "Answer", text: "Sì, offriamo garanzia di 30 giorni. Se la chiave non funziona, la sostituiamo gratuitamente o rimborsiamo entro 5-10 giorni lavorativi." } },
-        { "@type": "Question", name: "Che differenza c'è tra licenza ESD e OEM?", acceptedAnswer: { "@type": "Answer", text: "La licenza ESD (Electronic Software Download) è legata al tuo account Microsoft e trasferibile. La licenza OEM è legata all'hardware del PC e non è trasferibile ad altro computer." } },
-        { "@type": "Question", name: "Come funziona l'abbonamento Autodesk?", acceptedAnswer: { "@type": "Answer", text: "L'abbonamento Autodesk viene assegnato al tuo account Autodesk esistente o nuovo. Scegli Mensile o Triennale. L'accesso è immediato dopo l'assegnazione." } }
-      ]
-    });
-    faqLd = '<script type="application/ld+json">' + faqJsonLd + '</script>';
-  }
-
   // Replace head section with proper meta for this route
   let html = INDEX_HTML;
 
@@ -310,28 +290,14 @@ function buildHtml(url, meta, productData) {
   html = html.replace(/property="og:type" content="[^"]*"/, 'property="og:type" content="' + ogType + '"');
   html = html.replace(/property="og:image" content="[^"]*"/, 'property="og:image" content="' + escHtml(ogImage) + '"');
 
-  // Add og:image:width, og:image:height, og:url before </head>
-  const ogExtraTags =
-    '<meta property="og:image:width" content="1200"/>\n' +
-    '<meta property="og:image:height" content="630"/>\n' +
-    '<meta property="og:url" content="' + escHtml(canonical) + '"/>\n';
-  html = html.replace("</head>", ogExtraTags + "</head>");
-
   // Inject product meta tags and JSON-LD before </head>
-  const headInject = productMetaTags + jsonLd + orgLd + faqLd;
+  const headInject = productMetaTags + jsonLd + orgLd;
   if (headInject) {
     html = html.replace("</head>", headInject + "\n</head>");
   }
 
-
-  // Inject hreflang tags
-  html = html.replace('</head>',
-    `<link rel="alternate" hreflang="it" href="${canonical}"/>\n` +
-    `<link rel="alternate" hreflang="x-default" href="${canonical}"/>\n` +
-    '</head>'
-  );
-
-  // JSON-LD is in <head> via headInject — no hidden div needed
+  // Inject content inside #root for bots (hidden from visual rendering, visible to crawlers)
+  html = html.replace('<div id="root"></div>', '<div id="root"><div id="ssr-content" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden">' + bodyContent + '</div></div>');
 
   return html;
 }
@@ -348,28 +314,6 @@ app.use("/assets", express.static(join(DIST, "assets"), {
 app.use(express.static(DIST, {
   index: false,
   maxAge: "1h",
-}));
-
-// Security headers
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.shopify.com", "https://www.googletagmanager.com", "https://connect.facebook.net", "https://www.google-analytics.com"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:", "blob:"],
-      connectSrc: ["'self'", "https://*.shopify.com", "https://*.google-analytics.com", "https://www.google-analytics.com", "https://region1.analytics.google.com"],
-      frameSrc: ["'none'"],
-      objectSrc: ["'none'"],
-      baseUri: ["'self'"],
-      formAction: ["'self'"],
-    }
-  },
-  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
-  referrerPolicy: { policy: "strict-origin-when-cross-origin" },
-  crossOriginEmbedderPolicy: false,
-  crossOriginOpenerPolicy: false,
 }));
 
 // All routes - SPA fallback with bot detection
@@ -432,21 +376,6 @@ app.get("/{*splat}", async (req, res) => {
         h1: productData.title,
       };
     }
-  }
-
-  // 404 per route non valide (non prodotti, non in ROUTE_META)
-  const isKnownRoute = !!ROUTE_META[pathname] || !!productHandle;
-  if (!isKnownRoute) {
-    meta = {
-      title: "Pagina non trovata — Licenvo",
-      description: "La pagina richiesta non esiste.",
-      h1: "Pagina non trovata",
-    };
-    const html404 = buildHtml(url, meta, null);
-    res.setHeader("Content-Type", "text/html");
-    res.setHeader("Cache-Control", "no-store");
-    res.setHeader("X-Robots-Tag", "noindex, nofollow");
-    return res.status(404).send(html404);
   }
 
   // Fallback meta

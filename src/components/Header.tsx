@@ -173,7 +173,7 @@ const mobileSections = [
 ];
 
 const announcements = [
-  '⚡ Consegna rapida via email — attivazione verificata sui server ufficiali',
+  '⚡ Consegna rapida via email — attivazione tramite portali ufficiali',
   '🛡️ Pagamento sicuro SSL · Rimborso 30 giorni · Supporto in italiano',
   '🏆 Oltre 10.000 clienti soddisfatti — Recensioni verificate ★★★★★',
 ];

@@ -1,25 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'wouter';
 
 export default function NotFoundPage() {
-  useEffect(() => {
-    // Imposta noindex/nofollow per pagina 404
-    const existing = document.querySelector('meta[name="robots"]');
-    if (existing) {
-      existing.setAttribute('content', 'noindex, nofollow');
-    } else {
-      const meta = document.createElement('meta');
-      meta.name = 'robots';
-      meta.content = 'noindex, nofollow';
-      document.head.appendChild(meta);
-    }
-    return () => {
-      // Ripristina al leave
-      const m = document.querySelector('meta[name="robots"]');
-      if (m) m.setAttribute('content', 'index, follow');
-    };
-  }, []);
-
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-4">
       <div className="text-center">

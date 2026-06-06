@@ -90,7 +90,7 @@ export const products: Product[] = [
   isBestseller: true,
   isNew: false,
   isFeatured: true,
-  description: 'Genuine Windows 11 Pro license key. Full retail activation.',
+  description: 'Chiave di licenza digitale Windows 11 Pro — consegna via email, attivazione tramite Impostazioni Windows.',
   descriptionIt: 'Licenza Windows 11 Pro. Attivazione retail completa. Aggiornamenti gratuiti a vita, BitLocker, Hyper-V e Remote Desktop inclusi. Compatibile con PC a 64-bit.',
   stock: 999,
   badge: 'Più Venduto',
@@ -102,7 +102,7 @@ export const products: Product[] = [
 },
 {
   id: '2',
-  slug: 'microsoft-office-2021-home',
+  slug: 'microsoft-office-2021-home-business',
   name: 'Microsoft Office 2021 Home & Business',
   nameIt: 'Microsoft Office 2021 Home & Business',
   category: 'Windows & Office',
@@ -164,7 +164,7 @@ export const products: Product[] = [
 },
 {
   id: '4',
-  slug: 'kaspersky-total-security-2025',
+  slug: 'kaspersky-standard-1-device-1-year',
   name: 'Kaspersky Total Security 2025 — 1 Anno 3 PC',
   nameIt: 'Kaspersky Total Security 2025 — 1 Anno 3 Dispositivi',
   category: 'Antivirus',

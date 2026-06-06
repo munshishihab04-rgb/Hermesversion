@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+    <title>Licenvo — Licenze Software Originali al Miglior Prezzo</title>
+    <meta name="description" content="Licenvo: acquista licenze software originali Windows, Office, Autodesk e antivirus con consegna istantanea. Risparmia fino al 92% su prodotti Microsoft, Autodesk, Kaspersky e altro." />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="DIGITALSOFT DI MUNSHI SHIHAB" />
+    <meta name="keywords" content="licenze software, Windows 11, Office 365, antivirus, gaming keys, chiavi attivazione, licenze originali, software economico" />
+    <link rel="canonical" href="https://licenvo.com/" />
+    <meta property="og:title" content="Licenvo — Licenze Software Originali al Miglior Prezzo" />
+    <meta property="og:description" content="Acquista licenze software originali con consegna istantanea. Windows, Office, antivirus e gaming keys fino al 92% di sconto." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Licenvo" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:image" content="https://licenvo.com/opengraph.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Licenvo — Licenze Software Originali" />
+    <meta name="twitter:description" content="Licenze software originali con consegna istantanea. Risparmia fino al 92%." />
+    <meta name="twitter:image" content="https://licenvo.com/opengraph.jpg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

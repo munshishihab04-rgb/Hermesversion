@@ -64,7 +64,7 @@ const faqSections = [
       },
       {
         q: 'Le licenze sono originali?',
-        a: 'Sì. Le chiavi che vendiamo attivano i prodotti direttamente sui server ufficiali Microsoft, Autodesk e Kaspersky. Vedi la nostra Politica di Rimborso per la garanzia di funzionamento.',
+        a: 'Sì. Le chiavi che vendiamo attivano i prodotti tramite i portali ufficiali di Microsoft, Autodesk e Kaspersky. Vedi la nostra Politica di Rimborso per la garanzia di funzionamento.',
       },
     ],
   },

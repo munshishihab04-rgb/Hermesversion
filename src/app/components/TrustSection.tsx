@@ -14,7 +14,7 @@ const trustItems = [
   {
     icon: 'ShieldCheckIcon',
     title: 'Attivazione Verificata',
-    desc: 'Chiavi di licenza attivabili direttamente sui server Microsoft, Autodesk e Kaspersky. Compatibilità verificata.',
+    desc: 'Chiavi di licenza attivabili tramite i portali standard di Microsoft, Autodesk e Kaspersky. Funzionamento garantito — vedi Politica Rimborsi.',
     color: 'text-emerald-400',
     bg: 'bg-emerald-500/10',
     border: 'border-emerald-500/25',

@@ -3,44 +3,31 @@ import { Link } from "wouter";
 
 const CONSENT_KEY = "licenvo_cookie_consent";
 
-type ConsentState = "accepted" | "rejected" | "necessary" | null;
+type ConsentState = "accepted" | "rejected" | null;
 
 export default function CookieBanner() {
-  const [consent, setConsent] = useState<ConsentState>(null);
+  const [consent, setConsent] = useState<ConsentState>("accepted"); // Default hidden
 
   useEffect(() => {
     const stored = localStorage.getItem(CONSENT_KEY);
-    if (stored === "accepted" || stored === "rejected" || stored === "necessary") {
-      setConsent(stored as ConsentState);
+    if (stored === "accepted" || stored === "rejected") {
+      setConsent(stored);
+    } else {
+      setConsent(null); // Show banner
     }
-    // Se nessun valore in storage, rimane null → banner visibile
   }, []);
-
-  // Carica script di tracking solo con consenso esplicito
-  useEffect(() => {
-    if (consent !== "accepted") return;
-    // Google Analytics / Meta Pixel: caricamento condizionale
-    if (typeof window !== "undefined" && !(window as any).__trackingLoaded) {
-      (window as any).__trackingLoaded = true;
-      // GA4 dinamico
-      const gaScript = document.createElement("script");
-      gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER";
-      gaScript.async = true;
-      document.head.appendChild(gaScript);
-    }
-  }, [consent]);
 
   const handleAccept = () => {
     localStorage.setItem(CONSENT_KEY, "accepted");
     setConsent("accepted");
   };
 
-  const handleNecessary = () => {
-    localStorage.setItem(CONSENT_KEY, "necessary");
-    setConsent("necessary");
+  const handleReject = () => {
+    localStorage.setItem(CONSENT_KEY, "rejected");
+    setConsent("rejected");
   };
 
-  // Mostra banner solo se nessun consenso ancora dato
+  // Don't show if consent already given
   if (consent !== null) return null;
 
   return (
@@ -62,14 +49,14 @@ export default function CookieBanner() {
           </div>
           <div className="flex items-center gap-3 shrink-0">
             <button
-              onClick={handleNecessary}
-              className="px-5 py-2 text-sm font-semibold text-foreground bg-secondary hover:bg-secondary/80 border border-border rounded-lg transition-colors"
+              onClick={handleReject}
+              className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground border border-border rounded-lg transition-colors"
             >
               Solo necessari
             </button>
             <button
               onClick={handleAccept}
-              className="px-5 py-2 text-sm font-semibold text-foreground bg-secondary hover:bg-secondary/80 border border-border rounded-lg transition-colors"
+              className="px-5 py-2 text-sm font-semibold text-white bg-accent hover:bg-accent/90 rounded-lg transition-colors"
             >
               Accetta tutti
             </button>

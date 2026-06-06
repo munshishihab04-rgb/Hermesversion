@@ -46,7 +46,7 @@ const faqSections: FaqSection[] = [
           <p>
             Assolutamente sì. Il nostro sito utilizza crittografia SSL/TLS per proteggere ogni transazione.
             Siamo una società italiana registrata (P.IVA IT04358941203) e tutti i nostri prodotti sono licenze software con attivazione verificata
-            distribuite tramite canali di distribuzione. Non conserviamo mai i dati della tua carta di credito.
+            acquistate da distributori wholesale europei e attivabili tramite i server di attivazione standard. Non conserviamo mai i dati della tua carta di credito.
           </p>
         ),
       },
@@ -77,7 +77,7 @@ const faqSections: FaqSection[] = [
         q: 'Le licenze sono originali e legali?',
         a: (
           <p>
-            S&igrave;, tutte le licenze vendute da Licenvo sono originali. Vendiamo licenze ESD Microsoft, abbonamenti Autodesk subscription e licenze Kaspersky. Ogni prodotto include chiave di licenza autentica con assistenza del nostro team via email e WhatsApp.
+            S&igrave;, tutte le licenze vendute da Licenvo sono funzionanti e attivabili. Vendiamo chiavi di licenza digitali (formato ESD) per prodotti Microsoft, abbonamenti Autodesk subscription e licenze Kaspersky. Ogni prodotto include chiave di licenza ESD/OEM funzionante con assistenza del nostro team via email e WhatsApp.
           </p>
         ),
       },

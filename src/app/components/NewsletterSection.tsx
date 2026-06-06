@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
 const perks = [
-  { icon: 'TagIcon', text: 'Sconti esclusivi fino al 95%' },
+  { icon: 'TagIcon', text: 'Prezzi competitivi su tutte le licenze' },
   { icon: 'BellIcon', text: 'Avvisi su nuovi prodotti' },
   { icon: 'BoltIcon', text: 'Flash sale in anteprima' },
 ];

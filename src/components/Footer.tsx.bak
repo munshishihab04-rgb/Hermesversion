@@ -131,15 +131,9 @@ export default function Footer() {
 
         {/* Bottom Row */}
         <div className="border-t border-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2 text-[11px] text-muted-foreground flex-wrap justify-center sm:justify-start">
-            <p>
-              &copy; {new Date().getFullYear()} DIGITALSOFT DI MUNSHI SHIHAB &mdash; P.IVA IT04358941203 &mdash; Tutti i diritti riservati
-            </p>
-            <span className="text-gray-400 hidden sm:inline">·</span>
-            <span>Via Aldo Pio Manuzio 24, 40132 Bologna</span>
-            <span className="text-gray-400 hidden sm:inline">·</span>
-            <a href="mailto:supporto@licenvo.com" className="hover:text-white transition-colors">supporto@licenvo.com</a>
-          </div>
+          <p className="text-[11px] text-muted-foreground">
+            &copy; {new Date().getFullYear()} DIGITALSOFT DI MUNSHI SHIHAB &mdash; P.IVA IT04358941203 &mdash; Tutti i diritti riservati
+          </p>
           <div className="flex items-center gap-2 text-[10px] text-muted-foreground">
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>Consegna Istantanea Attiva 24/7</span>

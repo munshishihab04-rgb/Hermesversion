@@ -137,7 +137,7 @@ function getFaqItems(product: Product) {
   // Default generico
   return [
     { q: 'Come ricevo il mio prodotto?', a: 'Dopo il pagamento riceverai la chiave di attivazione o le credenziali di accesso via email. I tempi di consegna sono indicati nella pagina prodotto.' },
-    { q: 'Il prodotto è originale e legale?', a: 'Sì, tutte le licenze vendute su Licenvo sono attivabili sui server ufficiali del produttore.' },
+    { q: 'Il prodotto è originale e legale?', a: 'Sì, tutte le licenze vendute su Licenvo sono attivabili sui portali di attivazione del produttore.' },
     { q: 'Cosa fare se il prodotto non funziona?', a: 'Contattaci subito via email o chat. Offriamo sostituzione gratuita o rimborso completo entro 30 giorni dall\'acquisto.' },
     { q: 'Posso avere fattura elettronica?', a: 'Sì. Al momento del checkout seleziona "Fattura elettronica" e inserisci i tuoi dati fiscali (Codice Fiscale/P.IVA e Codice SDI). La fattura verrà emessa e inviata automaticamente.' },
   ];
@@ -1244,7 +1244,7 @@ function ProductTemplate({ product }: { product: Product }) {
         accentBorder: 'border-sky-200',
         accentText: 'text-sky-700',
         category: 'Software Professionale Autodesk',
-        tagline: 'Software Autodesk originale con assegnazione diretta al tuo account',
+        tagline: 'Abbonamento Autodesk assegnato al tuo account — consegna digitale tramite il portale Autodesk.',
         mainUse: 'Progettazione professionale con gli strumenti standard del settore',
         keyFeatures: [
           { title: 'Attivazione diretta', desc: "Abbonamento assegnato all'account Autodesk indicato al checkout" },
@@ -1843,7 +1843,7 @@ export default function ProductDetailClient() {
             <div className="space-y-2">
               {(badges.length > 0 ? badges.map((b, i) => ({ icon: i === 0 ? 'BoltIcon' : i === 1 ? 'ShieldCheckIcon' : 'ArrowPathIcon', text: b, color: i === 0 ? 'text-amber-500' : i === 1 ? 'text-emerald-500' : 'text-blue-500' })) : [
                 { icon: 'BoltIcon', text: isAutodesk ? 'Assegnazione immediata' : `Consegna ${deliveryText.toLowerCase()}`, color: 'text-amber-500' },
-                { icon: 'ShieldCheckIcon', text: 'Attivazione verificata sui server ufficiali', color: 'text-emerald-500' },
+                { icon: 'ShieldCheckIcon', text: 'Attivazione tramite portali ufficiali', color: 'text-emerald-500' },
                 { icon: 'ArrowPathIcon', text: product.refundPolicyLabel || 'Garanzia rimborso 30 giorni', color: 'text-blue-500' },
               ]).map((g) => (
                 <div key={g.text} className="flex items-center gap-2.5 text-sm">

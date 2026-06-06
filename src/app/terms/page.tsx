@@ -45,7 +45,7 @@ const htmlContent = `
 <h3>2.2 Caratteristiche delle licenze software</h3>
 <p>Le licenze fornite dal Titolare sono:</p>
 <ul>
-<li><strong>Autentiche e verificate:</strong> ogni licenza è sottoposta a controllo di autenticità e funzionalità prima della vendita.</li>
+<li><strong>Autentiche e verificate:</strong> ogni chiave viene verificata per assicurarsi che non sia già stata attivata prima della vendita.</li>
 <li><strong>Legalmente acquisite:</strong> tutte le licenze provengono da fonti legittime e rispettano i requisiti normativi per la rivendita.</li>
 <li><strong>Non più in uso dal cedente:</strong> le licenze usate sono state disattivate o non sono più utilizzate dal precedente titolare, garantendo il trasferimento esclusivo dei diritti al nuovo acquirente.</li>
 </ul>
