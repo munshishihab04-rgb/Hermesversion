@@ -21,7 +21,18 @@ function isMicrosoftCategory(category: string): boolean {
   const cat = category.toLowerCase();
   return cat.includes('windows') || cat.includes('office');
 }
-
+function isWindowsCategory(category: string): boolean {
+  return category.toLowerCase().includes('windows');
+}
+function isOfficeCategory(category: string, title: string): boolean {
+  const t = title.toLowerCase();
+  const cat = category.toLowerCase();
+  return (cat.includes('office') || t.includes('office')) && !t.includes('visio') && !t.includes('project');
+}
+function isMicrosoft365Category(_category: string, title: string): boolean {
+  const t = title.toLowerCase();
+  return t.includes('microsoft 365') || t.includes('m365');
+}
 function isAutodeskCategory(category: string): boolean {
   return category.toLowerCase().includes('autodesk');
 }
@@ -42,7 +53,9 @@ function isVisioProjectTitle(title: string): boolean {
 // Sidebar filter tabs
 const filterTabs = [
   { key: 'all', label: 'Tutti' },
-  { key: 'microsoft', label: 'Microsoft', badge: 'W+O' },
+  { key: 'windows', label: 'Windows' },
+  { key: 'office', label: 'Office' },
+  { key: 'microsoft-365', label: 'M365' },
   { key: 'autodesk', label: 'Autodesk' },
   { key: 'antivirus', label: 'Antivirus' },
   { key: 'bundle', label: 'Bundle' },
@@ -63,11 +76,13 @@ export default function CatalogClient() {
   const [filterKey, setFilterKey] = useState<FilterKey>(() => {
     const cat = urlParams.get('category') ?? '';
     const catSlug = urlParams.get('cat') ?? 'all';
-    if (cat === 'microsoft') return 'microsoft';
-    if (catSlug === 'autodesk') return 'autodesk';
-    if (catSlug === 'antivirus') return 'antivirus';
-    if (catSlug === 'bundle') return 'bundle';
-    if (catSlug === 'visio-project') return 'visio-project';
+    if (catSlug === 'windows' || cat === 'windows') return 'windows';
+    if (catSlug === 'office' || cat === 'office') return 'office';
+    if (catSlug === 'microsoft-365' || cat === 'microsoft-365') return 'microsoft-365';
+    if (catSlug === 'autodesk' || cat === 'autodesk') return 'autodesk';
+    if (catSlug === 'antivirus' || cat === 'antivirus') return 'antivirus';
+    if (catSlug === 'bundle' || cat === 'bundle') return 'bundle';
+    if (catSlug === 'visio-project' || cat === 'visio-project') return 'visio-project';
     return 'all';
   });
   const [minPrice, setMinPrice] = useState(0);
@@ -90,11 +105,13 @@ export default function CatalogClient() {
     setCategoryParam(category);
     if (filter === 'bestseller') setSort('bestseller');
     // Sync filterKey from URL
-    if (category === 'microsoft') setFilterKey('microsoft');
-    else if (cat === 'autodesk') setFilterKey('autodesk');
-    else if (cat === 'antivirus') setFilterKey('antivirus');
-    else if (cat === 'bundle') setFilterKey('bundle');
-    else if (cat === 'visio-project') setFilterKey('visio-project');
+    if (cat === 'windows' || category === 'windows') setFilterKey('windows');
+    else if (cat === 'office' || category === 'office') setFilterKey('office');
+    else if (cat === 'microsoft-365' || category === 'microsoft-365') setFilterKey('microsoft-365');
+    else if (cat === 'autodesk' || category === 'autodesk') setFilterKey('autodesk');
+    else if (cat === 'antivirus' || category === 'antivirus') setFilterKey('antivirus');
+    else if (cat === 'bundle' || category === 'bundle') setFilterKey('bundle');
+    else if (cat === 'visio-project' || category === 'visio-project') setFilterKey('visio-project');
     else setFilterKey('all');
   }, [urlParams]);
 
@@ -104,12 +121,7 @@ export default function CatalogClient() {
     setFilterKey(key);
     // Reset category-related state
     setSelectedCat('all');
-    setCategoryParam('');
-    if (key === 'microsoft') setCategoryParam('microsoft');
-    else if (key === 'autodesk') setSelectedCat('autodesk');
-    else if (key === 'antivirus') setSelectedCat('antivirus');
-    else if (key === 'bundle') setSelectedCat('bundle');
-    else if (key === 'visio-project') setSelectedCat('visio-project');
+    setCategoryParam(key !== 'all' ? key : '');
   };
 
   const filtered = useMemo(() => {
@@ -126,15 +138,19 @@ export default function CatalogClient() {
     }
 
     // Apply tab filter
-    if (filterKey === 'microsoft' || categoryParam === 'microsoft') {
-      list = list.filter((p) => isMicrosoftCategory(p.category));
-    } else if (filterKey === 'autodesk' || selectedCat === 'autodesk') {
+    if (filterKey === 'windows') {
+      list = list.filter((p) => isWindowsCategory(p.category));
+    } else if (filterKey === 'office') {
+      list = list.filter((p) => isOfficeCategory(p.category, p.nameIt ?? p.name ?? ''));
+    } else if (filterKey === 'microsoft-365') {
+      list = list.filter((p) => isMicrosoft365Category(p.category, p.nameIt ?? p.name ?? ''));
+    } else if (filterKey === 'autodesk') {
       list = list.filter((p) => isAutodeskCategory(p.category));
-    } else if (filterKey === 'antivirus' || selectedCat === 'antivirus') {
+    } else if (filterKey === 'antivirus') {
       list = list.filter((p) => isAntivirusCategory(p.category));
-    } else if (filterKey === 'bundle' || selectedCat === 'bundle') {
-      list = list.filter((p) => isBundleCategory(p.category));
-    } else if (filterKey === 'visio-project' || selectedCat === 'visio-project') {
+    } else if (filterKey === 'bundle') {
+      list = list.filter((p) => isBundleCategory(p.category, p.nameIt ?? p.name ?? ''));
+    } else if (filterKey === 'visio-project') {
       list = list.filter((p) => isVisioProjectTitle(p.nameIt ?? p.name ?? ''));
     } else if (selectedCat !== 'all') {
       const cat = categories.find((c) => c.slug === selectedCat);

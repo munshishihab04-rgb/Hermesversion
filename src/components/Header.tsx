@@ -123,11 +123,11 @@ const navItems = [
   {
     label: 'Microsoft',
     dropdown: [
-      { label: 'Windows',           sub: 'Win 10 & 11',          href: '/windows',                                    Icon: Icons.Windows,  accent: '#0078D4' },
-      { label: 'Office',            sub: 'Office 2021 & 2024',   href: '/office',                                     Icon: Icons.Office,   accent: '#D83B01' },
+      { label: 'Windows',           sub: 'Win 10 & 11',          href: '/product-catalog?cat=windows',                                    Icon: Icons.Windows,  accent: '#0078D4' },
+      { label: 'Office',            sub: 'Office 2021 & 2024',   href: '/product-catalog?cat=office',                                     Icon: Icons.Office,   accent: '#D83B01' },
       { label: 'Microsoft 365',     sub: 'Personal & Family',    href: '/product-catalog?category=microsoft-365',     Icon: Icons.Cloud,    accent: '#0078D4' },
-      { label: 'Bundle Win+Office', sub: 'Risparmia di più',     href: '/bundles',                                    Icon: Icons.Bundle,   accent: '#7B2FBE' },
-      { label: 'Visio & Project',   sub: 'Versione 2021',        href: '/visio-project',                              Icon: Icons.Chart,    accent: '#3955A3' },
+      { label: 'Bundle Win+Office', sub: 'Risparmia di più',     href: '/product-catalog?cat=bundle',                                    Icon: Icons.Bundle,   accent: '#7B2FBE' },
+      { label: 'Visio & Project',   sub: 'Versione 2021',        href: '/product-catalog?cat=visio-project',                              Icon: Icons.Chart,    accent: '#3955A3' },
     ],
   },
   {
@@ -137,7 +137,7 @@ const navItems = [
       { label: 'Tutti i prodotti',  sub: 'AutoCAD, Revit, Maya…', href: '/product-catalog?category=autodesk',         Icon: Icons.Grid,     accent: '#0696D7' },
     ],
   },
-  { label: 'Antivirus', href: '/antivirus' },
+  { label: 'Antivirus', href: '/product-catalog?cat=antivirus' },
   { label: 'Catalogo',  href: '/product-catalog' },
   { label: 'Supporto',  href: '/assistenza' },
 ];
@@ -148,11 +148,11 @@ const mobileSections = [
     label: 'Microsoft',
     dotColor: '#0078D4',
     items: [
-      { label: 'Windows',         sub: 'Win 10 & 11',           href: '/windows',                                 Icon: Icons.Windows,  bg: '#EFF6FF', color: '#1D4ED8' },
-      { label: 'Office',          sub: '2021 & 2024',           href: '/office',                                  Icon: Icons.Office,   bg: '#FFF7ED', color: '#C2410C' },
+      { label: 'Windows',         sub: 'Win 10 & 11',           href: '/product-catalog?cat=windows',                                 Icon: Icons.Windows,  bg: '#EFF6FF', color: '#1D4ED8' },
+      { label: 'Office',          sub: '2021 & 2024',           href: '/product-catalog?cat=office',                                  Icon: Icons.Office,   bg: '#FFF7ED', color: '#C2410C' },
       { label: 'Microsoft 365',   sub: 'Personal & Family',     href: '/product-catalog?category=microsoft-365', Icon: Icons.Cloud,    bg: '#F0FDFA', color: '#0F766E' },
-      { label: 'Bundle',          sub: 'Win + Office combo',    href: '/bundles',                                 Icon: Icons.Bundle,   bg: '#FAF5FF', color: '#7E22CE' },
-      { label: 'Visio & Project', sub: '2021 Professional',     href: '/visio-project',                           Icon: Icons.Chart,    bg: '#EEF2FF', color: '#3730A3' },
+      { label: 'Bundle',          sub: 'Win + Office combo',    href: '/product-catalog?cat=bundle',                                 Icon: Icons.Bundle,   bg: '#FAF5FF', color: '#7E22CE' },
+      { label: 'Visio & Project', sub: '2021 Professional',     href: '/product-catalog?cat=visio-project',                           Icon: Icons.Chart,    bg: '#EEF2FF', color: '#3730A3' },
     ],
   },
   {
@@ -167,7 +167,7 @@ const mobileSections = [
     label: 'Sicurezza',
     dotColor: '#16A34A',
     items: [
-      { label: 'Antivirus',        sub: 'Kaspersky',             href: '/antivirus',                               Icon: Icons.Shield,   bg: '#F0FDF4', color: '#15803D' },
+      { label: 'Antivirus',        sub: 'Kaspersky',             href: '/product-catalog?cat=antivirus',                               Icon: Icons.Shield,   bg: '#F0FDF4', color: '#15803D' },
     ],
   },
 ];
@@ -438,14 +438,29 @@ export default function Header() {
         <div className="hidden lg:block border-t border-gray-100">
           <div className="section-container flex items-center justify-center gap-8 py-1.5">
             {[
-              { icon: '🔒', text: 'SSL Sicuro' },
-              { icon: '⚡', text: 'Consegna Istantanea' },
-              { icon: '✅', text: 'Licenze Originali' },
-              { icon: '🔄', text: 'Rimborso 30gg' },
-              { icon: '🇮🇹', text: 'Supporto Italiano' },
+              {
+                text: 'SSL Sicuro',
+                svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              },
+              {
+                text: 'Consegna Istantanea',
+                svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              },
+              {
+                text: 'Licenze Originali',
+                svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              },
+              {
+                text: 'Rimborso 30gg',
+                svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              },
+              {
+                text: 'Supporto Italiano',
+                svg: <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+              },
             ].map(b => (
               <div key={b.text} className="flex items-center gap-1.5 text-xs text-gray-500 whitespace-nowrap">
-                <span>{b.icon}</span><span className="font-medium">{b.text}</span>
+                <span className="text-primary/70">{b.svg}</span><span className="font-medium">{b.text}</span>
               </div>
             ))}
           </div>
@@ -606,9 +621,22 @@ export default function Header() {
             {/* ── FOOTER ── */}
             <div className="border-t border-gray-100 bg-gray-50 px-4 py-3">
               <div className="grid grid-cols-3 gap-1 text-center">
-                {[{ e: '🔒', t: 'SSL Sicuro' }, { e: '✅', t: 'Originali' }, { e: '🔄', t: '30 giorni' }].map(b => (
+                {[
+                {
+                  t: 'SSL Sicuro',
+                  svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                },
+                {
+                  t: 'Originali',
+                  svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                },
+                {
+                  t: '30 giorni',
+                  svg: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+                },
+              ].map(b => (
                   <div key={b.t} className="flex flex-col items-center gap-0.5">
-                    <span className="text-sm">{b.e}</span>
+                    <span className="text-primary">{b.svg}</span>
                     <span className="text-[9px] font-semibold text-gray-400 uppercase tracking-wide">{b.t}</span>
                   </div>
                 ))}
