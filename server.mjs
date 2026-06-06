@@ -352,24 +352,18 @@ app.use(express.static(DIST, {
 
 // Security headers
 app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.shopify.com", "https://www.googletagmanager.com", "https://connect.facebook.net", "https://www.google-analytics.com"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
-      fontSrc: ["'self'", "https://fonts.gstatic.com"],
-      imgSrc: ["'self'", "data:", "https:", "blob:"],
-      connectSrc: ["'self'", "https://*.shopify.com", "https://*.google-analytics.com", "https://www.google-analytics.com", "https://region1.analytics.google.com"],
-      frameSrc: ["'none'"],
-      objectSrc: ["'none'"],
-      baseUri: ["'self'"],
-      formAction: ["'self'"],
-    }
-  },
-  hsts: { maxAge: 31536000, includeSubDomains: true, preload: true },
-  referrerPolicy: { policy: "strict-origin-when-cross-origin" },
+  contentSecurityPolicy: false,        // gestito da nginx
+  hsts: false,                          // gestito da nginx
+  frameguard: false,                    // gestito da nginx (X-Frame-Options)
+  noSniff: false,                       // gestito da nginx (X-Content-Type-Options)
+  referrerPolicy: false,                // gestito da nginx
   crossOriginEmbedderPolicy: false,
   crossOriginOpenerPolicy: false,
+  // Lascia attivi solo quelli non gestiti da nginx:
+  // xPoweredBy (rimuove X-Powered-By)
+  // ieNoOpen
+  // dnsPrefetchControl
+  // permittedCrossDomainPolicies
 }));
 
 // All routes - SPA fallback with bot detection

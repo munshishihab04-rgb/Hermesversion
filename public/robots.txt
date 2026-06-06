@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /account
+Disallow: /account/callback
+Disallow: /account/login
+Disallow: /account/register
 Disallow: /checkout
 
 Sitemap: https://licenvo.com/sitemap.xml
