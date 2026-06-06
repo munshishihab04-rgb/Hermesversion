@@ -394,11 +394,18 @@ app.get("/collections/:handle", (req, res, next) => {
 app.get("/{*splat}", async (req, res) => {
   const ua = req.headers["user-agent"] || "";
   const isBot = BOT_UA.test(ua);
+  const reqPathname = req.path;
+  const isProductPath = reqPathname === "/product-detail" || reqPathname.startsWith("/products/");
+  const isKnownSpaRoute = !!ROUTE_META[reqPathname] || isProductPath;
 
   if (!isBot) {
-    // Normal users get plain SPA
+    // Normal users get plain SPA, but with proper 404 status for unknown routes
     res.setHeader("Content-Type", "text/html");
     res.setHeader("Cache-Control", "no-cache");
+    if (!isKnownSpaRoute) {
+      res.status(404);
+      res.setHeader("X-Robots-Tag", "noindex, nofollow");
+    }
     return res.send(INDEX_HTML);
   }
 
