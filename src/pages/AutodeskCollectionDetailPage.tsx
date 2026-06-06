@@ -180,9 +180,9 @@ const COLLECTIONS_DATA: Record<string, CollectionData> = {
 
 // ─── Componente principale ────────────────────────────────────────────────────
 
-export default function AutodeskCollectionDetailPage() {
+export default function AutodeskCollectionDetailPage({ overrideCollectionId }: { overrideCollectionId?: string } = {}) {
   const [, params] = useRoute('/autodesk-collections/:id');
-  const colId = params?.id ?? 'aec';
+  const colId = overrideCollectionId || params?.id || 'aec';
   const col = COLLECTIONS_DATA[colId];
 
   const [product, setProduct] = useState<ShopifyProduct | null>(null);

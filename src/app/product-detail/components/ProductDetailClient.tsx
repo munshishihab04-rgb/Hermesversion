@@ -1600,6 +1600,7 @@ export default function ProductDetailClient() {
   const productId = urlParams.get('id') || '1';
   const productHandle = urlParams.get('handle') || '';
 
+
   const { products: shopifyProducts } = useShopifyProducts();
   const [product, setProduct] = useState<(Product & { variantId?: string }) | null>(null);
   const [activeImage, setActiveImage] = useState(0);
